@@ -87,7 +87,7 @@ section::after {
 
 <h1 style="font-size:50px;color:white">Dagens program</h1>
 
-<h2> 13.00 - 13.30 : Introduktion og status XXX KDS</h2>
+<h2> 13.00 - 13.30 : Introduktion og status Martin Jensen KDS</h2>
 
 <h2> 13.30 - 13.50 : Introduktion til GraphQL</h2>
 
@@ -434,11 +434,73 @@ for indeholder et bitemporalt point-in-time-filter (virkningstid: "2024-11-12T14
 
 
 ---
+![bg](./img/first.png)
+
+<h1 style="font-size:60px;color:white">Hvordan får man adgang ? </h1>
+
+---
 
 ![bg](./img/first.png)
 
 
+
+<div class="container">
+<div class="col">
+
+
+</br>
+</br>
+
+* Det er nødvendigt at etablere en ny type adgang - det er ikke længere nok med en webbruger og en tjenestebruger.
+
+* Hvis man skal have adgang til frie data, er en token nok, men den skal oprettes
+
+</div>
+
+<div class="col">
+</br>
+</br>
+<img src="./img/bruger1.png" width="500">
+
+</div>
+</div>
+
 ---
+![bg](./img/first.png)
+
+<img src="./img/bruger2.png" width="800">
+
+---
+
+![bg](./img/first.png)
+
+<img src="./img/bruger3.png" width="1000">
+
+---
+
+![bg](./img/first.png)
+
+<img src="./img/bruger4.png" width="800">
+
+---
+
+![bg](./img/first.png)
+
+<img src="./img/bruger6.png" width="500">
+
+---
+
+![bg](./img/first.png)
+
+<img src="./img/bruger5.png" width="1000">
+
+---
+![bg](./img/first.png)
+<h1 style="font-size:60px;color:white">Bevæbnet med en token, er vi nu klar til at begynde at spørge...</h1>
+
+---
+
+
 
 ![bg](./img/green.png)
 
