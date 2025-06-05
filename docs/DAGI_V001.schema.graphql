@@ -1,0 +1,3315 @@
+schema {
+  query: Query
+}
+
+interface SpatialInterfaceType {
+  "The OGC geometry type of the geometry."
+  type: SpatialGeometryNameEnumType!
+  "The coordinate reference system of the geometry."
+  crs: Int!
+  "The dimensions used by the geometry."
+  dimension: SpatialDimensionEnumType!
+  "The WKT representation of the geometry"
+  wkt: String
+}
+
+"""
+Grunddatamodel info:
+name: Afstemningsområde
+comment (da): <memo>#NOTES#hver kommune eller del af en kommune i en opstillingskreds er inddelt i afstemningsområder. En kommune eller del af en kommune kan dog udgøre ét afstemningsområde. Hvert afstemningsområde har ét afstemningssted, hvor vælgerne skal afgive deres stemme
+dbName: Afstemningsomraade
+definition (da): <memo>#NOTES#geografisk inddeling af kommunerne i områder, hvor vælgere stemmer til Folketings-, EU- og Kommunevalg, samt til folkeafstemninger
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2018/165
+prefLabel (da): Afstemningsområde
+source: https://confluence.sdfi.dk/x/6QHiCQ
+transliteratedName: Afstemningsomraade
+URI: https://data.gov.dk/model/profile/dagi/Afstemningsområde
+EAID: EAID_38545A1D_2A85_4020_A332_A0195A41310C
+"""
+type DAGI_Afstemningsomraade {
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  sequenceNumber: 1
+  size: 2
+  transliteratedName: afstemningsomraadenummer
+  URI: https://data.gov.dk/model/profile/dagi/afstemningsområdenummer
+  prefLabel (da): afstemningsområdenummer
+  definition (da): to-cifret nummerering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/165
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: afstemningsomraadenummer
+  """
+  afstemningsomraadenummer: String! @cost(weight: "1")
+  afstemningsstedAdresseLokalid: String @cost(weight: "1")
+  afstemningsstedHusnummerLokalid: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  sequenceNumber: 2
+  URI: https://data.gov.dk/model/profile/dagi/afstemningsstedNavn
+  prefLabel (da): afstemningssted navn
+  definition (da): navnet på det sted hvor valghandlingen foretages
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/165
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: afstemningsstedNavn
+  """
+  afstemningsstedNavn: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kommuneLokalid: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  opstillingskredsLokalid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_AfstemningsomraadeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_AfstemningsomraadeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Afstemningsomraade!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_AfstemningsomraadeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Afstemningsomraade! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Afstemningsområde_2000000
+dbName: Afstemningsomraade_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af afstemningsområde optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Danmark 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Afstemningsområde_2000000
+EAID: EAID_DAE77A43_3B7C_4398_A4B0_89CC6FA0EAE6
+"""
+type DAGI_Afstemningsomraade_2000000 {
+  afstemningsomraadenummer: String! @cost(weight: "1")
+  afstemningsstedAdresseLokalid: String @cost(weight: "1")
+  afstemningsstedHusnummerLokalid: String! @cost(weight: "1")
+  afstemningsstedNavn: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kommuneLokalid: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  opstillingskredsLokalid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Afstemningsomraade_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Afstemningsomraade_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Afstemningsomraade_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Afstemningsomraade_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Afstemningsomraade_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Afstemningsområde_250000
+dbName: Afstemningsomraade_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af afstemningsområde optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Afstemningsområde 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Afstemningsområde_250000
+EAID: EAID_11DED519_C73C_4df3_B1C9_DEE24F8FE037
+"""
+type DAGI_Afstemningsomraade_250000 {
+  afstemningsomraadenummer: String! @cost(weight: "1")
+  afstemningsstedAdresseLokalid: String @cost(weight: "1")
+  afstemningsstedHusnummerLokalid: String! @cost(weight: "1")
+  afstemningsstedNavn: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kommuneLokalid: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  opstillingskredsLokalid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Afstemningsomraade_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Afstemningsomraade_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Afstemningsomraade_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Afstemningsomraade_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Afstemningsomraade_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Afstemningsområde_500000
+dbName: Afstemningsomraade_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af afstemningsområde optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Afstemningsområde 1:500000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Afstemningsområde_500000
+EAID: EAID_F1F1DEEA_CADC_4ac0_A09A_E3104997E3E7
+"""
+type DAGI_Afstemningsomraade_500000 {
+  afstemningsomraadenummer: String! @cost(weight: "1")
+  afstemningsstedAdresseLokalid: String @cost(weight: "1")
+  afstemningsstedHusnummerLokalid: String! @cost(weight: "1")
+  afstemningsstedNavn: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kommuneLokalid: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  opstillingskredsLokalid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Afstemningsomraade_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Afstemningsomraade_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Afstemningsomraade_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Afstemningsomraade_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Afstemningsomraade_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Danmark
+comment (da): <memo>#NOTES#landpolygon afgrænset af GeoDanmark Kyst og Havn. Den del af Danmark, som er en del af EU (Færøerne og Grønland er ikke medtaget). Objektet anvendes bl.a. til indrapportering af NUTS1-level til Eurostat
+dbName: Danmark
+definition (da): <memo>#NOTES#den danske stats udstrækning på land
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://data.europa.eu/eli/reg/2011/31/oj|||https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Danmark
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Danmark
+EAID: EAID_4D778A13_4A20_48a5_A8BA_EF13DC9E2B7D
+"""
+type DAGI_Danmark {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_DanmarkConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_DanmarkEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Danmark!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_DanmarkEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Danmark! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Danmark_2000000
+dbName: Danmark_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af Danmark optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Danmark 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Danmark_2000000
+EAID: EAID_38E87E28_7B03_46df_8E12_2D72E46EADBA
+"""
+type DAGI_Danmark_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Danmark_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Danmark_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Danmark_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Danmark_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Danmark_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Danmark_250000
+dbName: Danmark_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af Danmark optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Danmark 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Danmark_250000
+EAID: EAID_8FB920D3_5593_4e21_8B2B_30DEA39DBB03
+"""
+type DAGI_Danmark_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Danmark_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Danmark_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Danmark_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Danmark_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Danmark_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Danmark_500000
+dbName: Danmark_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af Danmark optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Danmark 1:500000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Danmark_500000
+EAID: EAID_9B70ABCA_D1FB_4a6b_A8C1_A176F402AC79
+"""
+type DAGI_Danmark_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Danmark_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Danmark_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Danmark_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Danmark_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Danmark_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Kommuneinddeling
+comment (da): <memo>#NOTES#Kommuneinddeling afgrænser de 98 kommuners myndighedsområder samt Christiansø. Kommunegrænser er formelt defineret i forhold til jordstykker i matrikelkortet. I Kommuneinddeling følger grænserne indmålte skelpunkter i matrikelkortet, men det er kun områder, hvor kommuneinddelingen er indgået i Indenrigs- og Boligministeriets årlige bekendtgørelse, at DAGIs kommuneinddeling med sikkerhed lever op til at følge indmålte skelpunkter i matrikelkortet. Øvrige grænser er tilpasset efter de faktiske fysiske forhold, og følger objekter i GeoDanmark fx kystlinje, vandløb, hegn og dige, men der er tilfælde, hvor der er uoverensstemmelser mellem kommuneinddeling og de topografiske forhold.
+dbName: Kommuneinddeling
+definition (da): <memo>#NOTES#den kommunale myndigheds geografiske afgrænsning som fastlagt i loven
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2018/27
+prefLabel (da): Kommuneinddeling
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Kommuneinddeling
+EAID: EAID_25AE826A_41DD_40a6_9AF4_3D347B1DA89F
+"""
+type DAGI_Kommuneinddeling {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  size: 4
+  URI: https://data.gov.dk/model/profile/dagi/kommunekode
+  prefLabel (da): kommunekode
+  definition (da): den 4-cifrede CPR-kode
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/27
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: kommunekode
+  """
+  kommunekode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  regionLokalid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Boolean
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dagi/udenforKommuneinddeling
+  prefLabel (da): udenfor kommuneinddeling
+  definition (da): område uden for kommuneinddeling
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/27
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: udenforKommuneinddeling
+  """
+  udenforKommuneinddeling: Boolean! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_KommuneinddelingConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_KommuneinddelingEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Kommuneinddeling!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_KommuneinddelingEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Kommuneinddeling! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Kommuneinddeling_2000000
+dbName: Kommuneinddeling_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af kommuneinddeling optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Kommuneinddeling 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Kommuneinddeling_2000000
+EAID: EAID_E1AEA68C_819E_4f11_B242_EF4D3CEABB7C
+"""
+type DAGI_Kommuneinddeling_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kommunekode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  regionLokalid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  udenforKommuneinddeling: Boolean! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Kommuneinddeling_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Kommuneinddeling_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Kommuneinddeling_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Kommuneinddeling_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Kommuneinddeling_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Kommuneinddeling_250000
+dbName: Kommuneinddeling_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af kommuneinddeling optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Kommuneinddeling 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Kommuneinddeling_250000
+EAID: EAID_D5B0012D_A2A9_40e0_B0D8_ED094FFAD2B7
+"""
+type DAGI_Kommuneinddeling_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kommunekode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  regionLokalid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  udenforKommuneinddeling: Boolean! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Kommuneinddeling_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Kommuneinddeling_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Kommuneinddeling_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Kommuneinddeling_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Kommuneinddeling_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Kommuneinddeling_500000
+dbName: Kommuneinddeling_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af kommuneinddeling optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Kommuneinddeling 1:500000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Kommuneinddeling_500000
+EAID: EAID_27B9D2EC_817C_493b_B51D_A3CE6B61CC43
+"""
+type DAGI_Kommuneinddeling_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kommunekode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  regionLokalid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  udenforKommuneinddeling: Boolean! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Kommuneinddeling_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Kommuneinddeling_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Kommuneinddeling_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Kommuneinddeling_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Kommuneinddeling_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Landsdel
+dbName: Landsdel
+definition (da): <memo>#NOTES#afgrænsning af statistiklandsdel
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://data.europa.eu/eli/reg/2003/1059/oj
+prefLabel (da): Landsdel
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Landsdel
+EAID: EAID_C802AB6B_35F5_4ccd_8607_7EF1E7ABFEC8
+"""
+type DAGI_Landsdel {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_LandsdelConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_LandsdelEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Landsdel!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_LandsdelEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Landsdel! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Landsdel_2000000
+dbName: Landsdel_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af landsdel optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Landsdel 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Landsdel_2000000
+EAID: EAID_09BADFA6_3AF5_42b9_9E80_63FBE64ECBEA
+"""
+type DAGI_Landsdel_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Landsdel_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Landsdel_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Landsdel_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Landsdel_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Landsdel_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Landsdel_250000
+dbName: Landsdel_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af landsdel optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Landsdel 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Landsdel_250000
+EAID: EAID_D44BD3C6_7B5B_4d18_9C4C_A84DB42E716E
+"""
+type DAGI_Landsdel_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Landsdel_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Landsdel_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Landsdel_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Landsdel_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Landsdel_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Landsdel_500000
+dbName: Landsdel_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af landsdel optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Landsdel 1:500000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Landsdel_500000
+EAID: EAID_81C8A5B0_8376_48f5_B2E1_5E451BEB73E4
+"""
+type DAGI_Landsdel_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Landsdel_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Landsdel_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Landsdel_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Landsdel_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Landsdel_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Opstillingskreds
+comment (da): <memo>#NOTES#nederste niveau i inddelingen af Danmark i valgkredse jf. valgkredsfortegnelsen, bilag til Lov om valg til Folketinget
+dbName: Opstillingskreds
+definition (da): <memo>#NOTES#geografisk inddeling af landet i 92 kredse, hvorfra kandidater opstilles og vælges til Folketinget
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2022/294
+prefLabel (da): Opstillingskreds
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Opstillingskreds
+EAID: EAID_CBF72A8E_8E85_4912_B1D8_FBA7C550525F
+"""
+type DAGI_Opstillingskreds {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dagi/kredskommunenavn
+  prefLabel (da): kredskommunenavn
+  definition (da): navnet på den kommune, som er formand for den fælles valgbestyrelse i opstillingskredsen jf. lovbekendtgørelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2022/294
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: kredskommunenavn
+  """
+  kredskommunenavn: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dagi/kredskommunenummer
+  prefLabel (da): kredskommunenummer
+  definition (da): kommunekoden for den kommune, som er formand for den fælles valgbestyrelse i opstillingskredsen jf. lovbekendtgørelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2022/294
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: kredskommunenummer
+  """
+  kredskommunenummer: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  size: 2
+  URI: https://data.gov.dk/model/profile/dagi/OpstillingskredsOpstillingskredsnummer
+  prefLabel (da): opstillingskredsnummer
+  definition (da): opstillingskredsens nummer jf. lovbekendtgørelse. To-cifret, unikt nummer i storkredsen (1-92)
+  legalSource: https://www.retsinformation.dk/eli/lta/2022/294
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: opstillingskredsnummer
+  """
+  opstillingskredsnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  storkredsLokalid: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  size: 2
+  URI: https://data.gov.dk/model/profile/dagi/valgkredsnummer
+  prefLabel (da): valgkredsnummer
+  definition (da): valgkredsnummer jf. lovbekendgørelse. To-cifret, unikt nummer i storkredsen
+  legalSource: https://www.retsinformation.dk/eli/lta/2022/294
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: valgkredsnummer
+  """
+  valgkredsnummer: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_OpstillingskredsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_OpstillingskredsEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Opstillingskreds!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_OpstillingskredsEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Opstillingskreds! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Opstillingskreds_2000000
+dbName: Opstillingskreds_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af opstillingskreds optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Opstillingskreds 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Opstillingskreds_2000000
+EAID: EAID_5610929A_12B7_4a0b_AFBF_867C51CA236A
+"""
+type DAGI_Opstillingskreds_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kredskommunenavn: String! @cost(weight: "1")
+  kredskommunenummer: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  opstillingskredsnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  storkredsLokalid: String! @cost(weight: "1")
+  valgkredsnummer: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Opstillingskreds_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Opstillingskreds_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Opstillingskreds_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Opstillingskreds_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Opstillingskreds_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Opstillingskreds_250000
+dbName: Opstillingskreds_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af opstillingskreds optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Opstillingskreds 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Opstillingskreds_250000
+EAID: EAID_8ABD799D_C7FB_4ac4_9610_19447461C3D2
+"""
+type DAGI_Opstillingskreds_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kredskommunenavn: String! @cost(weight: "1")
+  kredskommunenummer: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  opstillingskredsnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  storkredsLokalid: String! @cost(weight: "1")
+  valgkredsnummer: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Opstillingskreds_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Opstillingskreds_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Opstillingskreds_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Opstillingskreds_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Opstillingskreds_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Opstillingskreds_500000
+dbName: Opstillingskreds_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af opstillingskreds optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Opstillingskreds 1:500000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Opstillingskreds_500000
+EAID: EAID_8A8D6C93_B9AD_49f1_8526_3E150CE9E5B7
+"""
+type DAGI_Opstillingskreds_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kredskommunenavn: String! @cost(weight: "1")
+  kredskommunenummer: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  opstillingskredsnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  storkredsLokalid: String! @cost(weight: "1")
+  valgkredsnummer: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Opstillingskreds_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Opstillingskreds_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Opstillingskreds_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Opstillingskreds_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Opstillingskreds_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Politikreds
+dbName: Politikreds
+definition (da): <memo>#NOTES#politimyndighedens geografiske afgrænsning som fastlagt i loven
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2006/538
+prefLabel (da): Politikreds
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Politikreds
+EAID: EAID_65DDC19B_C90A_4c4a_8F5E_6A1713935315
+"""
+type DAGI_Politikreds {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  size: 4
+  URI: https://data.gov.dk/model/profile/dagi/PolitikredsMyndighedskode
+  prefLabel (da): myndighedskode
+  definition (da): den 4-cifrede CPR-kode
+  legalSource: https://www.retsinformation.dk/eli/lta/2006/538
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: myndighedskode
+  """
+  myndighedskode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dagi/politikredsnummer
+  prefLabel (da): politikredsnummer
+  definition (da): politikredsens nummer jf. lovbekendtgørelse 538/2006
+  legalSource: https://www.retsinformation.dk/eli/lta/2006/538
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: politikredsnummer
+  """
+  politikredsnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_PolitikredsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_PolitikredsEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Politikreds!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_PolitikredsEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Politikreds! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Politikreds_2000000
+dbName: Politikreds_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af politikreds optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Politikreds 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Politikreds_2000000
+EAID: EAID_423507AF_7CE0_42c1_AEFB_4F93C85B6CD1
+"""
+type DAGI_Politikreds_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  myndighedskode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  politikredsnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Politikreds_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Politikreds_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Politikreds_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Politikreds_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Politikreds_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Politikreds_250000
+dbName: Politikreds_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af politikreds optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Politikreds 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Politikreds_250000
+EAID: EAID_176DB7EA_39F9_4fd6_8292_42B7F44CDA16
+"""
+type DAGI_Politikreds_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  myndighedskode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  politikredsnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Politikreds_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Politikreds_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Politikreds_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Politikreds_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Politikreds_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Politikreds_500000
+dbName: Politikreds_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af politikreds optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Politikreds 1:500000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Politikreds_500000
+EAID: EAID_63C255A6_222E_46c9_A910_F511D7B466DE
+"""
+type DAGI_Politikreds_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  myndighedskode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  politikredsnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Politikreds_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Politikreds_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Politikreds_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Politikreds_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Politikreds_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Postnummerinddeling
+comment (da): <memo>#NOTES#Postnummerinddeling er en landsdækkende geografisk inddeling fastsat af Trafikstyrelsen. Postnumre med tilhørende navne på postnummerområdet er en del af adressebetegnelsen og blev etableret i 1967 for at understøtte postsortering og -omdeling, og er i dag central i forhold til den entydige fastsættelse af vejnavne og adresser. Postnummerinddelingen består af almindelige postnummerområder (oprindelig knyttet til et bestemt posthus) og gadepostnummerområder i København C, København V og Frederiksberg C, hvor der oprindelig var et behov for tildeling af postnumre på gadeniveau pga. store postmængder.
+dbName: Postnummerinddeling
+definition (da): <memo>#NOTES#geografisk inddeling af landet i postnumre
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2024/151
+prefLabel (da): Postnummerinddeling
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Postnummerinddeling
+EAID: EAID_69F75074_3639_4e58_9DDD_0A406A8C4CE9
+"""
+type DAGI_Postnummerinddeling {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Boolean
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dagi/erGadepostnummer
+  prefLabel (da): er gadepostnummer
+  definition (da): angivelse af, om postnummer er et gadepostnummer
+  legalSource: https://www.retsinformation.dk/eli/lta/2024/151
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: erGadepostnummer
+  """
+  erGadepostnummer: Boolean! @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dagi/postnummer
+  prefLabel (da): postnummer
+  definition (da): postnummer som betegner området jf. Trafikstyrelsen
+  legalSource: https://www.retsinformation.dk/eli/lta/2024/151
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: postnummer
+  """
+  postnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_PostnummerinddelingConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_PostnummerinddelingEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Postnummerinddeling!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_PostnummerinddelingEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Postnummerinddeling! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Postnummerinddeling_2000000
+dbName: Postnummerinddeling_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af postnummerinddeling optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Postnummerinddeling 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Postnummerinddeling_2000000
+EAID: EAID_273A7891_AD64_44bd_B5CA_0A9D2C2E3C89
+"""
+type DAGI_Postnummerinddeling_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  erGadepostnummer: Boolean! @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  postnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Postnummerinddeling_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Postnummerinddeling_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Postnummerinddeling_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Postnummerinddeling_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Postnummerinddeling_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Postnummerinddeling_250000
+dbName: Postnummerinddeling_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af postnummerinddeling optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Postnummerinddeling 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Postnummerinddeling_250000
+EAID: EAID_D75E5665_718B_4289_A9A8_1273DD52718C
+"""
+type DAGI_Postnummerinddeling_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  erGadepostnummer: Boolean! @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  postnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Postnummerinddeling_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Postnummerinddeling_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Postnummerinddeling_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Postnummerinddeling_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Postnummerinddeling_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Postnummerinddeling_500000
+dbName: Postnummerinddeling_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af postnummerinddeling optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Postnummerinddeling 1:500000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Postnummerinddeling_500000
+EAID: EAID_D52921D3_127E_4d1e_BB25_F77714F5017E
+"""
+type DAGI_Postnummerinddeling_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  erGadepostnummer: Boolean! @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  postnummer: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Postnummerinddeling_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Postnummerinddeling_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Postnummerinddeling_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Postnummerinddeling_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Postnummerinddeling_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Regionsinddeling
+dbName: Regionsinddeling
+definition (da): <memo>#NOTES#den regionale myndigheds geografiske afgrænsning som fastlagt i loven
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2022/447
+prefLabel (da): Regionsinddeling
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Regionsinddeling
+EAID: EAID_5534B4C2_1EC6_476f_B790_21629F6B170E
+"""
+type DAGI_Regionsinddeling {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  size: 4
+  URI: https://data.gov.dk/model/profile/dagi/regionskode
+  prefLabel (da): regionskode
+  definition (da): den 4-cifrede CPR-kode
+  legalSource: https://www.retsinformation.dk/eli/lta/2022/447
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: regionskode
+  """
+  regionskode: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_RegionsinddelingConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_RegionsinddelingEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Regionsinddeling!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_RegionsinddelingEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Regionsinddeling! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Regionsinddeling_2000000
+dbName: Regionsinddeling_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af regionsinddeling optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Regionsinddeling 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Regionsinddeling_2000000
+EAID: EAID_0D0A935B_4ED1_471c_8F7C_6CEA53D3BBF3
+"""
+type DAGI_Regionsinddeling_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  regionskode: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Regionsinddeling_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Regionsinddeling_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Regionsinddeling_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Regionsinddeling_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Regionsinddeling_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Regionsinddeling_250000
+dbName: Regionsinddeling_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af regionsinddeling optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Regionsinddeling 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Regionsinddeling_250000
+EAID: EAID_69CE4437_DA36_4513_8A01_8BAF8DCFF5B0
+"""
+type DAGI_Regionsinddeling_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  regionskode: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Regionsinddeling_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Regionsinddeling_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Regionsinddeling_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Regionsinddeling_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Regionsinddeling_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Regionsinddeling_500000
+dbName: Regionsinddeling_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af regionsinddeling optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Regionsinddeling 1:500000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Regionsinddeling_500000
+EAID: EAID_CA967FE7_4EC9_4963_BAF5_50D51493DCD3
+"""
+type DAGI_Regionsinddeling_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  regionskode: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Regionsinddeling_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Regionsinddeling_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Regionsinddeling_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Regionsinddeling_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Regionsinddeling_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Retskreds
+dbName: Retskreds
+definition (da): <memo>#NOTES#de lokale domstolsmyndigheders geografiske afgrænsning (byretskredse) som fastlagt i loven
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2006/538
+prefLabel (da): Retskreds
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Retskreds
+EAID: EAID_CB891B9E_1E6B_42de_8606_69C654EBD502
+"""
+type DAGI_Retskreds {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  size: 4
+  URI: https://data.gov.dk/model/profile/dagi/retskredsMyndighedskode
+  prefLabel (da): myndighedskode
+  definition (da): den 4-cifrede CPR-kode
+  legalSource: https://www.retsinformation.dk/eli/lta/2006/538
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: myndighedskode
+  """
+  myndighedskode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dagi/retskredsnummer
+  prefLabel (da): retskredsnummer
+  definition (da): retskredsens nummer jf. lovbekendtgørelse 538/2006
+  legalSource: https://www.retsinformation.dk/eli/lta/2006/538
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: retskredsnummer
+  """
+  retskredsnummer: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_RetskredsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_RetskredsEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Retskreds!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_RetskredsEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Retskreds! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Retskreds_2000000
+dbName: Retskreds_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af retskreds optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Retskreds 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Retskreds_2000000
+EAID: EAID_842C07E4_5D92_4e1a_BE04_38F1A801AA91
+"""
+type DAGI_Retskreds_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  myndighedskode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  retskredsnummer: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Retskreds_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Retskreds_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Retskreds_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Retskreds_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Retskreds_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Retskreds_250000
+dbName: Retskreds_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af retskreds optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Retskreds 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Retskreds_250000
+EAID: EAID_011932EC_BB6E_46ba_917E_F55335E99A24
+"""
+type DAGI_Retskreds_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  myndighedskode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  retskredsnummer: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Retskreds_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Retskreds_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Retskreds_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Retskreds_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Retskreds_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Retskreds_500000
+dbName: Retskreds_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af retskreds optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Retskreds 1:500000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Retskreds_500000
+EAID: EAID_49F4FF30_6C06_4f22_8188_215792B21CE6
+"""
+type DAGI_Retskreds_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  myndighedskode: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  retskredsnummer: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Retskreds_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Retskreds_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Retskreds_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Retskreds_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Retskreds_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Sogneinddeling
+comment (da): <memo>#NOTES#sognegrænser er fastlagt i matrikelregisteret, og de følger matrikelskel jf. jordstykkernes tilhørsforhold til sogne undtagen der, hvor de falder sammen med kommunegrænsen. Langs kommunegrænser er de topografisk tilpasset på samme måde som kommunegrænser
+dbName: Sogneinddeling
+definition (da): <memo>#NOTES#de folkekirkelige sognes geografiske afgrænsning som fastlagt i loven (om Folkekirken)
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2007/24
+prefLabel (da): Sogneinddeling
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Sogneinddeling
+EAID: EAID_B2A1A022_22C1_47f3_89CB_DA180694F9C0
+"""
+type DAGI_Sogneinddeling {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  size: 4
+  URI: https://data.gov.dk/model/profile/dagi/sognekode
+  prefLabel (da): sognekode
+  definition (da): den 4-cifrede CPR-kode
+  legalSource: https://www.retsinformation.dk/eli/lta/2007/24
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: sognekode
+  """
+  sognekode: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_SogneinddelingConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_SogneinddelingEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Sogneinddeling!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_SogneinddelingEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Sogneinddeling! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Sogneinddeling_2000000
+dbName: Sogneinddeling_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af sogneinddeling optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Sogneinddeling 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Sogneinddeling_2000000
+EAID: EAID_D45E8F62_B203_4e05_A2D9_47EB75981C95
+"""
+type DAGI_Sogneinddeling_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  sognekode: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Sogneinddeling_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Sogneinddeling_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Sogneinddeling_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Sogneinddeling_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Sogneinddeling_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Sogneinddeling_250000
+dbName: Sogneinddeling_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af sogneinddeling optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Sogneinddeling 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Sogneinddeling_250000
+EAID: EAID_605338F8_7FDE_47c1_A2D5_15E18B5E4235
+"""
+type DAGI_Sogneinddeling_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  sognekode: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Sogneinddeling_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Sogneinddeling_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Sogneinddeling_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Sogneinddeling_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Sogneinddeling_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Sogneinddeling_500000
+dbName: Sogneinddeling_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af sogneinddeling optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Sogneinddeling 1:500000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Sogneinddeling_500000
+EAID: EAID_4E732BD2_A668_45fa_AD36_106D6861950B
+"""
+type DAGI_Sogneinddeling_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  sognekode: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Sogneinddeling_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Sogneinddeling_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Sogneinddeling_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Sogneinddeling_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Sogneinddeling_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Storkreds
+dbName: Storkreds
+definition (da): <memo>#NOTES#afgrænsning af en storkreds
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2022/294
+prefLabel (da): Storkreds
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Storkreds
+EAID: EAID_6F0AF423_DE97_44fc_BEE5_9641CEF5A36B
+"""
+type DAGI_Storkreds {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dagi/storkredsnummer
+  prefLabel (da): storkredsnummer
+  definition (da): storkredsens nummer jf. lovbekendtgørelse nr 128/2013
+  legalSource: https://www.retsinformation.dk/eli/lta/2022/294
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: storkredsnummer
+  """
+  storkredsnummer: String! @cost(weight: "1")
+  valglandsdelLokalid: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_StorkredsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_StorkredsEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Storkreds!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_StorkredsEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Storkreds! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Storkreds_2000000
+dbName: Storkreds_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af storkreds optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Storkreds 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Storkreds_2000000
+EAID: EAID_6FE2233D_52CD_4455_8A5D_FD13FC64FC79
+"""
+type DAGI_Storkreds_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  storkredsnummer: String! @cost(weight: "1")
+  valglandsdelLokalid: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Storkreds_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Storkreds_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Storkreds_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Storkreds_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Storkreds_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Storkreds_250000
+dbName: Storkreds_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af storkreds optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Storkreds 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Storkreds_250000
+EAID: EAID_78BF19A5_9A3C_417a_9384_4B814CB710CC
+"""
+type DAGI_Storkreds_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  storkredsnummer: String! @cost(weight: "1")
+  valglandsdelLokalid: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Storkreds_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Storkreds_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Storkreds_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Storkreds_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Storkreds_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Storkreds_500000
+dbName: Storkreds_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af storkreds optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Storkreds 1:500000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Storkreds_500000
+EAID: EAID_F6BDA7B3_4CBE_490a_8BD0_F4934636598A
+"""
+type DAGI_Storkreds_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  storkredsnummer: String! @cost(weight: "1")
+  valglandsdelLokalid: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Storkreds_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Storkreds_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Storkreds_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Storkreds_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Storkreds_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: SupplerendeBynavn
+comment (da): <memo>#NOTES#Et supplerende bynavn (eller et andet lokalt stednavn) knyttes til en gruppe af adresser inden for et bestemt geografisk område i en kommune, når det er nødvendigt eller hensigtsmæssigt nærmere at præcisere beliggenheden inden for postnummerområdet. Supplerende bynavn er ikke en obligatorisk del af adressebetegnelsen og findes for ca. 35 % af alle adresser. Entydighed i adresser og vejnavne er allerede sikret gennem postnummeret.
+dbName: SupplerendeBynavn
+definition (da): <memo>#NOTES#geografisk afgrænsning af en gruppe af adresser i et bestemt område, for at præcisere beliggenheden af disse
+example (da): <memo>#NOTES#Vridsløsemagle, Fejø, Hf. Vennelyst
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/136
+prefLabel (da): Supplerende bynavn
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/SupplerendeBynavn
+EAID: EAID_85C63003_25C1_450b_9700_AF2A274248EB
+"""
+type DAGI_SupplerendeBynavn {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kommuneLokalid: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_SupplerendeBynavnConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_SupplerendeBynavnEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_SupplerendeBynavn!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_SupplerendeBynavnEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_SupplerendeBynavn! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: SupplerendeBynavn_2000000
+dbName: SupplerendeBynavn_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af supplerende bynavn optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): SupplerendeBynavn 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/SupplerendeBynavn_2000000
+EAID: EAID_FFEA2306_7B43_462c_8BA5_805D618DCDAE
+"""
+type DAGI_SupplerendeBynavn_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kommuneLokalid: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_SupplerendeBynavn_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_SupplerendeBynavn_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_SupplerendeBynavn_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_SupplerendeBynavn_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_SupplerendeBynavn_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: SupplerendeBynavn_250000
+dbName: SupplerendeBynavn_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af supplerende bynavn optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): SupplerendeBynavn 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/SupplerendeBynavn_250000
+EAID: EAID_87DEA50C_54C0_4a73_9831_E9A96EB547C4
+"""
+type DAGI_SupplerendeBynavn_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kommuneLokalid: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_SupplerendeBynavn_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_SupplerendeBynavn_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_SupplerendeBynavn_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_SupplerendeBynavn_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_SupplerendeBynavn_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: SupplerendeBynavn_500000
+dbName: SupplerendeBynavn_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af supplerende bynavn optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): SupplerendeBynavn 1:500.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/SupplerendeBynavn_500000
+EAID: EAID_BCAE3185_489D_4f8b_BC11_B11DBC9244F4
+"""
+type DAGI_SupplerendeBynavn_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  kommuneLokalid: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_SupplerendeBynavn_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_SupplerendeBynavn_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_SupplerendeBynavn_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_SupplerendeBynavn_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_SupplerendeBynavn_500000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Valglandsdel
+dbName: Valglandsdel
+definition (da): <memo>#NOTES#afgrænsning af en valglandsdel
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2022/294
+prefLabel (da): Valglandsdel
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Valglandsdel
+EAID: EAID_B20242CF_7C31_40f3_93BF_1E65E6C4C8AF
+"""
+type DAGI_Valglandsdel {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dagi/valglandsdelsbogstav
+  prefLabel (da): valglandsdelsbogstav
+  definition (da): landsdelens bogstav  jf. lovbekendtgørelse nr 128/2013
+  legalSource: https://www.retsinformation.dk/eli/lta/2022/294
+  source: https://confluence.sdfi.dk/x/6QHiCQ
+  dbName: valglandsdelsbogstav
+  """
+  valglandsdelsbogstav: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_ValglandsdelConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_ValglandsdelEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Valglandsdel!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_ValglandsdelEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Valglandsdel! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Valglandsdel_2000000
+dbName: Valglandsdel_2000000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af valglandsdel optimeret til præsentation i skalaen 1:2.000.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Valglandsdel 1:2.000.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Valglandsdel_2000000
+EAID: EAID_5E15BEF7_ECB4_44cb_98D7_0EAC0C10363E
+"""
+type DAGI_Valglandsdel_2000000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  valglandsdelsbogstav: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Valglandsdel_2000000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Valglandsdel_2000000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Valglandsdel_2000000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Valglandsdel_2000000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Valglandsdel_2000000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Valglandsdel_250000
+dbName: Valglandsdel_250000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af valglandsdel optimeret til præsentation i skalaen 1:250.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Valglandsdel 1:250.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Valglandsdel_250000
+EAID: EAID_324CC719_F3AB_4884_9C3A_BA75E4209FB9
+"""
+type DAGI_Valglandsdel_250000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  valglandsdelsbogstav: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Valglandsdel_250000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Valglandsdel_250000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Valglandsdel_250000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Valglandsdel_250000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Valglandsdel_250000! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Valglandsdel_500000
+dbName: Valglandsdel_500000
+definition (da): <memo>#NOTES#generaliseret geografisk afgrænsning af valglandsdel optimeret til præsentation i skalaen 1:500.000
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Valglandsde 1:500.000
+source: https://confluence.sdfi.dk/x/6QHiCQ
+URI: https://data.gov.dk/model/profile/dagi/Valglandsdel_500000
+EAID: EAID_D959B60C_22A7_47ce_BA1C_3AFEA631437A
+"""
+type DAGI_Valglandsdel_500000 {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  geometri: SpatialMultiPolygonZEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  navn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  valglandsdelsbogstav: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAGI_Valglandsdel_500000Connection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAGI_Valglandsdel_500000Edge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAGI_Valglandsdel_500000!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAGI_Valglandsdel_500000Edge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAGI_Valglandsdel_500000! @cost(weight: "10")
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "Indicates whether more edges exist following the set defined by the clients arguments."
+  hasNextPage: Boolean!
+  "Indicates whether more edges exist prior the set defined by the clients arguments."
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+"Query type for DAGI - Danmarks Administrative Geografiske Inddeling"
+type Query {
+  DAGI_Afstemningsomraade_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Afstemningsomraade_2000000FilterInput): DAGI_Afstemningsomraade_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Afstemningsomraade_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Afstemningsomraade_250000FilterInput): DAGI_Afstemningsomraade_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Afstemningsomraade_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Afstemningsomraade_500000FilterInput): DAGI_Afstemningsomraade_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Afstemningsomraade("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_AfstemningsomraadeFilterInput): DAGI_AfstemningsomraadeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Danmark_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Danmark_2000000FilterInput): DAGI_Danmark_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Danmark_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Danmark_250000FilterInput): DAGI_Danmark_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Danmark_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Danmark_500000FilterInput): DAGI_Danmark_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Danmark("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_DanmarkFilterInput): DAGI_DanmarkConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Kommuneinddeling_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Kommuneinddeling_2000000FilterInput): DAGI_Kommuneinddeling_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Kommuneinddeling_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Kommuneinddeling_250000FilterInput): DAGI_Kommuneinddeling_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Kommuneinddeling_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Kommuneinddeling_500000FilterInput): DAGI_Kommuneinddeling_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Kommuneinddeling("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_KommuneinddelingFilterInput): DAGI_KommuneinddelingConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Landsdel_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Landsdel_2000000FilterInput): DAGI_Landsdel_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Landsdel_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Landsdel_250000FilterInput): DAGI_Landsdel_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Landsdel_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Landsdel_500000FilterInput): DAGI_Landsdel_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Landsdel("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_LandsdelFilterInput): DAGI_LandsdelConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Opstillingskreds_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Opstillingskreds_2000000FilterInput): DAGI_Opstillingskreds_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Opstillingskreds_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Opstillingskreds_250000FilterInput): DAGI_Opstillingskreds_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Opstillingskreds_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Opstillingskreds_500000FilterInput): DAGI_Opstillingskreds_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Opstillingskreds("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_OpstillingskredsFilterInput): DAGI_OpstillingskredsConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Politikreds_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Politikreds_2000000FilterInput): DAGI_Politikreds_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Politikreds_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Politikreds_250000FilterInput): DAGI_Politikreds_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Politikreds_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Politikreds_500000FilterInput): DAGI_Politikreds_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Politikreds("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_PolitikredsFilterInput): DAGI_PolitikredsConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Postnummerinddeling_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Postnummerinddeling_2000000FilterInput): DAGI_Postnummerinddeling_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Postnummerinddeling_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Postnummerinddeling_250000FilterInput): DAGI_Postnummerinddeling_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Postnummerinddeling_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Postnummerinddeling_500000FilterInput): DAGI_Postnummerinddeling_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Postnummerinddeling("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_PostnummerinddelingFilterInput): DAGI_PostnummerinddelingConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Regionsinddeling_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Regionsinddeling_2000000FilterInput): DAGI_Regionsinddeling_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Regionsinddeling_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Regionsinddeling_250000FilterInput): DAGI_Regionsinddeling_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Regionsinddeling_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Regionsinddeling_500000FilterInput): DAGI_Regionsinddeling_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Regionsinddeling("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_RegionsinddelingFilterInput): DAGI_RegionsinddelingConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Retskreds_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Retskreds_2000000FilterInput): DAGI_Retskreds_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Retskreds_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Retskreds_250000FilterInput): DAGI_Retskreds_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Retskreds_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Retskreds_500000FilterInput): DAGI_Retskreds_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Retskreds("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_RetskredsFilterInput): DAGI_RetskredsConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Sogneinddeling_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Sogneinddeling_2000000FilterInput): DAGI_Sogneinddeling_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Sogneinddeling_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Sogneinddeling_250000FilterInput): DAGI_Sogneinddeling_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Sogneinddeling_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Sogneinddeling_500000FilterInput): DAGI_Sogneinddeling_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Sogneinddeling("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_SogneinddelingFilterInput): DAGI_SogneinddelingConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Storkreds_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Storkreds_2000000FilterInput): DAGI_Storkreds_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Storkreds_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Storkreds_250000FilterInput): DAGI_Storkreds_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Storkreds_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Storkreds_500000FilterInput): DAGI_Storkreds_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Storkreds("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_StorkredsFilterInput): DAGI_StorkredsConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_SupplerendeBynavn_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_SupplerendeBynavn_2000000FilterInput): DAGI_SupplerendeBynavn_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_SupplerendeBynavn_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_SupplerendeBynavn_250000FilterInput): DAGI_SupplerendeBynavn_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_SupplerendeBynavn_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_SupplerendeBynavn_500000FilterInput): DAGI_SupplerendeBynavn_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_SupplerendeBynavn("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_SupplerendeBynavnFilterInput): DAGI_SupplerendeBynavnConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Valglandsdel_2000000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Valglandsdel_2000000FilterInput): DAGI_Valglandsdel_2000000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Valglandsdel_250000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Valglandsdel_250000FilterInput): DAGI_Valglandsdel_250000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Valglandsdel_500000("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_Valglandsdel_500000FilterInput): DAGI_Valglandsdel_500000Connection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAGI_Valglandsdel("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAGI_ValglandsdelFilterInput): DAGI_ValglandsdelConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+}
+
+"Spatial MultiPolygon type with XYZ-dimensions in the EPSG 25832 coordinate system."
+type SpatialMultiPolygonZEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+input DAGI_AfstemningsomraadeFilterInput {
+  and: [DAGI_AfstemningsomraadeFilterInput!]
+  afstemningsomraadenummer: DafStringOperationFilterInput
+  afstemningsstedAdresseLokalid: DafStringOperationFilterInput
+  afstemningsstedHusnummerLokalid: DafStringOperationFilterInput
+  afstemningsstedNavn: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommuneLokalid: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  opstillingskredsLokalid: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Afstemningsomraade_2000000FilterInput {
+  and: [DAGI_Afstemningsomraade_2000000FilterInput!]
+}
+
+input DAGI_Afstemningsomraade_250000FilterInput {
+  and: [DAGI_Afstemningsomraade_250000FilterInput!]
+}
+
+input DAGI_Afstemningsomraade_500000FilterInput {
+  and: [DAGI_Afstemningsomraade_500000FilterInput!]
+}
+
+input DAGI_DanmarkFilterInput {
+  and: [DAGI_DanmarkFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Danmark_2000000FilterInput {
+  and: [DAGI_Danmark_2000000FilterInput!]
+}
+
+input DAGI_Danmark_250000FilterInput {
+  and: [DAGI_Danmark_250000FilterInput!]
+}
+
+input DAGI_Danmark_500000FilterInput {
+  and: [DAGI_Danmark_500000FilterInput!]
+}
+
+input DAGI_KommuneinddelingFilterInput {
+  and: [DAGI_KommuneinddelingFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  regionLokalid: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Kommuneinddeling_2000000FilterInput {
+  and: [DAGI_Kommuneinddeling_2000000FilterInput!]
+}
+
+input DAGI_Kommuneinddeling_250000FilterInput {
+  and: [DAGI_Kommuneinddeling_250000FilterInput!]
+}
+
+input DAGI_Kommuneinddeling_500000FilterInput {
+  and: [DAGI_Kommuneinddeling_500000FilterInput!]
+}
+
+input DAGI_LandsdelFilterInput {
+  and: [DAGI_LandsdelFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Landsdel_2000000FilterInput {
+  and: [DAGI_Landsdel_2000000FilterInput!]
+}
+
+input DAGI_Landsdel_250000FilterInput {
+  and: [DAGI_Landsdel_250000FilterInput!]
+}
+
+input DAGI_Landsdel_500000FilterInput {
+  and: [DAGI_Landsdel_500000FilterInput!]
+}
+
+input DAGI_OpstillingskredsFilterInput {
+  and: [DAGI_OpstillingskredsFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kredskommunenavn: DafStringOperationFilterInput
+  kredskommunenummer: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  opstillingskredsnummer: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  storkredsLokalid: DafStringOperationFilterInput
+  valgkredsnummer: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Opstillingskreds_2000000FilterInput {
+  and: [DAGI_Opstillingskreds_2000000FilterInput!]
+}
+
+input DAGI_Opstillingskreds_250000FilterInput {
+  and: [DAGI_Opstillingskreds_250000FilterInput!]
+}
+
+input DAGI_Opstillingskreds_500000FilterInput {
+  and: [DAGI_Opstillingskreds_500000FilterInput!]
+}
+
+input DAGI_PolitikredsFilterInput {
+  and: [DAGI_PolitikredsFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  myndighedskode: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  politikredsnummer: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Politikreds_2000000FilterInput {
+  and: [DAGI_Politikreds_2000000FilterInput!]
+}
+
+input DAGI_Politikreds_250000FilterInput {
+  and: [DAGI_Politikreds_250000FilterInput!]
+}
+
+input DAGI_Politikreds_500000FilterInput {
+  and: [DAGI_Politikreds_500000FilterInput!]
+}
+
+input DAGI_PostnummerinddelingFilterInput {
+  and: [DAGI_PostnummerinddelingFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  postnummer: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Postnummerinddeling_2000000FilterInput {
+  and: [DAGI_Postnummerinddeling_2000000FilterInput!]
+}
+
+input DAGI_Postnummerinddeling_250000FilterInput {
+  and: [DAGI_Postnummerinddeling_250000FilterInput!]
+}
+
+input DAGI_Postnummerinddeling_500000FilterInput {
+  and: [DAGI_Postnummerinddeling_500000FilterInput!]
+}
+
+input DAGI_RegionsinddelingFilterInput {
+  and: [DAGI_RegionsinddelingFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  regionskode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Regionsinddeling_2000000FilterInput {
+  and: [DAGI_Regionsinddeling_2000000FilterInput!]
+}
+
+input DAGI_Regionsinddeling_250000FilterInput {
+  and: [DAGI_Regionsinddeling_250000FilterInput!]
+}
+
+input DAGI_Regionsinddeling_500000FilterInput {
+  and: [DAGI_Regionsinddeling_500000FilterInput!]
+}
+
+input DAGI_RetskredsFilterInput {
+  and: [DAGI_RetskredsFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  myndighedskode: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  retskredsnummer: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Retskreds_2000000FilterInput {
+  and: [DAGI_Retskreds_2000000FilterInput!]
+}
+
+input DAGI_Retskreds_250000FilterInput {
+  and: [DAGI_Retskreds_250000FilterInput!]
+}
+
+input DAGI_Retskreds_500000FilterInput {
+  and: [DAGI_Retskreds_500000FilterInput!]
+}
+
+input DAGI_SogneinddelingFilterInput {
+  and: [DAGI_SogneinddelingFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  sognekode: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Sogneinddeling_2000000FilterInput {
+  and: [DAGI_Sogneinddeling_2000000FilterInput!]
+}
+
+input DAGI_Sogneinddeling_250000FilterInput {
+  and: [DAGI_Sogneinddeling_250000FilterInput!]
+}
+
+input DAGI_Sogneinddeling_500000FilterInput {
+  and: [DAGI_Sogneinddeling_500000FilterInput!]
+}
+
+input DAGI_StorkredsFilterInput {
+  and: [DAGI_StorkredsFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  storkredsnummer: DafStringOperationFilterInput
+  valglandsdelLokalid: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Storkreds_2000000FilterInput {
+  and: [DAGI_Storkreds_2000000FilterInput!]
+}
+
+input DAGI_Storkreds_250000FilterInput {
+  and: [DAGI_Storkreds_250000FilterInput!]
+}
+
+input DAGI_Storkreds_500000FilterInput {
+  and: [DAGI_Storkreds_500000FilterInput!]
+}
+
+input DAGI_SupplerendeBynavnFilterInput {
+  and: [DAGI_SupplerendeBynavnFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommuneLokalid: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_SupplerendeBynavn_2000000FilterInput {
+  and: [DAGI_SupplerendeBynavn_2000000FilterInput!]
+}
+
+input DAGI_SupplerendeBynavn_250000FilterInput {
+  and: [DAGI_SupplerendeBynavn_250000FilterInput!]
+}
+
+input DAGI_SupplerendeBynavn_500000FilterInput {
+  and: [DAGI_SupplerendeBynavn_500000FilterInput!]
+}
+
+input DAGI_ValglandsdelFilterInput {
+  and: [DAGI_ValglandsdelFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navn: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  valglandsdelsbogstav: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAGI_Valglandsdel_2000000FilterInput {
+  and: [DAGI_Valglandsdel_2000000FilterInput!]
+}
+
+input DAGI_Valglandsdel_250000FilterInput {
+  and: [DAGI_Valglandsdel_250000FilterInput!]
+}
+
+input DAGI_Valglandsdel_500000FilterInput {
+  and: [DAGI_Valglandsdel_500000FilterInput!]
+}
+
+input DafDateTimeOperationFilterInput {
+  eq: DafDateTime @cost(weight: "1000")
+  gt: DafDateTime @cost(weight: "1000")
+  ngt: DafDateTime @cost(weight: "1000")
+  gte: DafDateTime @cost(weight: "1000")
+  ngte: DafDateTime @cost(weight: "1000")
+  lt: DafDateTime @cost(weight: "1000")
+  nlt: DafDateTime @cost(weight: "1000")
+  lte: DafDateTime @cost(weight: "1000")
+  nlte: DafDateTime @cost(weight: "1000")
+}
+
+input DafStringOperationFilterInput {
+  eq: String @cost(weight: "1000")
+  in: [String!] @cost(weight: "1000")
+}
+
+"Filter type for the spatial method ST_Contains. Is applied as ST_Contains(A, B) where A is the register data field and B is the input value."
+input SpatialContainsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_CoveredBy. Is applied as ST_CoveredBy(A, B) where A is the register data field and B is the input value."
+input SpatialCoveredByOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Covers. Is applied as ST_Covers(A, B) where A is the register data field and B is the input value."
+input SpatialCoversOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Crosses. Is applied as ST_Crosses(A, B) where A is the register data field and B is the input value."
+input SpatialCrossesOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+input SpatialFilterInput {
+  and: [SpatialFilterInput!]
+  or: [SpatialFilterInput!]
+  contains: SpatialContainsOperationFilterInput @cost(weight: "5000")
+  covers: SpatialCoversOperationFilterInput @cost(weight: "5000")
+  crosses: SpatialCrossesOperationFilterInput @cost(weight: "5000")
+  intersects: SpatialIntersectsOperationFilterInput @cost(weight: "5000")
+  within: SpatialWithinOperationFilterInput @cost(weight: "5000")
+  overlaps: SpatialOverlapsOperationFilterInput @cost(weight: "5000")
+  touches: SpatialTouchesOperationFilterInput @cost(weight: "5000")
+  coveredBy: SpatialCoveredByOperationFilterInput @cost(weight: "5000")
+}
+
+"Filter type for the spatial method ST_Intersects. Is applied as ST_Intersects(A, B) where A is the register data field and B is the input value."
+input SpatialIntersectsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Overlaps. Is applied as ST_Overlaps(A, B) where A is the register data field and B is the input value."
+input SpatialOverlapsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Touches. Is applied as ST_Touches(A, B) where A is the register data field and B is the input value."
+input SpatialTouchesOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Within. Is applied as ST_Within(A, B) where A is the register data field and B is the input value."
+input SpatialWithinOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+enum SpatialDimensionEnumType {
+  XY
+  XYZ
+}
+
+enum SpatialGeometryNameEnumType {
+  Point
+  MultiPoint
+  LineString
+  MultiLineString
+  Polygon
+  MultiPolygon
+}
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost("The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc." weight: String!) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION
+
+"The purpose of the `@listSize` directive is to either inform the static analysis about the size of returned lists (if that information is statically available), or to point the analysis to where to find that information."
+directive @listSize("The `assumedSize` argument can be used to statically define the maximum length of a list returned by a field." assumedSize: Int "The `slicingArguments` argument can be used to define which of the field's arguments with numeric type are slicing arguments, so that their value determines the size of the list returned by that field. It may specify a list of multiple slicing arguments." slicingArguments: [String!] "The `slicingArgumentDefaultValue` argument can be used to define a default value for a slicing argument, which is used if the argument is not present in a query." slicingArgumentDefaultValue: Int "The `sizedFields` argument can be used to define that the value of the `assumedSize` argument or of a slicing argument does not affect the size of a list returned by a field itself, but that of a list returned by one of its sub-fields." sizedFields: [String!] "The `requireOneSlicingArgument` argument can be used to inform the static analysis that it should expect that exactly one of the defined slicing arguments is present in a query. If that is not the case (i.e., if none or multiple slicing arguments are present), the static analysis may throw an error." requireOneSlicingArgument: Boolean! = true) on FIELD_DEFINITION
+
+"The `@specifiedBy` directive is used within the type system definition language to provide a URL for specifying the behavior of custom scalar definitions."
+directive @specifiedBy("The specifiedBy URL points to a human-readable specification. This field will only read a result for scalar types." url: String!) on SCALAR
+
+"DateTime scalar as defined by https:\/\/scalars.graphql.org\/andimarek\/date-time.html but with 6 millisecond digits."
+scalar DafDateTime @specifiedBy(url: "https:\/\/datafordeler.dk\/")
+
+"The `Long` scalar type represents non-fractional signed whole 64-bit numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long

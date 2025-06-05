@@ -230,7 +230,7 @@ Man kan i praksis godt bygge en **GET** url, men der skal url-encodes en masse t
 
 I praksis vil man ofte benytte en applikation der kan lave **POST** forespørgsler:
 
-* Postman / Insomnia
+* Postman / Insomnia / Altair
 
 * Apollo Client
 
@@ -499,7 +499,88 @@ for indeholder et bitemporalt point-in-time-filter (virkningstid: "2024-11-12T14
 <h1 style="font-size:60px;color:white">Bevæbnet med en token, er vi nu klar til at begynde at spørge...</h1>
 
 ---
+![bg](./img/first.png)
+<h1 style="font-size:60px;color:white">Lad os hente nogle schemaer </h1>
 
+graphql.datafordeler.dk/DAR/v1/schema?apiKey=API-KEY
+
+graphql.datafordeler.dk/BBR/v1/schema?apiKey=API-KEY
+
+graphql.datafordeler.dk/MAT/v1/schema?apiKey=API-KEY
+
+
+</br>
+</br>
+Vi starter med at kigge nærmere på DAR schemaet...
+
+
+---
+![bg](./img/first.png)
+
+
+
+<div class="container">
+<div class="col">
+
+
+
+<h1 style="font-size:50px;color:white">Elementer</h1>
+
+
+* <h3 style="font-size:40px;color:white">Metadata</h3>
+
+
+* <h3 style="font-size:40px;color:white">Query types</h3>
+
+
+* <h3 style="font-size:40px;color:white">Filter inputs</h3>
+
+
+* <h3 style="font-size:40px;color:white">Spatiale filtre</h3>
+
+</div>
+
+<div class="col">
+</br>
+</br>
+<img src="./img/schema.png" width="450">
+
+</div>
+</div>
+
+---
+
+![bg](./img/first.png)
+
+<h1 style="font-size:60px;color:white">Query types</h1>
+
+<img src="./img/query_types.png" width="1200">
+
+---
+
+![bg](./img/first.png)
+
+<h1 style="font-size:60px;color:white">Filter inputs</h1>
+
+<img src="./img/filterinputs.png" width="700">
+
+---
+
+![bg](./img/first.png)
+
+<h1 style="font-size:60px;color:white">Spatial Filters</h1>
+
+<img src="./img/spfilters.png" width="900">
+
+---
+
+![bg](./img/first.png)
+
+<h1 style="font-size:60px;color:white">Metadata</h1>
+
+<img src="./img/metadata.png" width="800">
+
+---
 
 
 ![bg](./img/green.png)
@@ -508,10 +589,24 @@ for indeholder et bitemporalt point-in-time-filter (virkningstid: "2024-11-12T14
 
 ---
 
+![bg](./img/first.png)
+
+<h1 style="font-size:50px;color:white">Alle ressourcer vi har brugt i dag, kan hentes på Github </h1>
+
+</br>
+
+Github.com/MFuglsang/graphql_datafordeleren
+
+</br>
+
+Her er bla. en pdf med en lang række eksempler - langt flere end vi har vist her...
+
+---
 
 ![bg](./img/green.png)
 
 <h1 style="font-size:50px;color:white">Spørgsmål, opsamling og afslutning</h1>
+
 
 ---
 

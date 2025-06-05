@@ -1,0 +1,798 @@
+schema {
+  query: Query
+}
+
+type CVR_Adressering {
+  Adresse: String @cost(weight: "1")
+  AdresseringAnvendelse: String! @cost(weight: "1")
+  coNavn: String @cost(weight: "1")
+  CVRAdresse_adresseFritekst: String @cost(weight: "1")
+  CVRAdresse_doerbetegnelse: String @cost(weight: "1")
+  CVRAdresse_etagebetegnelse: String @cost(weight: "1")
+  CVRAdresse_husnummerFra: String @cost(weight: "1")
+  CVRAdresse_husnummerTil: String @cost(weight: "1")
+  CVRAdresse_kommunekode: String @cost(weight: "1")
+  CVRAdresse_kommunenavn: String @cost(weight: "1")
+  CVRAdresse_landekode: String @cost(weight: "1")
+  CVRAdresse_postboks: String @cost(weight: "1")
+  CVRAdresse_postdistrikt: String @cost(weight: "1")
+  CVRAdresse_postnummer: String @cost(weight: "1")
+  CVRAdresse_supplerendeBynavn: String @cost(weight: "1")
+  CVRAdresse_vejkode: String @cost(weight: "1")
+  CVRAdresse_vejnavn: String @cost(weight: "1")
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_AdresseringConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_AdresseringEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_Adressering!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_AdresseringEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_Adressering! @cost(weight: "10")
+}
+
+type CVR_AndreDeltagere {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  id: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  type: String! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_AndreDeltagereConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_AndreDeltagereEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_AndreDeltagere!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_AndreDeltagereEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_AndreDeltagere! @cost(weight: "10")
+}
+
+type CVR_AnsvarligDataleverandoer {
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  vaerdi: String! @cost(weight: "1")
+  vaerdiTekst: String! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_AnsvarligDataleverandoerConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_AnsvarligDataleverandoerEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_AnsvarligDataleverandoer!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_AnsvarligDataleverandoerEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_AnsvarligDataleverandoer! @cost(weight: "10")
+}
+
+type CVR_Beskaeftigelse {
+  antal: Long @cost(weight: "1")
+  beskaeftigelsestalstype: String! @cost(weight: "1")
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  datoFra: LocalDate! @cost(weight: "1")
+  datoTil: LocalDate! @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  intervalFra: Long @cost(weight: "1")
+  intervalTil: Long @cost(weight: "1")
+  registreringsdato: DafDateTime! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_BeskaeftigelseConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_BeskaeftigelseEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_Beskaeftigelse!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_BeskaeftigelseEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_Beskaeftigelse! @cost(weight: "10")
+}
+
+type CVR_Branche {
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  sekvens: Long @cost(weight: "1")
+  vaerdi: String! @cost(weight: "1")
+  vaerdiTekst: String! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_BrancheConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_BrancheEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_Branche!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_BrancheEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_Branche! @cost(weight: "10")
+}
+
+type CVR_CVREnhed {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  enhedsType: String! @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningsnoegle: String! @cost(weight: "1")
+  forretningsnoegletype: String! @cost(weight: "1")
+  id: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_CVREnhedConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_CVREnhedEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_CVREnhed!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_CVREnhedEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_CVREnhed! @cost(weight: "10")
+}
+
+type CVR_CVRPerson {
+  CPRPerson: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  id: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_CVRPersonConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_CVRPersonEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_CVRPerson!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_CVRPersonEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_CVRPerson! @cost(weight: "10")
+}
+
+type CVR_FuldtAnsvarligDeltagerRelation {
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  deltagendeEnhedsId: String! @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_FuldtAnsvarligDeltagerRelationConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_FuldtAnsvarligDeltagerRelationEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_FuldtAnsvarligDeltagerRelation!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_FuldtAnsvarligDeltagerRelationEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_FuldtAnsvarligDeltagerRelation! @cost(weight: "10")
+}
+
+type CVR_Kreditoplysninger {
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  Kreditoplysning: String! @cost(weight: "1")
+  kreditoplysningstekst: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  statusvaerdi: String! @cost(weight: "1")
+  statusvaerdiTekst: String! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_KreditoplysningerConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_KreditoplysningerEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_Kreditoplysninger!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_KreditoplysningerEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_Kreditoplysninger! @cost(weight: "10")
+}
+
+type CVR_Navn {
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  sekvens: Long @cost(weight: "1")
+  vaerdi: String! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_NavnConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_NavnEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_Navn!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_NavnEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_Navn! @cost(weight: "10")
+}
+
+type CVR_Produktionsenhed {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  id: String! @cost(weight: "1")
+  pNummer: Long @cost(weight: "1")
+  produktionsenhedOphoersdato: LocalDate @cost(weight: "1")
+  produktionsenhedStartdato: LocalDate! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  tilknyttetTilVirksomhedOphoersdato: LocalDate @cost(weight: "1")
+  tilknyttetTilVirksomhedStartdato: LocalDate! @cost(weight: "1")
+  tilknyttetVirksomhedsCVRNummer: Long @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_ProduktionsenhedConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_ProduktionsenhedEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_Produktionsenhed!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_ProduktionsenhedEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_Produktionsenhed! @cost(weight: "10")
+}
+
+type CVR_Reklamebeskyttelse {
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  vaerdi: Boolean! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_ReklamebeskyttelseConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_ReklamebeskyttelseEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_Reklamebeskyttelse!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_ReklamebeskyttelseEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_Reklamebeskyttelse! @cost(weight: "10")
+}
+
+type CVR_Telefaxnummer {
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  vaerdi: String! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_TelefaxnummerConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_TelefaxnummerEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_Telefaxnummer!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_TelefaxnummerEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_Telefaxnummer! @cost(weight: "10")
+}
+
+type CVR_Telefonnummer {
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  vaerdi: String! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_TelefonnummerConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_TelefonnummerEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_Telefonnummer!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_TelefonnummerEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_Telefonnummer! @cost(weight: "10")
+}
+
+type CVR_Virksomhed {
+  CVRNummer: Long @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  id: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+  virksomhedOphoersdato: LocalDate @cost(weight: "1")
+  virksomhedStartdato: LocalDate! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_VirksomhedConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_VirksomhedEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_Virksomhed!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_VirksomhedEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_Virksomhed! @cost(weight: "10")
+}
+
+type CVR_Virksomhedsform {
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  vaerdi: String! @cost(weight: "1")
+  vaerdiTekst: String! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_VirksomhedsformConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_VirksomhedsformEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_Virksomhedsform!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_VirksomhedsformEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_Virksomhedsform! @cost(weight: "10")
+}
+
+type CVR_e_mailadresse {
+  CVREnhedsId: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  vaerdi: String! @cost(weight: "1")
+  virkningFra: LocalDate! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: LocalDate @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type CVR_e_mailadresseConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [CVR_e_mailadresseEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [CVR_e_mailadresse!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type CVR_e_mailadresseEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: CVR_e_mailadresse! @cost(weight: "10")
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "Indicates whether more edges exist following the set defined by the clients arguments."
+  hasNextPage: Boolean!
+  "Indicates whether more edges exist prior the set defined by the clients arguments."
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+"Query type for CVR - Det Centrale Virksomhedsregister"
+type Query {
+  CVR_Adressering("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_AdresseringFilterInput): CVR_AdresseringConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "5000")
+  CVR_AndreDeltagere("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_AndreDeltagereFilterInput): CVR_AndreDeltagereConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_AnsvarligDataleverandoer("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_AnsvarligDataleverandoerFilterInput): CVR_AnsvarligDataleverandoerConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_Beskaeftigelse("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: CVR_BeskaeftigelseFilterInput): CVR_BeskaeftigelseConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "5000")
+  CVR_Branche("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_BrancheFilterInput): CVR_BrancheConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_CVREnhed("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: CVR_CVREnhedFilterInput): CVR_CVREnhedConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_CVRPerson("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_CVRPersonFilterInput): CVR_CVRPersonConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_e_mailadresse("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_e_mailadresseFilterInput): CVR_e_mailadresseConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_FuldtAnsvarligDeltagerRelation("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_FuldtAnsvarligDeltagerRelationFilterInput): CVR_FuldtAnsvarligDeltagerRelationConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_Kreditoplysninger("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_KreditoplysningerFilterInput): CVR_KreditoplysningerConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_Navn("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_NavnFilterInput): CVR_NavnConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_Produktionsenhed("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_ProduktionsenhedFilterInput): CVR_ProduktionsenhedConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_Reklamebeskyttelse("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_ReklamebeskyttelseFilterInput): CVR_ReklamebeskyttelseConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_Telefaxnummer("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_TelefaxnummerFilterInput): CVR_TelefaxnummerConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_Telefonnummer("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_TelefonnummerFilterInput): CVR_TelefonnummerConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_Virksomhedsform("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_VirksomhedsformFilterInput): CVR_VirksomhedsformConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  CVR_Virksomhed("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String virkningstid: DafDateTime where: CVR_VirksomhedFilterInput): CVR_VirksomhedConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+}
+
+input CVR_AdresseringFilterInput {
+  and: [CVR_AdresseringFilterInput!]
+  Adresse: DafStringOperationFilterInput
+  AdresseringAnvendelse: DafStringOperationFilterInput
+  CVREnhedsId: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+  virkningTil: DafLocalDateOperationFilterInput
+}
+
+input CVR_AndreDeltagereFilterInput {
+  and: [CVR_AndreDeltagereFilterInput!]
+  id: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+  virkningTil: DafLocalDateOperationFilterInput
+}
+
+input CVR_AnsvarligDataleverandoerFilterInput {
+  and: [CVR_AnsvarligDataleverandoerFilterInput!]
+  CVREnhedsId: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+}
+
+input CVR_BeskaeftigelseFilterInput {
+  and: [CVR_BeskaeftigelseFilterInput!]
+  CVREnhedsId: DafStringOperationFilterInput
+}
+
+input CVR_BrancheFilterInput {
+  and: [CVR_BrancheFilterInput!]
+  CVREnhedsId: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  sekvens: DafLongOperationFilterInput
+  vaerdi: DafStringOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+}
+
+input CVR_CVREnhedFilterInput {
+  and: [CVR_CVREnhedFilterInput!]
+  forretningsnoegle: DafStringOperationFilterInput
+  id: DafStringOperationFilterInput
+}
+
+input CVR_CVRPersonFilterInput {
+  and: [CVR_CVRPersonFilterInput!]
+  CPRPerson: DafStringOperationFilterInput
+  id: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+}
+
+input CVR_FuldtAnsvarligDeltagerRelationFilterInput {
+  and: [CVR_FuldtAnsvarligDeltagerRelationFilterInput!]
+  CVREnhedsId: DafStringOperationFilterInput
+  deltagendeEnhedsId: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+}
+
+input CVR_KreditoplysningerFilterInput {
+  and: [CVR_KreditoplysningerFilterInput!]
+  CVREnhedsId: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+}
+
+input CVR_NavnFilterInput {
+  and: [CVR_NavnFilterInput!]
+  CVREnhedsId: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  vaerdi: DafStringOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+  virkningTil: DafLocalDateOperationFilterInput
+}
+
+input CVR_ProduktionsenhedFilterInput {
+  and: [CVR_ProduktionsenhedFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id: DafStringOperationFilterInput
+  pNummer: DafLongOperationFilterInput
+  produktionsenhedOphoersdato: DafLocalDateOperationFilterInput
+  produktionsenhedStartdato: DafLocalDateOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  tilknyttetVirksomhedsCVRNummer: DafLongOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+  virkningTil: DafLocalDateOperationFilterInput
+}
+
+input CVR_ReklamebeskyttelseFilterInput {
+  and: [CVR_ReklamebeskyttelseFilterInput!]
+  CVREnhedsId: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+  virkningTil: DafLocalDateOperationFilterInput
+}
+
+input CVR_TelefaxnummerFilterInput {
+  and: [CVR_TelefaxnummerFilterInput!]
+}
+
+input CVR_TelefonnummerFilterInput {
+  and: [CVR_TelefonnummerFilterInput!]
+  CVREnhedsId: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+}
+
+input CVR_VirksomhedFilterInput {
+  and: [CVR_VirksomhedFilterInput!]
+  CVRNummer: DafLongOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+  virkningTil: DafLocalDateOperationFilterInput
+  virksomhedOphoersdato: DafLocalDateOperationFilterInput
+  virksomhedStartdato: DafLocalDateOperationFilterInput
+}
+
+input CVR_VirksomhedsformFilterInput {
+  and: [CVR_VirksomhedsformFilterInput!]
+  CVREnhedsId: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+}
+
+input CVR_e_mailadresseFilterInput {
+  and: [CVR_e_mailadresseFilterInput!]
+  CVREnhedsId: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  virkningFra: DafLocalDateOperationFilterInput
+}
+
+input DafDateTimeOperationFilterInput {
+  eq: DafDateTime @cost(weight: "1000")
+  gt: DafDateTime @cost(weight: "1000")
+  ngt: DafDateTime @cost(weight: "1000")
+  gte: DafDateTime @cost(weight: "1000")
+  ngte: DafDateTime @cost(weight: "1000")
+  lt: DafDateTime @cost(weight: "1000")
+  nlt: DafDateTime @cost(weight: "1000")
+  lte: DafDateTime @cost(weight: "1000")
+  nlte: DafDateTime @cost(weight: "1000")
+}
+
+input DafLocalDateOperationFilterInput {
+  eq: LocalDate @cost(weight: "1000")
+  gt: LocalDate @cost(weight: "1000")
+  ngt: LocalDate @cost(weight: "1000")
+  gte: LocalDate @cost(weight: "1000")
+  ngte: LocalDate @cost(weight: "1000")
+  lt: LocalDate @cost(weight: "1000")
+  nlt: LocalDate @cost(weight: "1000")
+  lte: LocalDate @cost(weight: "1000")
+  nlte: LocalDate @cost(weight: "1000")
+}
+
+input DafLongOperationFilterInput {
+  in: [Long!] @cost(weight: "1000")
+  eq: Long @cost(weight: "1000")
+  gt: Long @cost(weight: "1000")
+  ngt: Long @cost(weight: "1000")
+  gte: Long @cost(weight: "1000")
+  ngte: Long @cost(weight: "1000")
+  lt: Long @cost(weight: "1000")
+  nlt: Long @cost(weight: "1000")
+  lte: Long @cost(weight: "1000")
+  nlte: Long @cost(weight: "1000")
+}
+
+input DafStringOperationFilterInput {
+  eq: String @cost(weight: "1000")
+  in: [String!] @cost(weight: "1000")
+}
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost("The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc." weight: String!) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION
+
+"The purpose of the `@listSize` directive is to either inform the static analysis about the size of returned lists (if that information is statically available), or to point the analysis to where to find that information."
+directive @listSize("The `assumedSize` argument can be used to statically define the maximum length of a list returned by a field." assumedSize: Int "The `slicingArguments` argument can be used to define which of the field's arguments with numeric type are slicing arguments, so that their value determines the size of the list returned by that field. It may specify a list of multiple slicing arguments." slicingArguments: [String!] "The `slicingArgumentDefaultValue` argument can be used to define a default value for a slicing argument, which is used if the argument is not present in a query." slicingArgumentDefaultValue: Int "The `sizedFields` argument can be used to define that the value of the `assumedSize` argument or of a slicing argument does not affect the size of a list returned by a field itself, but that of a list returned by one of its sub-fields." sizedFields: [String!] "The `requireOneSlicingArgument` argument can be used to inform the static analysis that it should expect that exactly one of the defined slicing arguments is present in a query. If that is not the case (i.e., if none or multiple slicing arguments are present), the static analysis may throw an error." requireOneSlicingArgument: Boolean! = true) on FIELD_DEFINITION
+
+"The `@specifiedBy` directive is used within the type system definition language to provide a URL for specifying the behavior of custom scalar definitions."
+directive @specifiedBy("The specifiedBy URL points to a human-readable specification. This field will only read a result for scalar types." url: String!) on SCALAR
+
+"DateTime scalar as defined by https:\/\/scalars.graphql.org\/andimarek\/date-time.html but with 6 millisecond digits."
+scalar DafDateTime @specifiedBy(url: "https:\/\/datafordeler.dk\/")
+
+"The `LocalDate` scalar type represents a ISO date string, represented as UTF-8 character sequences YYYY-MM-DD. The scalar follows the specification defined in RFC3339"
+scalar LocalDate
+
+"The `Long` scalar type represents non-fractional signed whole 64-bit numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long

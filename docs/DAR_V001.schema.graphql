@@ -1,0 +1,1000 @@
+schema {
+  query: Query
+}
+
+interface SpatialInterfaceType {
+  "The OGC geometry type of the geometry."
+  type: SpatialGeometryNameEnumType!
+  "The coordinate reference system of the geometry."
+  crs: Int!
+  "The dimensions used by the geometry."
+  dimension: SpatialDimensionEnumType!
+  "The WKT representation of the geometry"
+  wkt: String
+}
+
+"""
+Grunddatamodel info:
+name: Adresse
+comment (da): <memo>#NOTES#en sammensat betegnelse, som udpeger og benævner en bestemt adgangsvej til et ubebygget areal, en bygning, en del af en bygning, et teknisk anlæg eller lignende. Reglerne for fastsættelse af adresser findes i adressebekendtgørelsen. BEK nr 271 af 13/04/2018.
+definition (da): <memo>#NOTES#en struktureret betegnelse som angiver en særskilt adgang til et areal, en bygning eller en del af en bygning, efter reglerne i adressebekendtgørelsen
+example (da): <memo>#NOTES#adressebetegnelse: Gimles Allé 14, 2300 København S   adressebetegnelse: Vestergade 4B, st. th, Strib, 5500 Middelfart
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+prefLabel (da): Adresse
+URI: https://data.gov.dk/model/profile/dar/Adresse
+EAID: EAID_6043F4D9_C4CA_44d0_BE88_027166A8B008
+"""
+type DAR_Adresse {
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/adressebetegnelse
+  prefLabel (da): adressebetegnelse
+  definition (da): en læsbar struktur, som identificerer adressen fuldstændigt
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P12
+  """
+  adressebetegnelse: String @cost(weight: "1")
+  bygning: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/dar/dørbetegnelse
+  prefLabel (da): dørbetegnelse
+  definition (da): betegnelse, som angiver den adgangsdør e.l. som adressen identificerer
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P22|||https://www.retsinformation.dk/eli/lta/2018/271#P23|||https://www.retsinformation.dk/eli/lta/2018/271#P12
+  """
+  doerbetegnelse: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Adressepunkt
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/dar/dørpunkt
+  prefLabel (da): dørpunkt
+  definition (da): geografisk punkt, som udpeger beliggenheden af den adgangsdør e.l. som adressen identificerer
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+  """
+  doerpunkt: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/dar/etagebetegnelse
+  prefLabel (da): etagebetegnelse
+  definition (da): betegnelse, som angiver hvilken etage den del af bygningen som adressen identificerer, er beliggende på
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P12
+  """
+  etagebetegnelse: String @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  husnummer: String @cost(weight: "1")
+  id_lokalId: String @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  registreringFra: DafDateTime @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAR_AdresseConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAR_AdresseEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAR_Adresse!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAR_AdresseEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAR_Adresse! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Adressepunkt
+comment (da): <memo>#NOTES#datatypen beskriver position (stedfæstelse) samt geometri oprindelse for stedfastsættelsen. Anvendes af adgangspunkt, vejpunkt og dørpunkt
+definition (da): <memo>#NOTES#klasse der samler de fælles egenskaber for et geografisk punkt, som er relevant for en adresse eller for et husnummer
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+prefLabel (da): Adressepunkt
+source: https://danmarksadresser.dk/
+URI: https://data.gov.dk/model/profile/dar/Adressepunkt
+EAID: EAID_00A7AF01_C512_4a85_ADB5_98FB15541948
+"""
+type DAR_Adressepunkt {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  oprindelse_kilde: String @cost(weight: "1")
+  oprindelse_noejagtighedsklasse: String @cost(weight: "1")
+  oprindelse_registrering: DafDateTime @cost(weight: "1")
+  oprindelse_tekniskStandard: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/position
+  prefLabel (da): position
+  definition (da): geografisk punkt, som beskriver Adressepunktets beliggenhed
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  position: SpatialPointEpsg25832Type @cost(weight: "10")
+  registreringFra: DafDateTime @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAR_AdressepunktConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAR_AdressepunktEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAR_Adressepunkt!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAR_AdressepunktEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAR_Adressepunkt! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Husnummer
+altLabel (da): Adgangsadresse
+comment (da): <memo>#NOTES#når et adgangspunkt giver adgang til en eller flere adresser, indgår husnummeret i den samlede og fuldstændige adressebetegnelse for hver af disse. Reglerne for fastsættelse af Husnumre findes i adressebekendtgørelsen.
+definition (da): <memo>#NOTES#betegnelse, som indgår i den samlede adressebetegnelse, idet den identificerer det adgangspunkt, som giver adgang til den eller de pågældende adresser
+example (da): <memo>#NOTES#adgangsadressebetegnelse: Thorsgade 48A, 2200 København N  adgangspunkt: 723014.85 6178059.46  husnummerretning: 1 0   husnummertekst: 48A  vejpunkt: 723001.17 6178066.42
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P16|||https://www.retsinformation.dk/eli/lta/2018/271#P17|||https://www.retsinformation.dk/eli/lta/2018/271#P18|||https://www.retsinformation.dk/eli/lta/2018/271#P19
+prefLabel (da): Husnummer
+URI: https://data.gov.dk/model/profile/dar/Husnummer
+EAID: EAID_D0A626FC_CCAE_4209_B2F6_AC919B74A528
+"""
+type DAR_Husnummer {
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/adgangsadressebetegnelse
+  prefLabel (da): adgangsadressebetegnelse
+  definition (da): en læsbar struktur, som identificerer husnummeret fuldstændigt
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+  """
+  adgangsadressebetegnelse: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Adressepunkt
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/adgangspunkt
+  prefLabel (da): adgangspunkt
+  definition (da): et geografisk punkt i terrænplan, som repræsenterer en adresses beliggenhed
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P13
+  """
+  adgangspunkt: String @cost(weight: "1")
+  adgangTilBygning: String @cost(weight: "1")
+  adgangTilTekniskAnlaeg: String @cost(weight: "1")
+  afstemningsomraade: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  geoDanmarkBygning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/husnummerretning
+  prefLabel (da): husnummerretning
+  definition (da): geografisk punkt, der anvendes til at angive retningen for et husnummer (husnummertekst), i forhold til Adgangspunktet, når det skal vises på et kort
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  husnummerretning: SpatialPointEpsg25832Type @cost(weight: "10")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/dar/husnummertekst
+  prefLabel (da): husnummertekst
+  definition (da): husnummeret til adressen inklusive evt. bogstav
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P16
+  """
+  husnummertekst: String @cost(weight: "1")
+  id_lokalId: String @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  jordstykke: String @cost(weight: "1")
+  kommuneinddeling: String @cost(weight: "1")
+  menighedsraadsafstemningsomraade: String @cost(weight: "1")
+  navngivenVej: String @cost(weight: "1")
+  placeretPaaForeloebigtJordstykke: String @cost(weight: "1")
+  postnummer: String @cost(weight: "1")
+  registreringFra: DafDateTime @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  sogneinddeling: String @cost(weight: "1")
+  status: String @cost(weight: "1")
+  supplerendeBynavn: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/dar/vejmidte
+  prefLabel (da): vejmidte
+  altLabel (da): kommunekode-vejkode
+  definition (da): kode for vejmidte for hvilken navngivenvejkommunedel som husnummeret er tilknyttet. Angivet som kommundekode-vejkode
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+  """
+  vejmidte: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Adressepunkt
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/vejpunkt
+  prefLabel (da): vejpunkt
+  definition (da): et geografisk punkt, der repræsenterer det sted på den navngivne vej, som er adgangsgivende til et bestemt adgangspunkt
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P14
+  """
+  vejpunkt: String @cost(weight: "1")
+  virkningFra: DafDateTime @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAR_HusnummerConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAR_HusnummerEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAR_Husnummer!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAR_HusnummerEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAR_Husnummer! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: NavngivenVej
+comment (da): <memo>#NOTES#en navngiven vej repræsenterer en del af færdselsnettet (dvs. vej, torv, sti e.l.) som er tildelt et særskilt vejnavn efter reglerne i adressebekendtgørelsen, uanset om vejen ligger inden for en kommune eller krydser en eller flere kommunegrænser.
+definition (da): <memo>#NOTES#et samlet færdselsareal, uafhængigt af kommunegrænser, for hvilket der er fastsat ét vejnavn
+example (da): <memo>#NOTES#administreresAfKommune: 0230 beskrivelse: [?] udtaltVejnavn: Gammel Dronninggårds Alle vejadresseringsnavn: Gl. Dronninggårds A. vejnavn: Gl. Dronninggårds Alle vejnavnebeliggenhed: [koordinatorsæt med flere punkter] , Geometrioprindelse
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P3|||https://www.retsinformation.dk/eli/lta/2018/271#P4|||https://www.retsinformation.dk/eli/lta/2018/271#P5|||https://www.retsinformation.dk/eli/lta/2018/271#P6|||https://www.retsinformation.dk/eli/lta/2018
+prefLabel (da): Navngiven vej
+URI: https://data.gov.dk/model/profile/dar/NavngivenVej
+EAID: EAID_0CB629B5_8D1F_486c_A319_717EDF879B82
+"""
+type DAR_NavngivenVej {
+  """
+  Grunddatamodel info:
+  type: Kommunekode
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/administreresAfKommune
+  prefLabel (da): administreres af kommune
+  altLabel (da): Registreringsansvarlig
+  definition (da): angivelse af den kommune som registreringsansvarlig for vejnavn og geometri for den navngivne vej
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P38
+  """
+  administreresAfKommune: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/dar/beskrivelse
+  prefLabel (da): beskrivelse
+  definition (da): kort beskrivelse af vejnavnets oprindelse eller betydning
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+  """
+  beskrivelse: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  registreringFra: DafDateTime @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/dar/udtaltVejnavn
+  prefLabel (da): udtalt vejnavn
+  definition (da): vejnavnet skrevet fuldt ud, således som det udtales
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P38
+  """
+  udtaltVejnavn: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/dar/vejadresseringsnavn
+  prefLabel (da): vejadresseringsnavn
+  definition (da): forkortet udgave af vejnavnet på højst 20 tegn
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P5
+  """
+  vejadresseringsnavn: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/dar/vejnavn
+  prefLabel (da): vejnavn
+  definition (da): det fulde vejnavn defineret som: Et egennavn, som udpeger og benævner en del af vej- eller stinettet eller lignende færdselsarealer og områder
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P5
+  """
+  vejnavn: String @cost(weight: "1")
+  vejnavnebeliggenhed_oprindelse_kilde: String @cost(weight: "1")
+  vejnavnebeliggenhed_oprindelse_noejagtighedsklasse: String @cost(weight: "1")
+  vejnavnebeliggenhed_oprindelse_registrering: DafDateTime @cost(weight: "1")
+  vejnavnebeliggenhed_oprindelse_tekniskStandard: String @cost(weight: "1")
+  vejnavnebeliggenhed_vejnavnelinje: SpatialMultiLineStringZEpsg25832Type @cost(weight: "10")
+  vejnavnebeliggenhed_vejnavneomraade: SpatialPolygonZEpsg25832Type @cost(weight: "10")
+  vejnavnebeliggenhed_vejtilslutningspunkter: SpatialMultiPointZEpsg25832Type @cost(weight: "10")
+  virkningFra: DafDateTime @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAR_NavngivenVejConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAR_NavngivenVejEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAR_NavngivenVej!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAR_NavngivenVejEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAR_NavngivenVej! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: NavngivenVejKommunedel
+comment (da): <memo>#NOTES#navngiven Vej Kommunedel angiver at en navngiven vej berører en bestemt kommune. Objektet indeholder bl.a.  Kommune- og Vejkoder som det er nødvendigt at bibeholde for at identificere et vejnavn , af hensyn til den eksisterende systemmasse
+definition (da): <memo>#NOTES#den del af den navngivne vej der berører en bestemt kommune
+example (da): <memo>#NOTES#kommune: 0101 vejkode: 1972
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P9
+prefLabel (da): Navngiven vej kommunedel
+URI: https://data.gov.dk/model/profile/dar/NavngivenVejKommunedel
+EAID: EAID_34D070E5_DD89_4984_8054_16BA70936EA0
+"""
+type DAR_NavngivenVejKommunedel {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Kommunekode
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/kommune
+  prefLabel (da): kommune
+  definition (da): kommunekoden for den kommune, som den pågældende del af den navngivne vej hører til
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+  """
+  kommune: String @cost(weight: "1")
+  navngivenVej: String @cost(weight: "1")
+  registreringFra: DafDateTime @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/vejkode
+  prefLabel (da): vejkode
+  definition (da): entydig identifikation af den del af en Navngiven Vej, der berører en enkelt kommune
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P9
+  """
+  vejkode: String @cost(weight: "1")
+  virkningFra: DafDateTime @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAR_NavngivenVejKommunedelConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAR_NavngivenVejKommunedelEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAR_NavngivenVejKommunedel!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAR_NavngivenVejKommunedelEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAR_NavngivenVejKommunedel! @cost(weight: "10")
+}
+
+type DAR_NavngivenVejPostnummer {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  navngivenVej: String @cost(weight: "1")
+  postnummer: String @cost(weight: "1")
+  registreringFra: DafDateTime @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAR_NavngivenVejPostnummerConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAR_NavngivenVejPostnummerEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAR_NavngivenVejPostnummer!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAR_NavngivenVejPostnummerEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAR_NavngivenVejPostnummer! @cost(weight: "10")
+}
+
+type DAR_NavngivenVejSupplerendeBynavn {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  navngivenVej: String @cost(weight: "1")
+  registreringFra: DafDateTime @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  supplerendeBynavn: String @cost(weight: "1")
+  virkningFra: DafDateTime @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAR_NavngivenVejSupplerendeBynavnConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAR_NavngivenVejSupplerendeBynavnEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAR_NavngivenVejSupplerendeBynavn!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAR_NavngivenVejSupplerendeBynavnEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAR_NavngivenVejSupplerendeBynavn! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Postnummer
+comment (da): <memo>#NOTES#efter postloven er det den befordringspligtige postvirksomhed, der administrerer postnummersystemet. Postnumrenes geografiske afgrænsning registreres i DAGI
+definition (da): <memo>#NOTES#postnummer med tilhørende navn som indgår i det landsdækkende postnummersystem
+example (da): <memo>#NOTES#Postnr: 8000 navn: Aarhus C
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2017/136#P5
+prefLabel (da): Postnummer
+URI: https://data.gov.dk/model/profile/dar/Postnummer
+EAID: EAID_449B3570_F0F7_494e_9756_D49E60644CD0
+"""
+type DAR_Postnummer {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/postnummernavn
+  prefLabel (da): navn
+  altLabel (da): Postdistrikt
+  definition (da): navn på by, bydel e.l., som postnummeret omfatter
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+  """
+  navn: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/postnr
+  prefLabel (da): postnr
+  definition (da): kode på fire cifre som identificerer postnummeret
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+  """
+  postnr: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Postnummerinddeling
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/postnummerinddeling
+  prefLabel (da): postnummerinddeling
+  definition (da): reference til DAGI's objekt for dette postnummer
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+  """
+  postnummerinddeling: String @cost(weight: "1")
+  registreringFra: DafDateTime @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAR_PostnummerConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAR_PostnummerEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAR_Postnummer!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAR_PostnummerEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAR_Postnummer! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: SupplerendeBynavn
+comment (da): <memo>#NOTES#det er adressemyndigheden der fastsætter det supplerende bynavn og dettes afgrænsning efter reglerne i adressebekendtgørelsen. Et supplerende bynavn er et bynavn eller et andet lokalt stednavn som er en underinddeling af et postnummer. Supplerende bynavn er en optionel tilføjelse til adressebetegnelsen. Den geografiske afgrænsning registreres i DAGI
+definition (da): <memo>#NOTES#navn på et supplerende bynavn som præciser en adresses eller et vejnavns beliggenhed inden for postnummeret
+example (da): <memo>#NOTES#Navn: ”Kragerup” , supplerendeBynavn: "655869"
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P11
+prefLabel (da): Supplerende bynavn
+URI: https://data.gov.dk/model/profile/dar/SupplerendeBynavn
+EAID: EAID_9D39B21D_E73C_4f1b_9C6C_B75412DAAD77
+"""
+type DAR_SupplerendeBynavn {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/navn
+  prefLabel (da): navn
+  definition (da): navn på den pågældende by, bebyggelse, område e.l.
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271#P11
+  """
+  navn: String @cost(weight: "1")
+  registreringFra: DafDateTime @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: SupplerendeBynavn
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/dar/supplerendeBynavnnavn
+  prefLabel (da): supplerende bynavn
+  definition (da): reference for DAGI's objekt for det supplerende bynavn
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/271
+  """
+  supplerendeBynavn: String @cost(weight: "1")
+  virkningFra: DafDateTime @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DAR_SupplerendeBynavnConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DAR_SupplerendeBynavnEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DAR_SupplerendeBynavn!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DAR_SupplerendeBynavnEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DAR_SupplerendeBynavn! @cost(weight: "10")
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "Indicates whether more edges exist following the set defined by the clients arguments."
+  hasNextPage: Boolean!
+  "Indicates whether more edges exist prior the set defined by the clients arguments."
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+"Query type for DAR - Danmarks Adresseregister"
+type Query {
+  DAR_Adressepunkt("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAR_AdressepunktFilterInput): DAR_AdressepunktConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "5000")
+  DAR_Adresse("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAR_AdresseFilterInput): DAR_AdresseConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAR_Husnummer("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAR_HusnummerFilterInput): DAR_HusnummerConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "5000")
+  DAR_NavngivenVejKommunedel("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAR_NavngivenVejKommunedelFilterInput): DAR_NavngivenVejKommunedelConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAR_NavngivenVejPostnummer("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAR_NavngivenVejPostnummerFilterInput): DAR_NavngivenVejPostnummerConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAR_NavngivenVejSupplerendeBynavn("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAR_NavngivenVejSupplerendeBynavnFilterInput): DAR_NavngivenVejSupplerendeBynavnConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAR_NavngivenVej("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAR_NavngivenVejFilterInput): DAR_NavngivenVejConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAR_Postnummer("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAR_PostnummerFilterInput): DAR_PostnummerConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DAR_SupplerendeBynavn("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DAR_SupplerendeBynavnFilterInput): DAR_SupplerendeBynavnConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+}
+
+"Spatial MultiLineString type with XYZ-dimensions in the EPSG 25832 coordinate system."
+type SpatialMultiLineStringZEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+"Spatial MultiPoint type with XYZ-dimensions in the EPSG 25832 coordinate system."
+type SpatialMultiPointZEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+"Spatial Point type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialPointEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+"Spatial Polygon type with XYZ-dimensions in the EPSG 25832 coordinate system."
+type SpatialPolygonZEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+input DAR_AdresseFilterInput {
+  and: [DAR_AdresseFilterInput!]
+  adressebetegnelse: DafSearchableStringOperationFilterInput
+  bygning: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  doerbetegnelse: DafStringOperationFilterInput
+  doerpunkt: DafStringOperationFilterInput
+  etagebetegnelse: DafStringOperationFilterInput
+  husnummer: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringsaktoer: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningsaktoer: DafStringOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAR_AdressepunktFilterInput {
+  and: [DAR_AdressepunktFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  oprindelse_kilde: DafStringOperationFilterInput
+  position: SpatialFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAR_HusnummerFilterInput {
+  and: [DAR_HusnummerFilterInput!]
+  adgangsadressebetegnelse: DafSearchableStringOperationFilterInput
+  adgangspunkt: DafStringOperationFilterInput
+  adgangTilBygning: DafStringOperationFilterInput
+  adgangTilTekniskAnlaeg: DafStringOperationFilterInput
+  afstemningsomraade: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geoDanmarkBygning: DafStringOperationFilterInput
+  husnummerretning: SpatialFilterInput
+  husnummertekst: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  jordstykke: DafStringOperationFilterInput
+  kommuneinddeling: DafStringOperationFilterInput
+  menighedsraadsafstemningsomraade: DafStringOperationFilterInput
+  navngivenVej: DafStringOperationFilterInput
+  placeretPaaForeloebigtJordstykke: DafStringOperationFilterInput
+  postnummer: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  sogneinddeling: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  supplerendeBynavn: DafStringOperationFilterInput
+  vejmidte: DafStringOperationFilterInput
+  vejpunkt: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAR_NavngivenVejFilterInput {
+  and: [DAR_NavngivenVejFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  vejnavn: DafSearchableStringOperationFilterInput
+  vejnavnebeliggenhed_vejnavnelinje: SpatialFilterInput
+  vejnavnebeliggenhed_vejnavneomraade: SpatialFilterInput
+  vejnavnebeliggenhed_vejtilslutningspunkter: SpatialFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAR_NavngivenVejKommunedelFilterInput {
+  and: [DAR_NavngivenVejKommunedelFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommune: DafStringOperationFilterInput
+  navngivenVej: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  vejkode: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAR_NavngivenVejPostnummerFilterInput {
+  and: [DAR_NavngivenVejPostnummerFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navngivenVej: DafStringOperationFilterInput
+  postnummer: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAR_NavngivenVejSupplerendeBynavnFilterInput {
+  and: [DAR_NavngivenVejSupplerendeBynavnFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navngivenVej: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  supplerendeBynavn: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAR_PostnummerFilterInput {
+  and: [DAR_PostnummerFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navn: DafSearchableStringOperationFilterInput
+  postnr: DafSearchableStringOperationFilterInput
+  postnummerinddeling: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringsaktoer: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DAR_SupplerendeBynavnFilterInput {
+  and: [DAR_SupplerendeBynavnFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navn: DafSearchableStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringsaktoer: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  supplerendeBynavn: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DafDateTimeOperationFilterInput {
+  eq: DafDateTime @cost(weight: "1000")
+  gt: DafDateTime @cost(weight: "1000")
+  ngt: DafDateTime @cost(weight: "1000")
+  gte: DafDateTime @cost(weight: "1000")
+  ngte: DafDateTime @cost(weight: "1000")
+  lt: DafDateTime @cost(weight: "1000")
+  nlt: DafDateTime @cost(weight: "1000")
+  lte: DafDateTime @cost(weight: "1000")
+  nlte: DafDateTime @cost(weight: "1000")
+}
+
+input DafSearchableStringOperationFilterInput {
+  eq: String @cost(weight: "1000")
+  startsWith: String @cost(weight: "1000")
+  in: [String!] @cost(weight: "1000")
+}
+
+input DafStringOperationFilterInput {
+  eq: String @cost(weight: "1000")
+  in: [String!] @cost(weight: "1000")
+}
+
+"Filter type for the spatial method ST_Contains. Is applied as ST_Contains(A, B) where A is the register data field and B is the input value."
+input SpatialContainsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_CoveredBy. Is applied as ST_CoveredBy(A, B) where A is the register data field and B is the input value."
+input SpatialCoveredByOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Covers. Is applied as ST_Covers(A, B) where A is the register data field and B is the input value."
+input SpatialCoversOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Crosses. Is applied as ST_Crosses(A, B) where A is the register data field and B is the input value."
+input SpatialCrossesOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+input SpatialFilterInput {
+  and: [SpatialFilterInput!]
+  or: [SpatialFilterInput!]
+  contains: SpatialContainsOperationFilterInput @cost(weight: "5000")
+  covers: SpatialCoversOperationFilterInput @cost(weight: "5000")
+  crosses: SpatialCrossesOperationFilterInput @cost(weight: "5000")
+  intersects: SpatialIntersectsOperationFilterInput @cost(weight: "5000")
+  within: SpatialWithinOperationFilterInput @cost(weight: "5000")
+  overlaps: SpatialOverlapsOperationFilterInput @cost(weight: "5000")
+  touches: SpatialTouchesOperationFilterInput @cost(weight: "5000")
+  coveredBy: SpatialCoveredByOperationFilterInput @cost(weight: "5000")
+}
+
+"Filter type for the spatial method ST_Intersects. Is applied as ST_Intersects(A, B) where A is the register data field and B is the input value."
+input SpatialIntersectsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Overlaps. Is applied as ST_Overlaps(A, B) where A is the register data field and B is the input value."
+input SpatialOverlapsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Touches. Is applied as ST_Touches(A, B) where A is the register data field and B is the input value."
+input SpatialTouchesOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Within. Is applied as ST_Within(A, B) where A is the register data field and B is the input value."
+input SpatialWithinOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+enum SpatialDimensionEnumType {
+  XY
+  XYZ
+}
+
+enum SpatialGeometryNameEnumType {
+  Point
+  MultiPoint
+  LineString
+  MultiLineString
+  Polygon
+  MultiPolygon
+}
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost("The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc." weight: String!) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION
+
+"The purpose of the `@listSize` directive is to either inform the static analysis about the size of returned lists (if that information is statically available), or to point the analysis to where to find that information."
+directive @listSize("The `assumedSize` argument can be used to statically define the maximum length of a list returned by a field." assumedSize: Int "The `slicingArguments` argument can be used to define which of the field's arguments with numeric type are slicing arguments, so that their value determines the size of the list returned by that field. It may specify a list of multiple slicing arguments." slicingArguments: [String!] "The `slicingArgumentDefaultValue` argument can be used to define a default value for a slicing argument, which is used if the argument is not present in a query." slicingArgumentDefaultValue: Int "The `sizedFields` argument can be used to define that the value of the `assumedSize` argument or of a slicing argument does not affect the size of a list returned by a field itself, but that of a list returned by one of its sub-fields." sizedFields: [String!] "The `requireOneSlicingArgument` argument can be used to inform the static analysis that it should expect that exactly one of the defined slicing arguments is present in a query. If that is not the case (i.e., if none or multiple slicing arguments are present), the static analysis may throw an error." requireOneSlicingArgument: Boolean! = true) on FIELD_DEFINITION
+
+"The `@specifiedBy` directive is used within the type system definition language to provide a URL for specifying the behavior of custom scalar definitions."
+directive @specifiedBy("The specifiedBy URL points to a human-readable specification. This field will only read a result for scalar types." url: String!) on SCALAR
+
+"DateTime scalar as defined by https:\/\/scalars.graphql.org\/andimarek\/date-time.html but with 6 millisecond digits."
+scalar DafDateTime @specifiedBy(url: "https:\/\/datafordeler.dk\/")

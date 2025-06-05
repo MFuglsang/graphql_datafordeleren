@@ -1,0 +1,3638 @@
+schema {
+  query: Query
+}
+
+interface SpatialInterfaceType {
+  "The OGC geometry type of the geometry."
+  type: SpatialGeometryNameEnumType!
+  "The coordinate reference system of the geometry."
+  crs: Int!
+  "The dimensions used by the geometry."
+  dimension: SpatialDimensionEnumType!
+  "The WKT representation of the geometry"
+  wkt: String
+}
+
+"""
+Grunddatamodel info:
+name: BBRSag
+comment (da): <memo>#NOTES#BBR sag har til formål løbende at rumme oplysninger om ændringer i bygnings- og boligbestanden, som opstår gennem byggesagsbehandlingen, samt at vedligeholde en aktuel beskrivelse af de ændringer, der er under udførelse, men som ikke er fuldført endnu (verserende byggesager).
+definition (da): <memo>#NOTES#en BBR sag indeholder de fælles oplysninger om et procesforløb, fx en byggesag, som berører en eller flere BBR-entiteter
+example (da): <memo>#NOTES#En byggesag er et typisk eksempel på en BBR sag. En given byggesag kan vedrøre forhold som BBR skal registrere på grunden, på en eller flere bygninger og på en eller flere enheder i bygningerne.
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+prefLabel (da): BBR-sag
+source: https://instruks.bbr.dk/instruks/0/30
+URI: https://data.gov.dk/model/profile/bbr/BBRSag
+EAID: EAID_ED29C19B_42B9_4764_B760_A02D8F0EE8F8
+"""
+type BBR_BBRSag {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag001Byggesagsnummer
+  prefLabel (da): Byggesagsnummer
+  definition (da): angiver byggesagens journalnummer
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag001Byggesagsnummer: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag002Byggesagsdato
+  prefLabel (da): Byggesagsdato
+  definition (da): angiver  byggesagens dato
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag002Byggesagsdato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag003Byggetilladelsesdato
+  prefLabel (da): Byggetilladelsesdato
+  definition (da): dato for byggetilladelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag003Byggetilladelsesdato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag004ForventetPåbegyndelsesdato
+  prefLabel (da): Forventet påbegyndelsesdato
+  definition (da): dato for forventet påbegyndelse af byggeri
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag004ForventetPaabegyndelsesdato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag005Påbegyndelsesdato
+  prefLabel (da): Påbegyndelsesdato
+  definition (da): dato for påbegyndelse af byggeri
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag005Paabegyndelsesdato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag006IbrugtagningsTilladelse
+  prefLabel (da): Ibrugtagningstilladelse
+  definition (da): angiver dato for ibrugtagning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag006IbrugtagningsTilladelse: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag007Henlæggelse
+  prefLabel (da): Henlæggelse
+  definition (da): angiver dato for henlæggelse af sag
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag007Henlaeggelse: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag008FærdigtBygningsareal
+  prefLabel (da): Færdigt bygningsareal
+  definition (da): angiver det færdiggjorte bygningsareal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag008FaerdigtBygningsareal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag009ForventetFuldførtDato
+  prefLabel (da): Forventet fuldført dato
+  definition (da): angiver dato for forventet fuldførelse af byggeri
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag009ForventetFuldfoertDato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag010FuldførelseAfByggeri
+  prefLabel (da): Fuldførelse af byggeri
+  definition (da): dato for fuldførelse af byggeri
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag010FuldfoerelseAfByggeri: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Byggesagskode
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag012Byggesagskode
+  prefLabel (da): Byggesagskode
+  definition (da): angiver koden for sagen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag012Byggesagskode: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag013AnmeldelseAfByggearbejde
+  prefLabel (da): Anmeldelse af byggearbejde
+  definition (da): dato for anmeldelse af byggearbejde
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag013AnmeldelseAfByggearbejde: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag016DelvisIbrugtagningsTilladelse
+  prefLabel (da): Delvis ibrugtagningstilladelse
+  definition (da): dato for delvis tilladelse ibrugtagningstilladelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag016DelvisIbrugtagningsTilladelse: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag017ForeløbigFærdiggjortBygningsareal
+  prefLabel (da): Foreløbig færdiggjort bygningsareal
+  definition (da): foreløbigt færdiggjort bygningsareal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag017ForeloebigFaerdiggjortBygningsareal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag018ForeløbigFærdiggjortAntalLejligheder
+  prefLabel (da): Foreløbig færdiggjort antal lejligheder
+  definition (da): angiver foreløbigt færdiggjort antal lejligheder
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag018ForeloebigFaerdiggjortAntalLejligheder: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Bygherreforhold
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag019BygherreForhold
+  prefLabel (da): Bygherre forhold
+  definition (da): angiver hvem der er bygherre
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag019Bygherreforhold: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag024DatoForModtagelseAfAnsøgningOmByggetilladelse
+  prefLabel (da): Dato for modtagelse af ansøgning om byggetilladelse
+  definition (da): angiver dato for modtagelse af ansøgning om byggetilladelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag024DatoForModtagelseAfAnsoegningOmByggetilladelse: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag025DatoForFyldestgørendeAnsøgning
+  prefLabel (da): Dato for fyldestgørende ansøgning
+  definition (da): angiver dato for fyldestgørende ansøgning om byggetilladelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag025DatoForFyldestgoerendeAnsoegning: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag026DatoForNaboorientering
+  prefLabel (da): Dato for naboorientering
+  definition (da): angiver dato for igangsættelse af naboorientering
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag026DatoForNaboorientering: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag027DatoForFærdigbehandlingAfNaboorientering
+  prefLabel (da): Dato for færdigbehandling af naboorientering
+  definition (da): angiver dato for færdigbehandling af naboorientering
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag027DatoForFaerdigbehandlingAfNaboorientering: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag032Litra
+  prefLabel (da): Litra
+  definition (da): angiver litra under byggesagen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag032Litra: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sag033ForeløbigFærdiggjortAntalLejlighederUdenKøkken
+  prefLabel (da): Foreløbig færdiggjort antal lejligheder uden køkken
+  definition (da): angiver antal færdiggjorte  lejligheder
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sag033ForeloebigFaerdiggjortAntalLejlighederUdenKoekken: Long @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_BBRSagConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_BBRSagEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_BBRSag!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_BBRSagEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_BBRSag! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Bygning
+comment (da): <memo>#NOTES#I BBR skal en konstruktion i øvrigt i betragtes som en bygning, hvis konstruktionens anvendelse afspejler en anvendelse, som bygninger sædvanligvis har. Fx betragtes en husbåd som en bygning
+definition (da): <memo>#NOTES#en bygning består af en eller flere konstruktioner, der udgør en rumlig helhed, og som skærmer mod vejrliget. En bygning består som minimum af en overdækning (et tag)
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+prefLabel (da): Bygning
+source: https://instruks.bbr.dk/instruks/0/30
+URI: https://data.gov.dk/model/profile/bbr/Bygning
+EAID: EAID_D99DF86A_5708_4c97_A18A_6AF9D1B89681
+"""
+type BBR_Bygning {
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg007Bygningsnummer
+  prefLabel (da): Bygningsnummer
+  definition (da): angiver bygningens nummer indenfor ejendommen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg007Bygningsnummer: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Bygningsanvendelse
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg021BygningensAnvendelse
+  prefLabel (da): Bygningens anvendelse
+  definition (da): angiver bygningens hovedanvendelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg021BygningensAnvendelse: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg024AntalLejlighederMedKøkken
+  prefLabel (da): Antal lejligheder med køkken
+  definition (da): antal lejligheder med køkken i bygning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg024AntalLejlighederMedKoekken: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg025AntalLejlighederUdenKøkken
+  prefLabel (da): Antal lejligheder uden køkken
+  definition (da): antal lejligheder uden køkken i bygning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg025AntalLejlighederUdenKoekken: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg026Opførelsesår
+  prefLabel (da): Opførelsesår
+  definition (da): angiver bygningens opførselsår
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg026Opfoerelsesaar: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg027OmTilbygningsår
+  prefLabel (da): Om-/tilbygningsår
+  definition (da): angiver bygningens seneste om- eller tilbygningsår
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg027OmTilbygningsaar: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg029DatoForMidlertidigOpførtBygning
+  prefLabel (da): Dato for midlertidig opført bygning
+  definition (da): angiver udløbsdato for midlertidig opført bygning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg029DatoForMidlertidigOpfoertBygning: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Vandforsyning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg030Vandforsyning
+  prefLabel (da): Vandforsyning
+  definition (da): angiver bygningens vandforsyning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg030Vandforsyning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Afløbsforhold
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg031Afløbsforhold
+  prefLabel (da): Afløbsforhold
+  definition (da): angiver bygningens afløbsforhold
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg031Afloebsforhold: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: YdervæggenesMateriale
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg032YdervæggensMateriale
+  prefLabel (da): Ydervæggens materiale
+  definition (da): angiver bygningens ydervægsmateriale
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg032YdervaeggensMateriale: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Tagdækningsmateriale
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg033Tagdækningsmateriale
+  prefLabel (da): Tagdækningsmateriale
+  definition (da): angiver bygningens tagdækningsmateriale
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg033Tagdaekningsmateriale: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: YdervæggenesMateriale
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg034SupplerendeYdervæggensMateriale
+  prefLabel (da): Supplerende ydervægsmateriale
+  definition (da): angiver bygningens supplerende ydervægsmateriale
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg034SupplerendeYdervaeggensMateriale: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Tagdækningsmateriale
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg035SupplerendeTagdækningsMateriale
+  prefLabel (da): Supplerende tagdækningsmateriale
+  definition (da): angiver bygningens supplerende tagdækningsmateriale
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg035SupplerendeTagdaekningsMateriale: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: AsbestholdigtMateriale
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg036AsbestholdigtMateriale
+  prefLabel (da): Asbestholdigt materiale
+  definition (da): angivelse af om der er  konstateret asbestholdigt materiale i ydervæg eller tagdækning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg036AsbestholdigtMateriale: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: KildeTilOplysninger
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg037KildeTilBygningensMaterialer
+  prefLabel (da): Kilde til bygningens materialer
+  definition (da): angiver kilde til bygningens materialer
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg037KildeTilBygningensMaterialer: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg038SamletBygningsareal
+  prefLabel (da): Samlet bygningsareal
+  definition (da): angiver bygningens samlede areal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg038SamletBygningsareal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg039BygningensSamledeBoligAreal
+  prefLabel (da): Bygningens samlede boligareal
+  definition (da): angiver bygningens samlede boligareal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg039BygningensSamledeBoligAreal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg040BygningensSamledeErhvervsAreal
+  prefLabel (da): Bygningens samlede erhvervsareal
+  definition (da): angiver bygningens samlede erhvervsareal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg040BygningensSamledeErhvervsAreal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg041BebyggetAreal
+  prefLabel (da): Bebygget areal
+  definition (da): angiver bygningens bebyggede areal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg041BebyggetAreal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg042ArealIndbyggetGarage
+  prefLabel (da): Areal indbygget garage
+  definition (da): angiver areal af indbygget garage
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg042ArealIndbyggetGarage: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg043ArealIndbyggetCarport
+  prefLabel (da): Areal indbygget carport
+  definition (da): angiver areal af indbygget carport
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg043ArealIndbyggetCarport: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg044ArealIndbyggetUdhus
+  prefLabel (da): Areal indbygget udhus
+  definition (da): angiver areal af indbygget udhus
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg044ArealIndbyggetUdhus: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg045ArealIndbyggetUdestueEllerLign
+  prefLabel (da): Areal indbygget udestue eller lign
+  definition (da): angiver areal af indbygget udestue
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg045ArealIndbyggetUdestueEllerLign: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg046SamletArealAfLukkedeOverdækningerPåBygningen
+  prefLabel (da): Samlet areal af lukkede overdækninger på bygningen
+  definition (da): angiver areal af lukkede overdækninger på hele bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg046SamletArealAfLukkedeOverdaekningerPaaBygningen: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg047ArealAfIndbyggetAffaldsrumITerræn
+  prefLabel (da): Areal af indbygget affaldsrum i terræn
+  definition (da): angiver areal af samtlige affaldsrum i terrænniveau
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg047ArealAfAffaldsrumITerraenniveau: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg048ØvrigeArealer
+  prefLabel (da): Øvrige arealer
+  definition (da): angiver øvrige arealer i bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg048AndetAreal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg049OverdækketAreal
+  prefLabel (da): Overdækket areal
+  definition (da): angiver arealet af overdækket areal på bygning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg049ArealAfOverdaekketAreal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg050ArealÅbneOverdækningerPåBygningenSamlet
+  prefLabel (da): Areal åbne overdækninger på bygningen samlet
+  definition (da): angiver det samlede areal af åbne overdækninger på bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg050ArealAabneOverdaekningerPaaBygningenSamlet: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg051BygningensAdgangsareal
+  prefLabel (da): Bygningens adgangsareal
+  definition (da): angiver det samlede adgangsareal på bygning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg051Adgangsareal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: BeregningsprincipForArealAfCarport
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg052BeregningsprincipCarportAreal
+  prefLabel (da): Beregningsprincip carport areal
+  definition (da): angiver beregningsprincip for areal af carport
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg052BeregningsprincipCarportAreal: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: KildeTilOplysninger
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg053BygningsarealerKilde
+  prefLabel (da): Bygningsarealer kilde
+  definition (da): angiver kilde til oplysninger om bygningens arealer
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg053BygningsarealerKilde: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg054AntalEtager
+  prefLabel (da): Antal etager
+  definition (da): angiver antal etager i bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg054AntalEtager: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: AfvigendeEtager
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg055AfvigendeEtager
+  prefLabel (da): Afvigende etager
+  definition (da): angiver om bygningen indeholder afvigende etager
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg055AfvigendeEtager: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Varmeinstallation
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg056Varmeinstallation
+  prefLabel (da): Varmeinstallation
+  definition (da): angiver bygningens primære varmeinstallation
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg056Varmeinstallation: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Opvarmningsmiddel
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg057Opvarmningsmiddel
+  prefLabel (da): Opvarmningsmiddel
+  definition (da): angiver bygningens primære opvarmningsmiddel
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg057Opvarmningsmiddel: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: SupplerendeVarme
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg058SupplerendeVarme
+  prefLabel (da): Supplerende varme
+  definition (da): angiver supplerende varmeinstallation i bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg058SupplerendeVarme: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg069Sikringsrumpladser
+  prefLabel (da): Sikringsrumpladser
+  definition (da): angiver antallet at sikringsrumpladser i bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg069Sikringsrumpladser: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Fredning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg070Fredning
+  prefLabel (da): Fredning
+  definition (da): angiver om bygningen er fredet
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg070Fredning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg071BevaringsværdighedReference
+  prefLabel (da): Bevaringsværdighed reference
+  definition (da): linker til Kulturstyrelsens registrering i FBB (Fredede og Bevaringsværdige Bygninger)
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg071BevaringsvaerdighedReference: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg094Revisionsdato
+  prefLabel (da): Revisionsdato
+  definition (da): angiver revisionsdato for seneste ændring af geometrioplysninger
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg094Revisionsdato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Oversvømmelsesselvrisiko
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg111SelvrisikoVOversvømmelseJfStormrådet
+  prefLabel (da): Erstatning for skader efter stormflod og oversvømmelser, jf. Naturskaderådet
+  definition (da): erstatning efter stormflod og oversvømmelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg111StormraadetsOversvoemmelsesSelvrisiko: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg112DatoForRegistreringFraStormrådet
+  prefLabel (da): Dato for registrering fra Naturskaderådet
+  definition (da): dato for registrering
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg112DatoForRegistreringFraStormraadet: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Byggeskadeforsikringsselskab
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg113Byggeskadeforsikringsselskab
+  prefLabel (da): Byggeskadeforsikringsselskab
+  definition (da): angiver navnet på byggeskadeforsikringsselskab
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg113Byggeskadeforsikringsselskab: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg114DatoForByggeskadeforsikring
+  prefLabel (da): Dato for byggeskadeforsikring
+  definition (da): angiver ikrafttrædelsesdatoen for byggeskadeforsikring
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg114DatoForByggeskadeforsikring: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Udledningstilladelse
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg119Udledningstilladelse
+  prefLabel (da): Udledningstilladelse
+  definition (da): angiver status for udledningstilladelse på bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg119Udledningstilladelse: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: OmfattetAfByggeskadeforsikring
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg121OmfattetAfByggeskadeforsikring
+  prefLabel (da): Omfattet af byggeskadeforsikring
+  definition (da): angiver om bygningen er omfattet af byggeskadeforsikring
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg121OmfattetAfByggeskadeforsikring: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg122Gyldighedsdato
+  prefLabel (da): Gyldighedsdato
+  definition (da): angiver gyldighedsdato i forbindelse med vurdering
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg122Gyldighedsdato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: MedlemsskabAfSplidevandforsyning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg123MedlemskabAfSpildevandsforsyning
+  prefLabel (da): Medlemskab af spildevandsforsyning
+  definition (da): angiver om der for bygningen er indgået kontraktligt medlemskab af spildevandsforsyningsselskab
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg123MedlemskabAfSpildevandsforsyning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Rensningspåbud
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg124PåbudOmForbedretRensning
+  prefLabel (da): Påbud om forbedret rensning
+  definition (da): angiver om der er givet påbud vedr. spildevandsafledning på bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg124PaabudVedrSpildevandsafledning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg125FristForForbedretRensning
+  prefLabel (da): Frist for forbedret rensning
+  definition (da): angiver dato for frist for evt. påbud vedr. spildevandsafledning på bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg125FristVedrSpildevandsafledning: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: TilladelseTilUdtræden
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg126TilladelseTilUdtræden
+  prefLabel (da): Tilladelse til udtræden
+  definition (da): angiver tilladelse til udtræden af det offentlige kloakfællesskab
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg126TilladelseTilUdtraeden: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg127DatoForTilladelseTilUdtræden
+  prefLabel (da): Dato for tilladelse til udtræden
+  definition (da): angiver dato for tilladelse til udtræden af det offentlige kloakfællesskab
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg127DatoForTilladelseTilUdtraeden: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: TilladelseTilAlternativBortskaffelseEllerAfledning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg128TilladelseTilAltBortskaffelseEllerAfledning
+  prefLabel (da): Tilladelse til alt bortskaffelse eller afledning
+  definition (da): angiver tilladelse til alternativ bortskaffelse eller afledning af spildevand
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg128TilladelseTilAlternativBortskaffelseEllerAfledning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg129DatoForTilladelseTilAltBortskaffelseEllerAfledning
+  prefLabel (da): Dato for meddelelse af tilladelse eller dato for tilladelsens ophør til alternativ bortskaffelse eller afledning
+  definition (da): den dato, hvor bygningens tilladelse til alternativ afledning er meddelt eller bortfaldet
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg129DatoForTilladelseTilAlternativBortskaffelseEllerAfledning: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg130ArealAfUdvendigEfterisolering
+  prefLabel (da): Areal af udvendig efterisolering
+  definition (da): angiver areal af udvendig efterisolering
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg130ArealAfUdvendigEfterisolering: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DispensationFritagelseIftKollektivVarmeforsyning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg131DispensationFritagelseIftKollektivVarmeforsyning
+  prefLabel (da): Dispensation fritagelse ift. kollektiv varmeforsyning
+  definition (da): angiver om der er givet dispensation eller fritagelse ift kollektiv varmeforsyning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg131DispensationFritagelseIftKollektivVarmeforsyning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg132DatoForDispensationFritagelseIftKollektivVarmeforsyning
+  prefLabel (da): Dato for dispensation fritagelse ift. kollektiv varmeforsyning
+  definition (da): angiver dato for dispensation eller fritagelse ift kollektiv varmeforsyning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg132DatoForDispensationFritagelseIftKollektivVarmeforsyning: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: KildeTilKoordinatsæt
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg133KildeTilKoordinatsæt
+  prefLabel (da): Kilde til koordinatsæt
+  definition (da): kodeliste der angiver kilden til geometrioplysninger
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg133KildeTilKoordinatsaet: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: KvalitetAfKoordinatsæt
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg134KvalitetAfKoordinatsæt
+  prefLabel (da): Kvalitet af koordinatsæt
+  definition (da): kodeliste der angiver kvaliteten af geometrioplysninger
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg134KvalitetAfKoordinatsaet: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: SupplerendeOplysningerOmKoordinatsæt
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg135SupplerendeOplysningOmKoordinatsæt
+  prefLabel (da): Supplerende oplysning om koordinatsæt
+  definition (da): angiver om det fysiske objekt koordinatsættet referer til ligger under eller over jorden
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg135SupplerendeOplysningOmKoordinatsaet: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: BygværkPåSøterritorie
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg136PlaceringPåSøterritorie
+  prefLabel (da): Placering på søterritorie
+  definition (da): angiver om objekt ligger på søterritorie
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg136PlaceringPaaSoeterritorie: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg137BanedanmarkBygværksnummer
+  prefLabel (da): Banedanmark bygværksnummer
+  definition (da): angiver Banedanmarks BGV-nummer og bygværksnummer
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg137BanedanmarkBygvaerksnummer: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg140ServitutForUdlejningsEjendomDato
+  prefLabel (da): Servitut for udlejningsejendom dato
+  definition (da): dato for eventuel tinglyst servitut der undtager en udlejningsejendom for byggeskadeforsikring
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg140ServitutForUdlejningsEjendomDato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Gulvbelaegning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg150Gulvbelægning
+  prefLabel (da): Gulvbelægning
+  definition (da): oplysning som kan knyttes til en bygning til erhvervsformål. Angiver typen af gulvbelægning fx beton
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg150Gulvbelaegning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Decimal
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg151Frihøjde
+  prefLabel (da): Frihøjde
+  definition (da): oplysning som kan knyttes til en bygning til lagerformål, garage e.l. angiver den maksimale højde af køretøjer der kan køre ind og ud af  bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg151Frihoejde: Float @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Konstruktion
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg152ÅbenLukketKonstruktion
+  prefLabel (da): Åben lukket konstruktion
+  definition (da): information om bygningen udgør en åben eller lukket konstruktion, dvs. med eller uden ydervægge
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg152AabenLukketKonstruktion: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Konstruktionsforhold
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg153Konstruktionsforhold
+  prefLabel (da): Konstruktionsforhold
+  definition (da): information om typen af bygningens bærende konstruktion
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg153Konstruktionsforhold: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: TypeAfFlytning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg301TypeAfFlytning
+  prefLabel (da): Type af flytning
+  definition (da): angiver type af flytning af en bygning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg301TypeAfFlytning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg302Tilflytterkommune
+  prefLabel (da): Tilflytterkommune
+  definition (da): angiver den kommune bygningen flyttes til
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg302Tilflytterkommune: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg403ØvrigeBemærkningerFraStormrådet
+  prefLabel (da): Øvrige bemærkninger fra Naturskaderådet
+  definition (da): naturskaderådet oplyser
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg403OevrigeBemaerkningerFraStormraadet: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg404Koordinatsæt
+  prefLabel (da): Koordinatsæt
+  definition (da): angiver bygningens geografiske repræsentation i form af et punkt
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  byg404Koordinat: SpatialPointEpsg25832Type @cost(weight: "10")
+  """
+  Grunddatamodel info:
+  type: Koordinatsystem
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg406Referencesystem
+  prefLabel (da): Referencesystem
+  definition (da): angiver geografisk koordinatsystem og projektion
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg406Koordinatsystem: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/byg500Notatlinjer
+  prefLabel (da): Notatlinjer
+  definition (da): beskrivende tekstnotat om særlige forhold for dette BBR-element
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  byg500Notatlinjer: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  ejerlejlighed: String @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  grund: String @cost(weight: "1")
+  husnummer: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  jordstykke: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_BygningConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_BygningEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_Bygning!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_BygningEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_Bygning! @cost(weight: "10")
+}
+
+type BBR_BygningEjendomsrelation {
+  bygning: String @cost(weight: "1")
+  bygningPaaFremmedGrund: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_BygningEjendomsrelationConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_BygningEjendomsrelationEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_BygningEjendomsrelation!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_BygningEjendomsrelationEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_BygningEjendomsrelation! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Ejendomsrelation
+comment (da): <memo>#NOTES#BBR har til opgave at registrere og identificere den eller de ejendomme, som BBR's grunde, bygninger, tekniske anlæg og enheder indgår i.En grund indgår i en ejendom af typen samlet fast ejendom (SFE). Bygninger og tekniske anlæg ejes som regel af den samme som ejer grunden, dvs. at bygningen og anlægget indgår i den samlede faste ejendom. I nogle tilfælde er grundens og bygningens ejer forskellig, hvorfor bygningen indgår i en særskilt ejendom af typen bygning på fremmed grund (BPFG). Flere BBR-bygninger kan indgå i en enkelt bygningh på fremmed grund.Enheder ejes ofte af den samme som ejer bygningen, men kan også være en selvstændig ejendom af typen ejerlejlighed (EL). Flere enheder kan indgå i en ejerlejlighed og en enhed kan bestå af mere end en ejerlejlighed. Også bygninger og tekniske anlæg kan indgå i en ejerlejlighed. Objekttypen ejendomsrelation håndterer disse komplekse relationer og oplysninger på en ensartet måde, og sikrer at de forskellige ejendomsidentifikationer, som BBR registrerer, er let tilgængelige. Samtidig bliver det nemmere for BBR's brugere at skelne mellem ændringer, som vedrører BBR-objekternes fysiske egenskaber hhv. ændringer som vedrører BBR-objekternes ejendomstilhør
+definition (da): <memo>#NOTES#ejendomsrelation samler oplysningerne om de fysiske BBR-entiteters relation til den ejendom de udgør eller indgår i
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+prefLabel (da): Ejendomsrelation
+source: https://instruks.bbr.dk/instruks/0/30
+URI: https://data.gov.dk/model/profile/bbr/Ejendomsrelation
+EAID: EAID_0E5C322B_0AA8_4005_B17E_F0397230EE7D
+"""
+type BBR_Ejendomsrelation {
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/bbr/bfeNummer
+  prefLabel (da): BFE nummer
+  altLabel (da): BFE-nr
+  definition (da): angiver den fælles ejendomsidentifikation for den bestemte faste ejendom som den tilhørende BBR-entitet udgør eller indgår i
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  bfeNummer: Long @cost(weight: "1")
+  bygningPaaFremmedGrund: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Ejerforholdskode
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/bbr/ejendommensEjerforholdskode
+  prefLabel (da): Ejendommens ejerforholdskode
+  altLabel (da): Ejerforholdskode
+  definition (da): ejerforholdskode for hovedejeren for den ejendom som denne ejendomsrelation refrerer til, baseret på Ejerfortegnelsens oplysninger om ejendommens ejerskaber
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  ejendommensEjerforholdskode: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/bbr/ejendomsnummer
+  prefLabel (da): Ejendomsnummer
+  altLabel (da): ESR ejendomsnummer
+  definition (da): ejendomsnummer for den ESR-ejendom som denne ejendomsrelation indgår i
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  ejendomsnummer: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Ejendomstype
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/ejendomstype
+  prefLabel (da): Ejendomstype
+  definition (da): afledt attribut som angiver ejendomstypen, dvs. om ejendommen udgør en samlet fast ejendom (dvs. et matrikuleret areal), en bygning på fremmed grund eller en ejerlejlighed
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  ejendomstype: String @cost(weight: "1")
+  ejerlejlighed: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/ejerlejlighedsnummer
+  prefLabel (da): Ejerlejlighedsnummer
+  definition (da): angiver Matriklens ejerlejlighedsnummer når Ejendomsrelation er af typen ejerlejlighed
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  ejerlejlighedsnummer: Long @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  samletFastEjendom: String @cost(weight: "1")
+  status: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tinglystAreal
+  prefLabel (da): Tinglyst areal
+  definition (da): angiver ESR's oplysning om det samlede tinglyste areal af en ejerlejlighed som indgår i en enhed eller bygning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tinglystAreal: Long @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/bbr/vurderingsejendomsnummer
+  prefLabel (da): Vurderingsejendomsnummer
+  altLabel (da): VurderingsejendomsId
+  definition (da): angiver SKAT's vurderingsejendomsnummer som denne Ejendomsrelation indgår i
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  vurderingsejendomsnummer: Long @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_EjendomsrelationConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_EjendomsrelationEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_Ejendomsrelation!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_EjendomsrelationEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_Ejendomsrelation! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Enhed
+altLabel (da): Bolig- eller erhvervsenhed, BBR-enhed
+definition (da): <memo>#NOTES#en enhed er et sammenhængende areal i en bygning, der er fysisk adskilt fra andre enheder. En enhed skal have mindst én selvstændig adgang fra en opgang/indgang og udgøre en brugsmæssig helhed
+example (da): <memo>#NOTES#Eksempler på enheder er: beboelseslejlighed i etageejendom, bolig i enfamiliehus eller feriehus, butik eller erhvervslejemål i en byejendom, lagerlokaler i et pakhus.
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+prefLabel (da): Enhed
+source: https://instruks.bbr.dk/instruks/0/30
+URI: https://data.gov.dk/model/profile/bbr/Enhed
+EAID: EAID_AE53E875_4F7C_44d0_B0F1_82C0BA6C37E9
+"""
+type BBR_Enhed {
+  adresseIdentificerer: String @cost(weight: "1")
+  bygning: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Enhed
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/bbr/enh008UUIDTilModerlejlighed
+  prefLabel (da): UUID til moderlejlighed
+  definition (da): angiver henvisning fra supplementsrum til moderlejlighed
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh008UUIDTilModerlejlighed: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Enhedsanvendelse
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh020EnhedensAnvendelse
+  prefLabel (da): Enhedens anvendelse
+  definition (da): angiver kode for enhedens anvendelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh020EnhedensAnvendelse: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Boligtype
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh023Boligtype
+  prefLabel (da): Boligtype
+  definition (da): angiver kode for boligtype
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh023Boligtype: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: KondemneretBoligenhed
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh024KondemneretBoligenhed
+  prefLabel (da): Kondemneret boligenhed
+  definition (da): angiver kode for kondemneret boligenhed
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh024KondemneretBoligenhed: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh025OprettelsesdatoForEnhedensIdentifikation
+  prefLabel (da): Oprettelsesdato for enhedens identifikation
+  definition (da): angiver oprettelsesdato for enheden
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh025OprettelsesdatoForEnhedensIdentifikation: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh026EnhedensSamledeAreal
+  prefLabel (da): Enhedens samlede areal
+  definition (da): angiver enhedens samlede areal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh026EnhedensSamledeAreal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh027EnhedensBoligareal
+  prefLabel (da): Enhedens boligareal
+  definition (da): angiver enhedens areal til beboelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh027ArealTilBeboelse: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh028EnhedensErhvervsareal
+  prefLabel (da): Enhedens erhvervsareal
+  definition (da): angiver enhedens areal til erhverv
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh028ArealTilErhverv: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: KildeTilOplysninger
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh030KildeTilEnhedensArealer
+  prefLabel (da): Kilde til enhedens arealer
+  definition (da): angiver kode for kilde til oplysninger om areal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh030KildeTilEnhedensArealer: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh031AntalVærelser
+  prefLabel (da): Antal værelser
+  definition (da): angiver antal værelser i enheden
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh031AntalVaerelser: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Toiletforhold
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh032Toiletforhold
+  prefLabel (da): Toiletforhold
+  definition (da): angiver kode for enhedens toiletforhold
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh032Toiletforhold: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Badeforhold
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh033Badeforhold
+  prefLabel (da): Badeforhold
+  definition (da): angiver kode for enhedens badeforhold
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh033Badeforhold: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Køkkenforhold
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh034Køkkenforhold
+  prefLabel (da): Køkkenforhold
+  definition (da): angiver kode for enhedens køkkenforhold
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh034Koekkenforhold: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Energiforsyning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh035Energiforsyning
+  prefLabel (da): Energiforsyning
+  definition (da): angiver kode for enhedens energiforsyning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh035Energiforsyning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh039TinglystArealTilknyttetEnheden
+  prefLabel (da): Tinglyst areal tilknyttet enheden
+  definition (da): angiver enhedens andet areal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh039AndetAreal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: LovligAnvendelse
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh041LovligHelårsanvendelse
+  prefLabel (da): Lovlig helårsanvendelse
+  definition (da): angiver eventuel dispensation til anvendelse af enheden
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh041LovligAnvendelse: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh042DatoForTidsbegrænsetDispensation
+  prefLabel (da): Dato for tidsbegrænset dispensation
+  definition (da): angiver dato for tidsbegrænset dispensation
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh042DatoForTidsbegraensetDispensation: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh044DatoForDelvisIbrugtagningsTilladelse
+  prefLabel (da): Dato for delvis ibrugtagningstilladelse
+  definition (da): angiver dato for delvis ibrugtagningstilladelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh044DatoForDelvisIbrugtagningsTilladelse: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Udlejningsforhold
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh045Udlejningsforhold
+  prefLabel (da): Udlejningsforhold
+  definition (da): angiver enhedens udlejningsforhold
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh045Udlejningsforhold: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: OffentligStøtte
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh046OffentligStøtte
+  prefLabel (da): Offentlig støtte
+  definition (da): angiver offentlig støtte
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh046OffentligStoette: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh047DatoForIndflytning
+  prefLabel (da): Dato for indflytning
+  definition (da): angiver dato for indflytning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh047IndflytningDato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GodkendtTomBoligÆndretAdministrativPraksis
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh048GodkendtTomBolig
+  prefLabel (da): Godkendt tom bolig
+  definition (da): angiver om boligen er godkendt som tom bolig
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh048GodkendtTomBolig: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Varmeinstallation
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh051Varmeinstallation
+  prefLabel (da): Varmeinstallation
+  definition (da): angiver enhedens varmeinstallation
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh051Varmeinstallation: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Opvarmningsmiddel
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh052Opvarmningsmiddel
+  prefLabel (da): Opvarmningsmiddel
+  definition (da): angiver enhedens opvarmningsmiddel
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh052Opvarmningsmiddel: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: SupplerendeVarme
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh053SupplerendeVarme
+  prefLabel (da): Supplerende varme
+  definition (da): angiver enhedens supplerende varme
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh053SupplerendeVarme: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh060EnhedensAndelFællesAdgangsareal
+  prefLabel (da): Enhedens andel fælles adgangsareal
+  definition (da): angiver enhedens andel i fælles adgangsareal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh060EnhedensAndelFaellesAdgangsareal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh061ArealAfÅbenOverdækning
+  prefLabel (da): Areal af åben overdækning
+  definition (da): angiver enhedens areal af åben overdækning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh061ArealAfAabenOverdaekning: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh062ArealAfLukketAltanUdestue
+  prefLabel (da): Areal af lukket altan udestue
+  definition (da): angiver enhedens areal af lukket overdækning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh062ArealAfLukketOverdaekningUdestue: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh063AntalVærelserTilErhverv
+  prefLabel (da): Antal værelser til erhverv
+  definition (da): angiver antal værelser i enheden der anvendes til erhverv
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh063AntalVaerelserTilErhverv: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh065AntalVandskylledeToiletter
+  prefLabel (da): Antal vandskyllede toiletter
+  definition (da): angiver antal vandskyllende toiletter
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh065AntalVandskylledeToiletter: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh066AntalBadeværelser
+  prefLabel (da): Antal badeværelser
+  definition (da): angiver antal badeværelser
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh066AntalBadevaerelser: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh067Støjisolering
+  prefLabel (da): Støjisolering
+  definition (da): angiver årstal for støjisolering
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh067Stoejisolering: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Tilladelsesart
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh068FlexboligTilladelsesart
+  prefLabel (da): Flexbolig tilladelsesart
+  definition (da): angivelse af om en tilladelse til flexbolig er personlig eller ej og om den er med eller uden tidsbegrænsning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh068FlexboligTilladelsesart: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh069FlexboligOphørsdato
+  prefLabel (da): Flexbolig ophørsdato
+  definition (da): ​dato for ophør af en tidsbegrænset flexboligtilladelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh069FlexboligOphoersdato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh070ÅbenAltanTagterrasseAreal
+  prefLabel (da): Åben altan tagterrasse areal
+  definition (da): samlet areal af åben altan og/eller åben tagterrasse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh070AabenAltanTagterrasseAreal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: AdresseRolle
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh071AdresseFunktion
+  prefLabel (da): Adresse funktion
+  definition (da): angiver adressens funktion i forhold til denne enhed
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh071AdresseFunktion: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh101Gyldighedsdato
+  prefLabel (da): Gyldighedsdato
+  definition (da): angiver gyldighedsdato for enheden
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh101Gyldighedsdato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh102HerafAreal1
+  prefLabel (da): Heraf areal 1
+  definition (da): oplysning som kan knyttes til en erhvervsenhed som har anvendelser. Anvendelseskoden for det pågældende areal fremgår af feltet enh105
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh102HerafAreal1: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh103HerafAreal2
+  prefLabel (da): Heraf areal 2
+  definition (da): oplysning som kan knyttes til en erhvervsenhed som har anvendelser. Anvendelseskoden for det pågældende areal fremgår af feltet enh106
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh103HerafAreal2: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh104HerafAreal3
+  prefLabel (da): Heraf areal 3
+  definition (da): oplysning som kan knyttes til en erhvervsenhed som har anvendelser. Anvendelseskoden for det pågældende areal fremgår af feltet enh107
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh104HerafAreal3: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Enhedsanvendelse
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh105SupplerendeAnvendelseskode1
+  prefLabel (da): Supplerende anvendelseskode 1
+  definition (da): oplysning som kan knyttes til en erhvervsenhed som har anvendelser. Enhedens areal med den pågældende anvendelse fremgår af feltet enh102
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh105SupplerendeAnvendelseskode1: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Enhedsanvendelse
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh106SupplerendeAnvendelseskode2
+  prefLabel (da): Supplerende anvendelseskode 2
+  definition (da): oplysning som kan knyttes til en erhvervsenhed som har anvendelser. Enhedens areal med den pågældende anvendelse fremgår af feltet enh103
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh106SupplerendeAnvendelseskode2: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Enhedsanvendelse
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh107SupplerendeAnvendelseskode3
+  prefLabel (da): Supplerende anvendelseskode 3
+  definition (da): oplysning som kan knyttes til en erhvervsenhed som har anvendelser. Enhedens areal med den pågældende anvendelse fremgår af feltet enh104
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh107SupplerendeAnvendelseskode3: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh127FysiskArealTilBeboelse
+  prefLabel (da): Fysisk areal til beboelse
+  definition (da): angiver enhedens fysiske areal til beboelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh127FysiskArealTilBeboelse: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh128FysiskArealTilErhverv
+  prefLabel (da): Fysisk areal til erhverv
+  definition (da): angiver enhedens fysiske areal til erhverv
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh128FysiskArealTilErhverv: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/enh500Notatlinjer
+  prefLabel (da): Notatlinjer
+  definition (da): beskrivende tekstnotat om særlige forhold for dette BBR-element
+  altLabel (en): angives flere notatlinjer.
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  enh500Notatlinjer: String @cost(weight: "1")
+  etage: String @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  opgang: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_EnhedConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_EnhedEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_Enhed!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_EnhedEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_Enhed! @cost(weight: "10")
+}
+
+type BBR_EnhedEjendomsrelation {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  ejerlejlighed: String @cost(weight: "1")
+  enhed: String @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_EnhedEjendomsrelationConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_EnhedEjendomsrelationEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_EnhedEjendomsrelation!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_EnhedEjendomsrelationEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_EnhedEjendomsrelation! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Etage
+definition (da): <memo>#NOTES#ved en etage forstås et sammenhængende vandret bærende etageplan i en bygning. Etager, der opdeles af et niveauspring på mere end en halv etagehøjde, regnes ikke som en samlet etage
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+prefLabel (da): Etage
+source: https://instruks.bbr.dk/instruks/0/30
+URI: https://data.gov.dk/model/profile/bbr/Etage
+EAID: EAID_E8DA5B71_1DA5_46e6_ACB7_D8B205C5FF53
+"""
+type BBR_Etage {
+  bygning: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/eta006BygningensEtagebetegnelse
+  prefLabel (da): Bygningens etagebetegnelse
+  definition (da): angiver etagebetegnelse på pågældende etage i bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  eta006BygningensEtagebetegnelse: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/eta020EtagensAreal
+  prefLabel (da): Etagens areal
+  definition (da): angiver det samlede areal af den pågældende etage
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  eta020SamletArealAfEtage: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/eta021EtagensUdnyttedeAreal
+  prefLabel (da): Etagens udnyttede areal
+  definition (da): angiver arealet af den udnyttede del af etagen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  eta021ArealAfUdnyttetDelAfTagetage: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/eta022DybKælder
+  prefLabel (da): Dyb kælder
+  definition (da): angiver areal af kælder, hvis loft ligger mindre end 1.25 m over terræn
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  eta022Kaelderareal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/eta023ArealAfLovligBeboelseIKælder
+  prefLabel (da): Areal af lovlig beboelse i kælder
+  definition (da): angiver arealet af lovlig beboelse i kælder
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  eta023ArealAfLovligBeboelseIKaelder: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/eta024EtagensAdgangsareal
+  prefLabel (da): Etagens adgangsareal
+  definition (da): angiver samlet areal af adgangsareal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  eta024EtagensAdgangsareal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: EtageType
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/eta025Etagetype
+  prefLabel (da): Etagetype
+  definition (da): angiver etagens type
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  eta025Etagetype: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/eta026ArealAfErhvervIKælder
+  prefLabel (da): Areal af erhverv i kælder
+  definition (da): angiver det samlede areal af erhverv i kælder
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  eta026ErhvervIKaelder: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/eta500Notatlinjer
+  prefLabel (da): Notatlinjer
+  definition (da): beskrivende tekstnotat om særlige forhold for dette BBR-element
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  eta500Notatlinjer: String @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_EtageConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_EtageEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_Etage!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_EtageEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_Etage! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: FordelingAfFordelingsareal
+definition (da): <memo>#NOTES#angiver hvordan et fordelingsareal fordeles ud på hver af de enheder som indgår i fordelingen, herunder areal til bolig hhv. til erhverv
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+prefLabel (da): Fordeling af fordelingsareal
+source: https://instruks.bbr.dk/instruks/0/30
+URI: https://data.gov.dk/model/profile/bbr/FordelingAfFordelingsareal
+EAID: EAID_748F706F_23B4_4c1b_A528_D582922621E9
+"""
+type BBR_FordelingAfFordelingsareal {
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/beboelsesArealFordeltTilEnhed
+  prefLabel (da): Beboelses areal fordelt til enhed
+  definition (da): den del af et fordelingsareal som tillægges enhedens beboelsesareal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  beboelsesArealFordeltTilEnhed: Long @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  enhed: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/erhvervsArealFordeltTilEnhed
+  prefLabel (da): Erhvervsareal fordelt til enhed
+  definition (da): den del af et fordelingsareal som tillægges enhedens erhvervsareal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  erhvervsArealFordeltTilEnhed: Long @cost(weight: "1")
+  fordelingsareal: String @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_FordelingAfFordelingsarealConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_FordelingAfFordelingsarealEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_FordelingAfFordelingsareal!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_FordelingAfFordelingsarealEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_FordelingAfFordelingsareal! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Fordelingsareal
+definition (da): <memo>#NOTES#oplysning om de arealer der skal fordeles på ejelejligheder eller lejligheder
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+prefLabel (da): Fordelingsareal
+source: https://instruks.bbr.dk/instruks/0/30
+URI: https://data.gov.dk/model/profile/bbr/Fordelingsareal
+EAID: EAID_EA3E6D60_A489_416d_B88E_ADF2831667FA
+"""
+type BBR_Fordelingsareal {
+  bygning: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/bbr/for002Fordelingsarealnummer
+  prefLabel (da): Fordelingsarealnummer
+  definition (da): fordelingsarealets nummer
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  for002Fordelingsarealnummer: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/bbr/for003ArealTilFordeling
+  prefLabel (da): Arealtilfordeling
+  definition (da): arealer som skal fordeles på enheder
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  for003ArealTilFordeling: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Fordelingsnoegle
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/for004FordelingsNøgle
+  prefLabel (da): Fordelingsnøgle
+  definition (da): nøgle for fordelingsareal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  for004FordelingsNoegle: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/for005Navn
+  prefLabel (da): Navn
+  definition (da): genkendelig beskrivelse af det pågældende fordelingsareal
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  for005Navn: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/for006Rest
+  prefLabel (da): Rest
+  definition (da): den rest af areal til fordeling
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  for006Rest: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/for500Notatlinjer
+  prefLabel (da): Notatlinjer
+  definition (da): beskrivende tekstnotat om særlige forhold for dette BBR-element
+  altLabel (en): angives flere notatlinjer.
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  for500Notatlinjer: String @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_FordelingsarealConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_FordelingsarealEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_Fordelingsareal!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_FordelingsarealEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_Fordelingsareal! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Grund
+comment (da): <memo>#NOTES#Ved brugen af begrebet sammenhængende areal i definitionen forstås, at når flere jordstykker indgår i grunden, vil de have en fælles skellinje. Jordstykkerne skal endvidere være beliggende i samme kommune. Samtlige grunde, hvorpå der forekommer en bygning, et i BBR optaget teknisk anlæg eller hvorpå der verserer en byggesag, skal optages i BBR
+definition (da): <memo>#NOTES#en grund er et sammenhængende areal, som består af et eller flere jordstykker (dvs. matrikelnumre), som udgør eller indgår i den samme samlede faste ejendom, jf. § 2 i lov om udstykning og anden registrering i matriklen
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+prefLabel (da): Grund
+source: https://instruks.bbr.dk/instruks/0/30
+URI: https://data.gov.dk/model/profile/bbr/Grund
+EAID: EAID_60C1AC90_36E5_46f9_B7A3_8E656CF0CBBE
+"""
+type BBR_Grund {
+  bestemtFastEjendom: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Vandforsyning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru009Vandforsyning
+  prefLabel (da): Vandforsyning
+  definition (da): angiver forhold omkring vandforsyning for grunden
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru009Vandforsyning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Afløbsforhold
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru010Afløbsforhold
+  prefLabel (da): Afløbsforhold
+  definition (da): angiver afløbsforhold for grunden
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru010Afloebsforhold: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Udledningstilladelse
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru021Udledningstilladelse
+  prefLabel (da): Udledningstilladelse
+  definition (da): angiver status for udledningstilladelse på grunden
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru021Udledningstilladelse: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: MedlemsskabAfSplidevandforsyning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru022MedlemskabAfSpildevandsforsyning
+  prefLabel (da): Medlemskab af spildevandsforsyning
+  definition (da): angiver om der for grunden er indgået kontraktligt medlemskab af spildevandsforsyningsselskab
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru022MedlemskabAfSpildevandsforsyning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Rensningspåbud
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru023PåbudOmForbedretRensning
+  prefLabel (da): Påbud om forbedret rensning
+  definition (da): angiver om der er givet påbud vedr. spildevandsafledning på grunden
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru023PaabudVedrSpildevandsafledning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru024FristForForbedretRensning
+  prefLabel (da): Frist for forbedret rensning
+  definition (da): angiver dato for frist for evt. påbud vedr. spildevandsafledning på grunden
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru024FristVedrSpildevandsafledning: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: TilladelseTilUdtræden
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru025TilladelseTilUdtræden
+  prefLabel (da): Tilladelse til udtræden
+  definition (da): angiver tilladelse til udtræden af det offentlige kloakfællesskab
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru025TilladelseTilUdtraeden: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru026DatoForTilladelseTilUdtræden
+  prefLabel (da): Dato for tilladelse til udtræden
+  definition (da): angiver dato for tilladelse til udtræden af det offentlige kloakfællesskab
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru026DatoForTilladelseTilUdtraeden: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: TilladelseTilAlternativBortskaffelseEllerAfledning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru027TilladelseTilAltBortskaffelseEllerAfledning
+  prefLabel (da): Tilladelse til alt bortskaffelse eller afledning
+  definition (da): angiver tilladelse til alternativ bortskaffelse eller afledning af spildevand
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru027TilladelseTilAlternativBortskaffelseEllerAfledning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru028DatoForTilladelseTilAltBortskaffelseEllerAfledning
+  prefLabel (da): Dato for tilladelse til alt bortskaffelse eller afledning
+  definition (da): angiver dato for tilladelse til alternativ bortskaffelse eller afledning af spildevand
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru028DatoForTilladelseTilAlternativBortskaffelseEllerAfledning: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DispensationFritagelseIftKollektivVarmeforsyning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru029DispensationFritagelseIftKollektivVarmeforsyning
+  prefLabel (da): Dispensation fritagelse ift. kollektiv varmeforsyning
+  definition (da): angiver dispensation eller fritagelse ift kollektiv varmeforsyning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru029DispensationFritagelseIftKollektivVarmeforsyning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru030DatoForDispensationFritagelseIftKollektivVarmeforsyning
+  prefLabel (da): Dato for dispensation fritagelse ift. kollektiv varmeforsyning
+  definition (da): angiver dato for dispensation eller fritagelse ift kollektiv varmeforsyning
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru030DatoForDispensationFritagelseIftKollektivVarmeforsyning: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/gru500Notatlinjer
+  prefLabel (da): Notatlinjer
+  definition (da): beskrivende tekstnotat om særlige forhold for dette BBR-element
+  altLabel (en): angives flere notatlinjer.
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  gru500Notatlinjer: String @cost(weight: "1")
+  husnummer: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_GrundConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_GrundEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_Grund!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_GrundEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_Grund! @cost(weight: "10")
+}
+
+type BBR_GrundJordstykke {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  grund: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  jordstykke: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_GrundJordstykkeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_GrundJordstykkeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_GrundJordstykke!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_GrundJordstykkeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_GrundJordstykke! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Opgang
+altLabel (da): Indgang
+comment (da): <memo>#NOTES#En bygning kan have en eller flere opgange, men en opgang kan kun ligge i en bygning. Tilsvarende kan der være en eller flere enheder knyttet til en opgang, men enheder kan kun være knyttet til en opgang.
+definition (da): <memo>#NOTES#en opgang er det primære adgangsgivende areal eller en indgangsdør, som giver adgang til hele eller væsentlige dele af en bygning
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+prefLabel (da): Opgang
+source: https://instruks.bbr.dk/instruks/0/30
+URI: https://data.gov.dk/model/profile/bbr/Opgang
+EAID: EAID_79D62409_AE6B_4e1b_9283_E7ABE77CB6F6
+"""
+type BBR_Opgang {
+  adgangFraHusnummer: String @cost(weight: "1")
+  bygning: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Elevator
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/opg020Elevator
+  prefLabel (da): Elevator
+  definition (da): angiver om der er elevator i opgangen/bygningen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  opg020Elevator: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: HusnummerRolle
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/opg021HusnummerRolle
+  prefLabel (da): Husnummer rolle
+  definition (da): angiver husnummerets funktion i forhold til opgangen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  opg021HusnummerFunktion: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/opg500Notatlinjer
+  prefLabel (da): Notatlinjer
+  definition (da): beskrivende tekstnotat om særlige forhold for dette BBR-element
+  altLabel (en): angives flere notatlinjer.
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  opg500Notatlinjer: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_OpgangConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_OpgangEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_Opgang!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_OpgangEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_Opgang! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Sagsniveau
+comment (da): <memo>#NOTES#For hver BBR-entitet holder sagsniveauet på relation mellem det objekt BBR-sagen vedrører (stamobjektet) og det objekt der indeholder oplysninger om ændring til stamobjektet (sagsobjektet). Ved Nybyggeri vil stam- og sagsobjektet være det samme, mens det for nedrivning eller til- og ombygning vil være objekter i hver deres livscyklus.
+definition (da): <memo>#NOTES#sagsniveau samler oplysninger om en BBR-entitets relation til den BBR Sag de indgår i
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+prefLabel (da): Sagsniveau
+source: https://instruks.bbr.dk/instruks/0/30
+URI: https://data.gov.dk/model/profile/bbr/Sagsniveau
+EAID: EAID_26A524FE_84B5_4ab2_B2E8_50E61410CCCA
+"""
+type BBR_Sagsniveau {
+  byggesag: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Niveautype
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/niveautype
+  prefLabel (da): Niveautype
+  definition (da): angiver typen af sags- go stamdata
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  niveautype: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  sagsdataBygning: String @cost(weight: "1")
+  sagsdataEnhed: String @cost(weight: "1")
+  sagsdataEtage: String @cost(weight: "1")
+  sagsdataGrund: String @cost(weight: "1")
+  sagsdataOpgang: String @cost(weight: "1")
+  sagsdataTekniskAnlaeg: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Sagstype
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/sagstype
+  prefLabel (da): Sagstype
+  definition (da): angiver sagstypen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  sagstype: String @cost(weight: "1")
+  stamdataBygning: String @cost(weight: "1")
+  stamdataEnhed: String @cost(weight: "1")
+  stamdataEtage: String @cost(weight: "1")
+  stamdataGrund: String @cost(weight: "1")
+  stamdataOpgang: String @cost(weight: "1")
+  stamdataTekniskAnlaeg: String @cost(weight: "1")
+  status: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_SagsniveauConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_SagsniveauEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_Sagsniveau!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_SagsniveauEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_Sagsniveau! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: TekniskAnlæg
+comment (da): <memo>#NOTES#Et Teknisk anlæg kan være fritstående eller placeret inde i en bygning.
+definition (da): <memo>#NOTES#et teknisk anlæg er en stedfast, klart afgrænset konstruktion, der er opført til et bestemt formål, og som ikke karakteriseres som en bygning
+example (da): <memo>#NOTES#Eksempler på tekniske anlæg er: Olietank, vindmølle, gyllebeholder, ajlebeholder, ensilagelager, planlager, halmfyr, biobrændselsalæg mm.
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+prefLabel (da): Teknisk anlæg
+source: https://instruks.bbr.dk/instruks/0/30
+URI: https://data.gov.dk/model/profile/bbr/TekniskAnlæg
+EAID: EAID_5D99491C_D18D_4404_8F4B_75DBCC40991B
+"""
+type BBR_TekniskAnlaeg {
+  bygning: String @cost(weight: "1")
+  bygningPaaFremmedGrund: String @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  ejerlejlighed: String @cost(weight: "1")
+  enhed: String @cost(weight: "1")
+  forretningshaendelse: String @cost(weight: "1")
+  forretningsomraade: String @cost(weight: "1")
+  forretningsproces: String @cost(weight: "1")
+  grund: String @cost(weight: "1")
+  husnummer: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String @cost(weight: "1")
+  jordstykke: String @cost(weight: "1")
+  kommunekode: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek007Anlægsnummer
+  prefLabel (da): Anlægsnummer
+  definition (da): angiver anlæggets nummer indenfor ejendommen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek007Anlaegsnummer: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Klassifikation
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek020Klassifikation
+  prefLabel (da): Klassifikation
+  definition (da): angiver det tekniske anlægs anvendelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek020Klassifikation: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek021FabrikatType
+  prefLabel (da): Fabrikat type
+  definition (da): angiver det tekniske anlægs fabrikattype
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek021FabrikatType: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek022EksternDatabase
+  prefLabel (da): Ekstern database
+  definition (da): angivelse af reference til ekstern database
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek022EksternDatabase: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek023EksternNøgle
+  prefLabel (da): Ekstern nøgle
+  definition (da): angiver unik teknisk nøgle til det tekniske anlæg
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek023EksternNoegle: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek024Etableringsår
+  prefLabel (da): Etableringsår
+  definition (da): angiver år for færdigetablering
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek024Etableringsaar: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek025TilOmbygningsår
+  prefLabel (da): Til-/ombygningsår
+  definition (da): angiver til/ombygningsår for det tekniske anlæg
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek025TilOmbygningsaar: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Størrelseklasse
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek026StørrelsesklasseOlietank
+  prefLabel (da): Størrelsesklasse olietank
+  definition (da): angiver størrelsesklasse af olietank
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek026StoerrelsesklasseOlietank: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Placering
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek027Placering
+  prefLabel (da): Placering
+  definition (da): angivelse af placering af tank
+  prefLabel (en): gas- og affaldsbeholder
+  altLabel (en): silo
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek027Placering: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Sløjfning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek028SløjfningOlietank
+  prefLabel (da): Sløjfning olietank
+  definition (da): angiver forhold for sløjfning af olietank
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek028SloejfningOlietank: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek030Fabrikationsnummer
+  prefLabel (da): Fabrikationsnummer
+  definition (da): tankens fabrikationsnummer
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek030Fabrikationsnummer: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek031Typegodkendelsesnr
+  prefLabel (da): Type godkendelsesnr
+  definition (da): angiver typegodkendelse af tank
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek031Typegodkendelsesnummer: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek032Størrelse
+  prefLabel (da): Størrelse
+  definition (da): angiver tankens størrelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek032Stoerrelse: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: TypeAfVægge
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek033Type
+  prefLabel (da): Type
+  definition (da): angiver olietankens type
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek033Type: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Indhold
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek034IndholdOlietank
+  prefLabel (da): Indhold olietank
+  definition (da): angiver tankens/olietankens Indhold
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek034IndholdOlietank: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek035SløjfningsfristOlietank
+  prefLabel (da): Sløjfningsfrist olietank
+  definition (da): angiver dato for frist for sløjfning af tank
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek035SloejfningsfristOlietank: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek036Rumfang
+  prefLabel (da): Rumfang
+  definition (da): angiver rumfang af teknisk anlæg
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek036Rumfang: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek037Areal
+  prefLabel (da): Areal
+  definition (da): angiver det bebyggede areal af teknisk anlæg
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek037Areal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek038Højde
+  prefLabel (da): Højde
+  definition (da): angiver det tekniske anlægs højde
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek038Hoejde: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek039Effekt
+  prefLabel (da): Effekt
+  definition (da): angiver effekt for et energiproducerende teknisk anlæg
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek039Effekt: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Fredning
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek040Fredning
+  prefLabel (da): Fredning
+  definition (da): angiver eventuel type af fredning der gælder for det teknisk anlæg
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek040Fredning: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek042Revisionsdato
+  prefLabel (da): Revisionsdato
+  definition (da): angiver revisionsdato for seneste ændring af geometrioplysninger
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek042Revisionsdato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Koordinatsystem
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek045Referencesystem
+  prefLabel (da): Referencesystem
+  definition (da): angiver geografisk koordinatsystem og projektion
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek045Koordinatsystem: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek067Fabrikationsår
+  prefLabel (da): Fabrikationsår
+  definition (da): angiver fabrikationsår for tanke
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek067Fabrikationsaar: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Materiale
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek068Materiale
+  prefLabel (da): Materiale
+  definition (da): angiver det materiale tanken er lavet af
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek068Materiale: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: SupplerendeIndvendigKorrosionsbeskyttelse
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek069SupplerendeIndvendigKorrosionsbeskyttelse
+  prefLabel (da): Supplerende indvendig korrosionsbeskyttelse
+  definition (da): angiver type af senest udførte supplerende indvendig korrosionsbeskyttelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek069SupplerendeIndvendigKorrosionsbeskyttelse: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek070DatoForSenestUdførteSupplerendeIndvendigKorrosionsbeskyttelse
+  prefLabel (da): Dato for senest udførte supplerende indvendig korrosionsbeskyttelse
+  definition (da): angiver dato for den senest udførte indvendige korrosionsbeskyttelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek070DatoForSenestUdfoerteSupplerendeIndvendigKorrosionsbeskyttelse: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek072Sløjfningsår
+  prefLabel (da): Sløjfningsår
+  definition (da): angiver årstal for sløjfning af tank
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek072Sloejfningsaar: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Real
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek073Navhøjde
+  prefLabel (da): Navhøjde
+  definition (da): angiver vindmøllens højde ved navet
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek073Navhoejde: Float @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek074Vindmøllenummer
+  prefLabel (da): Vindmøllenummer
+  definition (da): angiver den unikke identifikation af vindmøllen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek074Vindmoellenummer: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Real
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek075Rotordiameter
+  prefLabel (da): Rotordiameter
+  definition (da): angiver diameteren for rotoren på vindmøllen
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek075Rotordiameter: Float @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: KildeTilKoordinatsæt
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek076KildeTilKoordinatsæt
+  prefLabel (da): Kilde til koordinatsæt
+  definition (da): angiver kilden til geometrioplysninger
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek076KildeTilKoordinatsaet: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: KvalitetAfKoordinatsæt
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek077KvalitetAfKoordinatsæt
+  prefLabel (da): Kvalitet af koordinatsæt
+  definition (da): angiver kvaliteten af geometrioplysninger
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek077KvalitetAfKoordinatsaet: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: SupplerendeOplysningerOmKoordinatsæt
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek078SupplerendeOplysningOmKoordinatsæt
+  prefLabel (da): Supplerende oplysning om koordinatsæt
+  definition (da): angiver om det fysiske objekt
+  altLabel (en): ligger under eller over jorden
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek078SupplerendeOplysningOmKoordinatsaet: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek101Gyldighedsdato
+  prefLabel (da): Gyldighedsdato
+  definition (da): angiver gyldighedsdato i forbindelse med vurdering
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek101Gyldighedsdato: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek102FabrikatVindmølle
+  prefLabel (da): Fabrikat vindmølle
+  definition (da): angiver fabrikat på vindmølle
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek102FabrikatVindmoelle: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek103FabrikatOliefyr
+  prefLabel (da): Fabrikat oliefyr
+  definition (da): angiver fabrikat på oliefyr
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek103FabrikatOliefyr: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek104FabrikatSolcelleanlægSolvarme
+  prefLabel (da): Fabrikat solcelleanlæg solvarme
+  definition (da): angiver fabrikat på solcelleanlæg eller solvarmeanlæg
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek104FabrikatSolcelleanlaegSolvarme: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek105OverdækningTank
+  prefLabel (da): Overdækning tank
+  definition (da): angiver om tanken er overdækket
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek105OverdaekningTank: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek106InspektionsdatoTank
+  prefLabel (da): Inspektionsdato tank
+  definition (da): angiver dato for inspektion af tank
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek106InspektionsdatoTank: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: BygværkPåSøterritorie
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek107PlaceringPåSøterritorie
+  prefLabel (da): Placering på søterritorie
+  definition (da): angiver om teknisk anlæg ligger på søterritorie
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek107PlaceringPaaSoeterritorie: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek109Koordinat
+  prefLabel (da): Koordinat
+  definition (da): angiver det tekniske areals geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  tek109Koordinat: SpatialPointEpsg25832Type @cost(weight: "10")
+  """
+  Grunddatamodel info:
+  type: Driftstatus
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek110Driftstatus
+  prefLabel (da): Driftsstatus
+  definition (da): angiver om anlægget er i drift eller ikke
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek110Driftstatus: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek111DatoForSenesteInspektion
+  prefLabel (da): Dato for seneste inspektion
+  definition (da): information om tidspunktet for seneste inspektion af det tekniske anlæg
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek111DatoForSenesteInspektion: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek112InspicerendeVirksomhed
+  prefLabel (da): Inspicerende virksomhed
+  definition (da): information om virksomhed der udført seneste inspektion af det tekniske anlæg
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek112InspicerendeVirksomhed: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/bbr/tek500Notatlinjer
+  prefLabel (da): Notatlinjer
+  definition (da): beskrivende tekstnotat om særlige forhold for dette BBR-element
+  legalSource: https://www.retsinformation.dk/eli/lta/2019/797
+  source: https://instruks.bbr.dk/instruks/0/30
+  """
+  tek500Notatlinjer: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type BBR_TekniskAnlaegConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [BBR_TekniskAnlaegEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [BBR_TekniskAnlaeg!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type BBR_TekniskAnlaegEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: BBR_TekniskAnlaeg! @cost(weight: "10")
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "Indicates whether more edges exist following the set defined by the clients arguments."
+  hasNextPage: Boolean!
+  "Indicates whether more edges exist prior the set defined by the clients arguments."
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+"Query type for BBR - Bygnings- og Boligregistret"
+type Query {
+  BBR_BBRSag("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_BBRSagFilterInput): BBR_BBRSagConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  BBR_BygningEjendomsrelation("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_BygningEjendomsrelationFilterInput): BBR_BygningEjendomsrelationConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  BBR_Bygning("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_BygningFilterInput): BBR_BygningConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "5000")
+  BBR_Ejendomsrelation("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_EjendomsrelationFilterInput): BBR_EjendomsrelationConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "5000")
+  BBR_EnhedEjendomsrelation("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_EnhedEjendomsrelationFilterInput): BBR_EnhedEjendomsrelationConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  BBR_Enhed("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_EnhedFilterInput): BBR_EnhedConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "5000")
+  BBR_Etage("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_EtageFilterInput): BBR_EtageConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  BBR_FordelingAfFordelingsareal("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_FordelingAfFordelingsarealFilterInput): BBR_FordelingAfFordelingsarealConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  BBR_Fordelingsareal("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_FordelingsarealFilterInput): BBR_FordelingsarealConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  BBR_GrundJordstykke("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_GrundJordstykkeFilterInput): BBR_GrundJordstykkeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  BBR_Grund("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_GrundFilterInput): BBR_GrundConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  BBR_Opgang("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_OpgangFilterInput): BBR_OpgangConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "5000")
+  BBR_Sagsniveau("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_SagsniveauFilterInput): BBR_SagsniveauConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "5000")
+  BBR_TekniskAnlaeg("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: BBR_TekniskAnlaegFilterInput): BBR_TekniskAnlaegConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+}
+
+"Spatial Point type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialPointEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+input BBR_BBRSagFilterInput {
+  and: [BBR_BBRSagFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  forretningshaendelse: DafStringOperationFilterInput
+  forretningsomraade: DafStringOperationFilterInput
+  forretningsproces: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringsaktoer: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  sag001Byggesagsnummer: DafStringOperationFilterInput
+  sag003Byggetilladelsesdato: DafDateTimeOperationFilterInput
+  sag012Byggesagskode: DafStringOperationFilterInput
+  sag024DatoForModtagelseAfAnsoegningOmByggetilladelse: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningsaktoer: DafStringOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_BygningEjendomsrelationFilterInput {
+  and: [BBR_BygningEjendomsrelationFilterInput!]
+  bygning: DafStringOperationFilterInput
+  bygningPaaFremmedGrund: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_BygningFilterInput {
+  and: [BBR_BygningFilterInput!]
+  byg007Bygningsnummer: DafLongOperationFilterInput
+  byg021BygningensAnvendelse: DafStringOperationFilterInput
+  byg134KvalitetAfKoordinatsaet: DafStringOperationFilterInput
+  byg136PlaceringPaaSoeterritorie: DafStringOperationFilterInput
+  byg404Koordinat: SpatialFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  ejerlejlighed: DafStringOperationFilterInput
+  forretningshaendelse: DafStringOperationFilterInput
+  forretningsomraade: DafStringOperationFilterInput
+  forretningsproces: DafStringOperationFilterInput
+  grund: DafStringOperationFilterInput
+  husnummer: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  jordstykke: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringsaktoer: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningsaktoer: DafStringOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_EjendomsrelationFilterInput {
+  and: [BBR_EjendomsrelationFilterInput!]
+  bfeNummer: DafLongOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  ejendomstype: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  samletFastEjendom: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_EnhedEjendomsrelationFilterInput {
+  and: [BBR_EnhedEjendomsrelationFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  ejerlejlighed: DafStringOperationFilterInput
+  enhed: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_EnhedFilterInput {
+  and: [BBR_EnhedFilterInput!]
+  adresseIdentificerer: DafStringOperationFilterInput
+  bygning: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  enh008UUIDTilModerlejlighed: DafStringOperationFilterInput
+  enh020EnhedensAnvendelse: DafStringOperationFilterInput
+  enh023Boligtype: DafStringOperationFilterInput
+  etage: DafStringOperationFilterInput
+  forretningshaendelse: DafStringOperationFilterInput
+  forretningsomraade: DafStringOperationFilterInput
+  forretningsproces: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  opgang: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringsaktoer: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningsaktoer: DafStringOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_EtageFilterInput {
+  and: [BBR_EtageFilterInput!]
+  bygning: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  eta025Etagetype: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_FordelingAfFordelingsarealFilterInput {
+  and: [BBR_FordelingAfFordelingsarealFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_FordelingsarealFilterInput {
+  and: [BBR_FordelingsarealFilterInput!]
+  bygning: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_GrundFilterInput {
+  and: [BBR_GrundFilterInput!]
+  bestemtFastEjendom: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  forretningshaendelse: DafStringOperationFilterInput
+  forretningsomraade: DafStringOperationFilterInput
+  forretningsproces: DafStringOperationFilterInput
+  husnummer: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringsaktoer: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningsaktoer: DafStringOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_GrundJordstykkeFilterInput {
+  and: [BBR_GrundJordstykkeFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  grund: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  jordstykke: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_OpgangFilterInput {
+  and: [BBR_OpgangFilterInput!]
+  adgangFraHusnummer: DafStringOperationFilterInput
+  bygning: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_SagsniveauFilterInput {
+  and: [BBR_SagsniveauFilterInput!]
+  byggesag: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  sagsdataBygning: DafStringOperationFilterInput
+  sagsdataEnhed: DafStringOperationFilterInput
+  sagsdataEtage: DafStringOperationFilterInput
+  sagsdataGrund: DafStringOperationFilterInput
+  sagsdataOpgang: DafStringOperationFilterInput
+  sagsdataTekniskAnlaeg: DafStringOperationFilterInput
+  sagstype: DafStringOperationFilterInput
+  stamdataBygning: DafStringOperationFilterInput
+  stamdataEnhed: DafStringOperationFilterInput
+  stamdataEtage: DafStringOperationFilterInput
+  stamdataGrund: DafStringOperationFilterInput
+  stamdataOpgang: DafStringOperationFilterInput
+  stamdataTekniskAnlaeg: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input BBR_TekniskAnlaegFilterInput {
+  and: [BBR_TekniskAnlaegFilterInput!]
+  bygning: DafStringOperationFilterInput
+  bygningPaaFremmedGrund: DafStringOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  ejerlejlighed: DafStringOperationFilterInput
+  enhed: DafStringOperationFilterInput
+  grund: DafStringOperationFilterInput
+  husnummer: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  jordstykke: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  tek007Anlaegsnummer: DafLongOperationFilterInput
+  tek020Klassifikation: DafStringOperationFilterInput
+  tek077KvalitetAfKoordinatsaet: DafStringOperationFilterInput
+  tek106InspektionsdatoTank: DafDateTimeOperationFilterInput
+  tek107PlaceringPaaSoeterritorie: DafStringOperationFilterInput
+  tek109Koordinat: SpatialFilterInput
+  tek110Driftstatus: DafStringOperationFilterInput
+  tek111DatoForSenesteInspektion: DafDateTimeOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input DafDateTimeOperationFilterInput {
+  eq: DafDateTime @cost(weight: "1000")
+  gt: DafDateTime @cost(weight: "1000")
+  ngt: DafDateTime @cost(weight: "1000")
+  gte: DafDateTime @cost(weight: "1000")
+  ngte: DafDateTime @cost(weight: "1000")
+  lt: DafDateTime @cost(weight: "1000")
+  nlt: DafDateTime @cost(weight: "1000")
+  lte: DafDateTime @cost(weight: "1000")
+  nlte: DafDateTime @cost(weight: "1000")
+}
+
+input DafLongOperationFilterInput {
+  in: [Long!] @cost(weight: "1000")
+  eq: Long @cost(weight: "1000")
+  gt: Long @cost(weight: "1000")
+  ngt: Long @cost(weight: "1000")
+  gte: Long @cost(weight: "1000")
+  ngte: Long @cost(weight: "1000")
+  lt: Long @cost(weight: "1000")
+  nlt: Long @cost(weight: "1000")
+  lte: Long @cost(weight: "1000")
+  nlte: Long @cost(weight: "1000")
+}
+
+input DafStringOperationFilterInput {
+  eq: String @cost(weight: "1000")
+  in: [String!] @cost(weight: "1000")
+}
+
+"Filter type for the spatial method ST_Contains. Is applied as ST_Contains(A, B) where A is the register data field and B is the input value."
+input SpatialContainsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_CoveredBy. Is applied as ST_CoveredBy(A, B) where A is the register data field and B is the input value."
+input SpatialCoveredByOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Covers. Is applied as ST_Covers(A, B) where A is the register data field and B is the input value."
+input SpatialCoversOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Crosses. Is applied as ST_Crosses(A, B) where A is the register data field and B is the input value."
+input SpatialCrossesOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+input SpatialFilterInput {
+  and: [SpatialFilterInput!]
+  or: [SpatialFilterInput!]
+  contains: SpatialContainsOperationFilterInput @cost(weight: "5000")
+  covers: SpatialCoversOperationFilterInput @cost(weight: "5000")
+  crosses: SpatialCrossesOperationFilterInput @cost(weight: "5000")
+  intersects: SpatialIntersectsOperationFilterInput @cost(weight: "5000")
+  within: SpatialWithinOperationFilterInput @cost(weight: "5000")
+  overlaps: SpatialOverlapsOperationFilterInput @cost(weight: "5000")
+  touches: SpatialTouchesOperationFilterInput @cost(weight: "5000")
+  coveredBy: SpatialCoveredByOperationFilterInput @cost(weight: "5000")
+}
+
+"Filter type for the spatial method ST_Intersects. Is applied as ST_Intersects(A, B) where A is the register data field and B is the input value."
+input SpatialIntersectsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Overlaps. Is applied as ST_Overlaps(A, B) where A is the register data field and B is the input value."
+input SpatialOverlapsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Touches. Is applied as ST_Touches(A, B) where A is the register data field and B is the input value."
+input SpatialTouchesOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Within. Is applied as ST_Within(A, B) where A is the register data field and B is the input value."
+input SpatialWithinOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+enum SpatialDimensionEnumType {
+  XY
+  XYZ
+}
+
+enum SpatialGeometryNameEnumType {
+  Point
+  MultiPoint
+  LineString
+  MultiLineString
+  Polygon
+  MultiPolygon
+}
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost("The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc." weight: String!) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION
+
+"The purpose of the `@listSize` directive is to either inform the static analysis about the size of returned lists (if that information is statically available), or to point the analysis to where to find that information."
+directive @listSize("The `assumedSize` argument can be used to statically define the maximum length of a list returned by a field." assumedSize: Int "The `slicingArguments` argument can be used to define which of the field's arguments with numeric type are slicing arguments, so that their value determines the size of the list returned by that field. It may specify a list of multiple slicing arguments." slicingArguments: [String!] "The `slicingArgumentDefaultValue` argument can be used to define a default value for a slicing argument, which is used if the argument is not present in a query." slicingArgumentDefaultValue: Int "The `sizedFields` argument can be used to define that the value of the `assumedSize` argument or of a slicing argument does not affect the size of a list returned by a field itself, but that of a list returned by one of its sub-fields." sizedFields: [String!] "The `requireOneSlicingArgument` argument can be used to inform the static analysis that it should expect that exactly one of the defined slicing arguments is present in a query. If that is not the case (i.e., if none or multiple slicing arguments are present), the static analysis may throw an error." requireOneSlicingArgument: Boolean! = true) on FIELD_DEFINITION
+
+"The `@specifiedBy` directive is used within the type system definition language to provide a URL for specifying the behavior of custom scalar definitions."
+directive @specifiedBy("The specifiedBy URL points to a human-readable specification. This field will only read a result for scalar types." url: String!) on SCALAR
+
+"DateTime scalar as defined by https:\/\/scalars.graphql.org\/andimarek\/date-time.html but with 6 millisecond digits."
+scalar DafDateTime @specifiedBy(url: "https:\/\/datafordeler.dk\/")
+
+"The `Long` scalar type represents non-fractional signed whole 64-bit numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long

@@ -1,0 +1,3242 @@
+schema {
+  query: Query
+}
+
+interface SpatialInterfaceType {
+  "The OGC geometry type of the geometry."
+  type: SpatialGeometryNameEnumType!
+  "The coordinate reference system of the geometry."
+  crs: Int!
+  "The dimensions used by the geometry."
+  dimension: SpatialDimensionEnumType!
+  "The WKT representation of the geometry"
+  wkt: String
+}
+
+"""
+Grunddatamodel info:
+name: BygningPåFremmedGrundFlade
+dbName: BygningPaaFremmedGrundFlade
+definition (da): <memo>#NOTES#bygningPåFremmedGrund, som kan være geometrisk registreret med fladegeometri
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Bygning på fremmed grund flade
+transliteratedName: BygningPaaFremmedGrundFlade
+URI: https://data.gov.dk/model/profile/mu/bygningpåfremmedgrundflade
+EAID: EAID_A2B9B2EF_86F2_4f1d_87C0_1804A7071486
+"""
+type MAT_BygningPaaFremmedGrundFlade {
+  BFEnummer: Long @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/mu/bygningpaafremmedgrundfladegeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  dbName: geometri
+  sequenceNumber: 60
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  opdeltIEjerlejligheder: Boolean! @cost(weight: "1")
+  oprindelse: String! @cost(weight: "1")
+  paaHavet: Boolean! @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  rids: String @cost(weight: "1")
+  samletFastEjendomLokalId: String @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  StedbestemmelsesReference: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_BygningPaaFremmedGrundFladeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_BygningPaaFremmedGrundFladeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_BygningPaaFremmedGrundFlade!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_BygningPaaFremmedGrundFladeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_BygningPaaFremmedGrundFlade! @cost(weight: "10")
+}
+
+type MAT_BygningPaaFremmedGrundFlade_se {
+  BygningPaaFremmedGrundFladeobj: Long @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_BygningPaaFremmedGrundFlade_seConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_BygningPaaFremmedGrundFlade_seEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_BygningPaaFremmedGrundFlade_se!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_BygningPaaFremmedGrundFlade_seEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_BygningPaaFremmedGrundFlade_se! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: BygningPåFremmedGrundPunkt
+dbName: BygningPaaFremmedGrundPunkt
+definition (da): <memo>#NOTES#bygningPåFremmedGrund geometrisk registreret med punktgeometri
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Bygning på fremmed grund punkt
+transliteratedName: BygningPaaFremmedGrundPunkt
+URI: https://data.gov.dk/model/profile/mu/bygningpåfremmedgrundpunkt
+EAID: EAID_1C0A5E2D_83CC_43d5_A7D7_C5B4FABF6109
+"""
+type MAT_BygningPaaFremmedGrundPunkt {
+  BFEnummer: Long @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  dbName: geometri
+  sequenceNumber: 60
+  URI: https://data.gov.dk/model/profile/mu/bygningpaafremmedgrundpunktgeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPointEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  opdeltIEjerlejligheder: Boolean! @cost(weight: "1")
+  oprindelse: String! @cost(weight: "1")
+  paaHavet: Boolean! @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  rids: String @cost(weight: "1")
+  samletFastEjendomLokalId: String @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  StedbestemmelsesReference: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_BygningPaaFremmedGrundPunktConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_BygningPaaFremmedGrundPunktEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_BygningPaaFremmedGrundPunkt!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_BygningPaaFremmedGrundPunktEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_BygningPaaFremmedGrundPunkt! @cost(weight: "10")
+}
+
+type MAT_BygningPaaFremmedGrundPunkt_se {
+  BygningPaaFremmedGrundPunktobj: Long @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_BygningPaaFremmedGrundPunkt_seConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_BygningPaaFremmedGrundPunkt_seEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_BygningPaaFremmedGrundPunkt_se!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_BygningPaaFremmedGrundPunkt_seEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_BygningPaaFremmedGrundPunkt_se! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Centroide
+comment (da): <memo>#NOTES#punktet anvendes i Matriklen til dannelse af lodflader. Derudover anvendes centroiden som identifikation af jordstykket, hvis man som anvender ikke har lodfladen til rådighed, hvilket typisk er tilfældet ved CAD arbejde
+dbName: Centroide
+definition (da): <memo>#NOTES#repræsentativ punktgeometri for jordstykket, som er placeret inden i jordstykkets lodflade
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Centroide
+URI: https://data.gov.dk/model/profile/mu/centroide
+EAID: EAID_20AEBD93_4733_4d30_982E_742A35961F43
+"""
+type MAT_Centroide {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  sequenceNumber: 51
+  dbName: geometri
+  URI: https://data.gov.dk/model/profile/mu/centroidegeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPointEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  jordstykkeLokalId: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_CentroideConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_CentroideEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Centroide!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_CentroideEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Centroide! @cost(weight: "10")
+}
+
+type MAT_Centroide_sekundaerForretnings {
+  Centroideobjectid: Long @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_Centroide_sekundaerForretningsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_Centroide_sekundaerForretningsEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Centroide_sekundaerForretnings!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_Centroide_sekundaerForretningsEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Centroide_sekundaerForretnings! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Ejerlav
+dbName: Ejerlav
+definition (da): <memo>#NOTES#underinddeling af sogne i matrikulære distrikter
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Ejerlav
+URI: https://data.gov.dk/model/profile/mu/ejerlav
+EAID: EAID_D16E1BA2_F38E_4cc4_B59E_F35D4ADEE636
+"""
+type MAT_Ejerlav {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  dbName: ejerlavskode
+  sequenceNumber: 52
+  URI: https://data.gov.dk/model/profile/mu/ejerlavejerlavskode
+  prefLabel (da): ejerlavskode
+  definition (da): unik identifikation af det specifikke ejerlav
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  ejerlavskode: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  size: 100
+  dbName: ejerlavsnavn
+  sequenceNumber: 53
+  URI: https://data.gov.dk/model/profile/mu/ejerlavejerlavsnavn
+  prefLabel (da): ejerlavsnavn
+  definition (da): navnet på ejerlavet - normalt angivet ved ejerlav, sogn
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  ejerlavsnavn: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/ejerlavgeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  sequenceNumber: 51
+  dbName: geometri
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_EjerlavConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_EjerlavEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Ejerlav!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_EjerlavEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Ejerlav! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Ejerlejlighed
+comment (da): <memo>#NOTES#hver Ejerlejlighed har en selvstændig identitet, således at der kan tinglyses rettigheder på hver enkelt Ejerlejlighed. En Ejerlejlighed er del af en hovedejendom, som enten er en Samlet fast ejendom eller en Bygning på fremmed grund. Ejeren af en Ejerlejlighed ejer selve lejligheden, mens hovedejendommen med jordstykke, trapper m.v. normalt ejes af alle ejerlejlighedsejere i fælles sameje, efter ejerlejlighedernes fordelingstal
+dbName: Ejerlejlighed
+definition (da): <memo>#NOTES#lejlighed i en beboelsesejendom hvor hver enkelt lejlighed ejes særskilt og betragtes som selvstændig fast ejendom, mens de fælles dele og faciliteter ejes i fællesskab af en ejerforening
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Ejerlejlighed
+URI: https://data.gov.dk/model/profile/mu/ejerlejlighed
+EAID: EAID_0FD7270E_53D6_445d_9572_2D0AF6D9A83A
+"""
+type MAT_Ejerlejlighed {
+  b_BygningPaaFremmedGrundFladeL: String @cost(weight: "1")
+  b_BygningPaaFremmedGrundPunktL: String @cost(weight: "1")
+  BFEnummer: Long @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: URI
+  multiplicity: 0..1
+  sequenceNumber: 52
+  dbName: ejerlejlighedskort
+  URI: https://data.gov.dk/model/profile/mu/ejerlejlighedejerlejlighedskort
+  prefLabel (da): ejerlejlighedskort
+  definition (da): sagsbilag hvorpå geometrien for ejerlejligheden og eventuelle ejerlejlighedslodder er illustreret
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  ejerlejlighedskort: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  sequenceNumber: 53
+  dbName: ejerlejlighedsnummer
+  URI: https://data.gov.dk/model/profile/mu/ejerlejlighedejerlejlighedsnummer
+  prefLabel (da): ejerlejlighedsnummer
+  definition (da): identifikation af den enkelte ejerlejlighed der ligger i en hovedejendom
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  ejerlejlighedsnummer: String! @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  transliteratedName: fordelingstalNaevner
+  sequenceNumber: 54
+  dbName: fordelingstalNaevner
+  URI: https://data.gov.dk/model/profile/mu/ejerlejlighedfordelingstalNaevner
+  prefLabel (da): fordelingstal nævner
+  definition (da): udgør sammen med fordelingstalTæller ejerlejlighedens andel af ejendomsretten af den hovedejendom som ejerlejligheden indgår i
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  fordelingstalNaevner: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  sequenceNumber: 55
+  transliteratedName: fordelingstalTaeller
+  dbName: fordelingstalTaeller
+  URI: https://data.gov.dk/model/profile/mu/ejerlejlighedfordelingstalTaeller
+  prefLabel (da): fordelingstalTæller
+  definition (da): udgør sammen med fordelingstalNævner ejerlejlighedens andel af ejendomsretten af den hovedejendom som ejerlejligheden indgår i
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  fordelingstalTaeller: Long @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Boolean
+  multiplicity: 1
+  transliteratedName: iBygningPaaFremmedGrund
+  sequenceNumber: 56
+  size: 5
+  dbName: iBygningPaaFremmedGrund
+  URI: https://data.gov.dk/model/profile/mu/ejerlejlighedibygningpaafremmedgrund
+  prefLabel (da): i bygning på fremmed grund
+  definition (da): angiver, om ejerlejligheden er beliggende i en bygning på fremmed grund
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  iBygningPaaFremmedGrund: Boolean! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  sequenceNumber: 57
+  dbName: samletAreal
+  URI: https://data.gov.dk/model/profile/mu/ejerlejlighedsamletareal
+  prefLabel (da): samlet areal
+  definition (da): angiver det aktuelle, samlede areal for ejerlejligheden i kvadratmeter
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  samletAreal: Long @cost(weight: "1")
+  samletFastEjendomLokalId: String @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  StedbestemmelsesGeometri: String @cost(weight: "1")
+  StedbestemmelsesReference: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_EjerlejlighedConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_EjerlejlighedEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Ejerlejlighed!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_EjerlejlighedEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Ejerlejlighed! @cost(weight: "10")
+}
+
+type MAT_Ejerlejlighed_sekundaerForretn {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  Ejerlejlighedobjectid: Long @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_Ejerlejlighed_sekundaerForretnConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_Ejerlejlighed_sekundaerForretnEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Ejerlejlighed_sekundaerForretn!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_Ejerlejlighed_sekundaerForretnEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Ejerlejlighed_sekundaerForretn! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Ejerlejlighedslod
+comment (da): <memo>#NOTES#information vedr. ejerlejlighedslodder registreres i dag ikke i Tingbogen. Dvs. ved idriftsættelsestidspunktet af Matriklens Udvidelse vil der ikke findes ejerlejlighedslodder på eksisterende ejerlejligheder. Nye ejerlejligheder, der kommer ind efter idriftsættelse, vil bestå af én eller flere ejerlejlighedslodder. Formålet med at registrere ejerlejlighedslodder er primært at give mulighed for at landinspektører kan genbruge data i sager, hvor der sker forandring af <i>ejerlejligheder</i>
+dbName: Ejerlejlighedslod
+definition (da): <memo>#NOTES#en ejerlejlighed kan bestå af flere arealer, som er fysisk adskilt fra hinanden. Disse arealer kaldes ejerlejlighedslodder
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Ejerlejlighedslod
+URI: https://data.gov.dk/model/profile/mu/ejerlejlighedslod
+EAID: EAID_AE0F4880_729C_4cf7_A58E_F7CCAD504065
+"""
+type MAT_Ejerlejlighedslod {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  ejerlejlighedLokalId: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/ejerlejlighedslodetagebetegnelse
+  prefLabel (da): etagebetegnelse
+  definition (da): angivelse af hvilken etage ejerlejlighedslodden er beliggende på.
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  dbName: etagebetegnelse
+  sequenceNumber: 51
+  """
+  etagebetegnelse: String! @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/mu/ejerlejlighedslodgeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  dbName: geometri
+  sequenceNumber: 52
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  dbName: lodAreal
+  sequenceNumber: 53
+  URI: https://data.gov.dk/model/profile/mu/ejerlejlighedslodlodareal
+  prefLabel (da): lod areal
+  definition (da): det registrerede areal for det pågældende ejerlejlighedslod
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  lodAreal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  dbName: lodBeliggenhedstekst
+  sequenceNumber: 54
+  URI: https://data.gov.dk/model/profile/mu/ejerlejlighedslodlodbeliggenhedstekst
+  prefLabel (da): lod beliggenhedstekst
+  definition (da): tekst, der angiver ejerlejlighedsloddens beliggenhed i relation til hovedejendommen.
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  lodBeliggenhedstekst: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  sequenceNumber: 55
+  dbName: lodLitra
+  URI: https://data.gov.dk/model/profile/mu/ejerlejlighedslodlodlitra
+  prefLabel (da): lod litra
+  definition (da): bogstav, der bruges for at angive en underinddeling af en ejerlejlighed i ejerlejlighedslodder
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  lodLitra: String @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_EjerlejlighedslodConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_EjerlejlighedslodEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Ejerlejlighedslod!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_EjerlejlighedslodEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Ejerlejlighedslod! @cost(weight: "10")
+}
+
+type MAT_Ejerlejlighedslod_sekundaerFor {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  Ejerlejlighedslodobjectid: Long @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_Ejerlejlighedslod_sekundaerForConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_Ejerlejlighedslod_sekundaerForEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Ejerlejlighedslod_sekundaerFor!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_Ejerlejlighedslod_sekundaerForEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Ejerlejlighedslod_sekundaerFor! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Jordstykke
+comment (da): <memo>#NOTES#jordstykker kan selvstændigt eller i forening danne en Samlet fast ejendom. Et jordstykke kan enten være: et matrikuleret areal eller et umatrikuleret areal i form af udskilt, offentlig vej optaget i matriklen med matrikelnummer 7000 plus vejlitra.
+dbName: Jordstykke
+definition (da): <memo>#NOTES#areal på jordoverfladen som er afgrænset af matrikelskel
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Jordstykke
+URI: https://data.gov.dk/model/profile/mu/jordstykke
+EAID: EAID_8B60BEE8_D3BD_4c07_88FF_A2547A3D82D1
+"""
+type MAT_Jordstykke {
+  """
+  Grunddatamodel info:
+  type: Arealberegningsmetode
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/jordstykkearealberegningsmetode
+  prefLabel (da): arealberegningsmetode
+  definition (da): angivelse af beregningsmetoden for arealet på det pågældende jordstykke
+  size: 57
+  dbName: arealberegningsmetode
+  sequenceNumber: 51
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  arealberegningsmetode: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  dbName: arealbetegnelse
+  sequenceNumber: 52
+  URI: https://data.gov.dk/model/profile/mu/jordstykkearealbetegnelse
+  prefLabel (da): arealbetegnelse
+  definition (da): tekstlig beskrivelse af arealets art eller type
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  arealbetegnelse: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Arealtype
+  multiplicity: 0..1
+  sequenceNumber: 53
+  size: 18
+  dbName: arealtype
+  URI: https://data.gov.dk/model/profile/mu/jordstykkearealtype
+  prefLabel (da): arealtype
+  definition (da): den registrerede type for arealet
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  arealtype: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Boolean
+  multiplicity: 0..1
+  dbName: brugsretsareal
+  sequenceNumber: 54
+  size: 5
+  URI: https://data.gov.dk/model/profile/mu/jordstykkebrugsretsareal
+  prefLabel (da): brugsretsareal
+  definition (da): et areal, der er stiftet en brugsret over for højest 30 år, såfremt arealet udgør en del af en samlet fast ejendom, eller for højest 10 år, såfremt arealet udgør en del af en umatrikuleret ejendom
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  brugsretsareal: Boolean @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  dbName: delnummer
+  sequenceNumber: 55
+  URI: https://data.gov.dk/model/profile/mu/jordstykkedelnummer
+  prefLabel (da): delnummer
+  definition (da): midlertidigt nummer tildelt jordstykket inden det får tildelt det endelige matrikelnummer
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  delnummer: String @cost(weight: "1")
+  ejerlavLokalId: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Boolean
+  multiplicity: 1
+  dbName: faelleslod
+  sequenceNumber: 56
+  size: 5
+  URI: https://data.gov.dk/model/profile/mu/jordstykkefaelleslod
+  prefLabel (da): faelleslod
+  definition (da): angiver om jordstykket er et fælleslod og dermed indgår i flere faste ejendomme
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  faelleslod: Boolean! @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  fredskov_areal: Long @cost(weight: "1")
+  fredskov_omfang: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  jordrente_omfang: String @cost(weight: "1")
+  klitfredning_areal: Long @cost(weight: "1")
+  klitfredning_omfang: String @cost(weight: "1")
+  kommuneLokalId: String! @cost(weight: "1")
+  majoratsskov_nummer: Long @cost(weight: "1")
+  majoratsskov_omfang: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  sequenceNumber: 57
+  dbName: matrikelnummer
+  URI: https://data.gov.dk/model/profile/mu/jordstykkematrikelnummer
+  prefLabel (da): matrikelnummer
+  definition (da): entydig identifikation af et jordstykke inden for et ejerlav
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  matrikelnummer: String @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  regionLokalId: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  sequenceNumber: 58
+  dbName: registreretAreal
+  URI: https://data.gov.dk/model/profile/mu/jordstykkeregistreretAreal
+  prefLabel (da): registreret areal
+  definition (da): jordstykkets registrerede areal i Matriklen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  registreretAreal: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  samletFastEjendomLokalId: String! @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  skelforretningssagsLokalId: String @cost(weight: "1")
+  sognLokalId: String! @cost(weight: "1")
+  stammerFraJordstykkeLokalId: String @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  strandbeskyttelse_areal: Long @cost(weight: "1")
+  strandbeskyttelse_omfang: String @cost(weight: "1")
+  supplerendeMaalingSagLokalId: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Vandarealinkludering
+  multiplicity: 1
+  size: 9
+  dbName: vandarealinkludering
+  sequenceNumber: 59
+  URI: https://data.gov.dk/model/profile/mu/jordstykkevandarealinkludering
+  prefLabel (da): vandarealinkludering
+  definition (da): angivelse af om et eventuelt vandareal indenfor jordstykket indgår i det registrerede areal for jordstykket.
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  vandarealinkludering: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 0..1
+  dbName: vejareal
+  sequenceNumber: 60
+  URI: https://data.gov.dk/model/profile/mu/jordstykkevejareal
+  prefLabel (da): vejareal
+  definition (da): det i matriklen registrerede areal for en ikke udskilt vej på jordstykket
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  vejareal: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Vejarealberegningsstatus
+  multiplicity: 1
+  size: 20
+  dbName: vejarealberegningsstatus
+  sequenceNumber: 61
+  URI: https://data.gov.dk/model/profile/mu/jordstykkevejarealberegningsstatus
+  prefLabel (da): vejarealberegningsstatus
+  definition (da): angiver hvorvidt et eventuelt vejareal på jordstykket er beregnet
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  vejarealberegningsstatus: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_JordstykkeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_JordstykkeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Jordstykke!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_JordstykkeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Jordstykke! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: JordstykkeTemaflade
+dbName: JordstykkeTemaflade
+definition (da): <memo>#NOTES#en flade, der er dannet ved aggregering af temalinjer
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Jordstykke temaflade
+URI: https://data.gov.dk/model/profile/mu/jordstykketemaflade
+EAID: EAID_B8EC966B_3EA9_499b_841C_F3E24EDDB9EC
+"""
+type MAT_JordstykkeTemaflade {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/jordstykketemafladegeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  sequenceNumber: 51
+  dbName: geometri
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  jordstykkeLokalId: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  sequenceNumber: 52
+  dbName: temaFladeID
+  URI: https://data.gov.dk/model/profile/mu/jordstykketemafladetemafladeid
+  prefLabel (da): temaFladeID
+  definition (da): unik identifikation af temafladen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  temaFladeID: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Tematype
+  multiplicity: 1
+  size: 17
+  sequenceNumber: 53
+  dbName: tematype
+  URI: https://data.gov.dk/model/profile/mu/jordstykketemafladetematype
+  prefLabel (da): tematype
+  definition (da): typen af tema der er registreret på det pågældende jordstykke
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  tematype: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_JordstykkeTemafladeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_JordstykkeTemafladeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_JordstykkeTemaflade!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_JordstykkeTemafladeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_JordstykkeTemaflade! @cost(weight: "10")
+}
+
+type MAT_JordstykkeTemaflade_sekundaerF {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  JordstykkeTemafladeobjectid: Long @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_JordstykkeTemaflade_sekundaerFConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_JordstykkeTemaflade_sekundaerFEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_JordstykkeTemaflade_sekundaerF!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_JordstykkeTemaflade_sekundaerFEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_JordstykkeTemaflade_sekundaerF! @cost(weight: "10")
+}
+
+type MAT_Jordstykke_sekundaerForretning {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  Jordstykkeobjectid: Long @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_Jordstykke_sekundaerForretningConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_Jordstykke_sekundaerForretningEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Jordstykke_sekundaerForretning!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_Jordstykke_sekundaerForretningEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Jordstykke_sekundaerForretning! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Stormfald
+dbName: Stormfald
+definition (da): <memo>#NOTES#registrering af udbetalt tilskud til oprydning eller gentilplantning af private fredskove, der er væltet som følge af storme.
+historikmodel: bitemporalitet
+prefLabel (da): Stormfald
+URI: https://data.gov.dk/model/profile/mu/stormfald
+EAID: EAID_5A41FCE2_7F8D_4856_B99D_0B0FD2419CDB
+"""
+type MAT_Jordstykke_stormfald {
+  """
+  Grunddatamodel info:
+  type: Date
+  multiplicity: 1
+  dbName: betalingsdato
+  URI: https://data.gov.dk/model/profile/mu/stormfaldbetalingsdato
+  prefLabel (da): betalingsdato
+  definition (da): tidspunkt hvor udbetaling af stormfaldstilskud er startet
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  betalingsdato: LocalDate! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  Jordstykkeobjectid: Long @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Omfang
+  multiplicity: 1
+  size: 6
+  dbName: omfang
+  URI: https://data.gov.dk/model/profile/mu/stormfaldomfang
+  prefLabel (da): omfang
+  definition (da): angiver hvor stor en del af jordstykket der er omfattet af registreringen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  omfang: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Date
+  multiplicity: 1
+  transliteratedName: ophoersdato
+  dbName: ophoersdato
+  URI: https://data.gov.dk/model/profile/mu/stormfaldophoersdato
+  prefLabel (da): ophørsdato
+  definition (da): tidspunkt hvor udbetaling af stormfaldstilskud er ophørt
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  ophoersdato: LocalDate! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  dbName: SNSJournalNummer
+  URI: https://data.gov.dk/model/profile/mu/stormfaldsnsjournalnummer
+  prefLabel (da): SNSJournalNummer
+  definition (da): det af Naturstyrelsen angivne journalnummer på en stormfaldssag
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  SNSJournalNummer: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Tilskudstype
+  multiplicity: 1
+  size: 30
+  dbName: tilskudstype
+  URI: https://data.gov.dk/model/profile/mu/stormfaldtilskudstype
+  prefLabel (da): tilskudstype
+  definition (da): typen af tilskud det registrerede stormfald er omfattet af
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  tilskudstype: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_Jordstykke_stormfaldConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_Jordstykke_stormfaldEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Jordstykke_stormfald!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_Jordstykke_stormfaldEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Jordstykke_stormfald! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Lodflade
+comment (da): <memo>#NOTES#bemærk at Lodflade er et MatrikulærtElement i sig selv. Dvs. Lodflade og Jordstykke kan ændres uafhængigt af hinanden
+dbName: Lodflade
+definition (da): <memo>#NOTES#repræsentativ fladegeometri for jordstykket, som dannes ud fra de omkringliggende matrikelskel
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Lodflade
+URI: https://data.gov.dk/model/profile/mu/lodflade
+EAID: EAID_7C2C3988_3D69_446c_B5EB_B1979990AAC4
+"""
+type MAT_Lodflade {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 1
+  dbName: geometri
+  sequenceNumber: 51
+  URI: https://data.gov.dk/model/profile/mu/lodfladegeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  jordstykkeLokalId: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_LodfladeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_LodfladeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Lodflade!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_LodfladeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Lodflade! @cost(weight: "10")
+}
+
+type MAT_Lodflade_sekundaerForretningsh {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  Lodfladeobjectid: Long @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_Lodflade_sekundaerForretningshConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_Lodflade_sekundaerForretningshEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Lodflade_sekundaerForretningsh!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_Lodflade_sekundaerForretningshEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Lodflade_sekundaerForretningsh! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: MatrikelKommune
+dbName: MatrikelKommune
+definition (da): <memo>#NOTES#geometrisk inddeling af kommune pba. registreringer i matrikelregisteret
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Matrikel kommune
+URI: https://data.gov.dk/model/profile/mu/matrikelkommune
+EAID: EAID_D18B68C2_8EC9_449c_BE43_AB8FC7530417
+"""
+type MAT_MatrikelKommune {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/matrikelkommunegeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  dbName: geometri
+  sequenceNumber: 51
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/matrikelkommunekommunekode
+  prefLabel (da): kommunekode
+  definition (da): den 4-cifrede CPR-kode tilhørende kommunen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  dbName: kommunekode
+  sequenceNumber: 53
+  size: 4
+  """
+  kommunekode: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/matrikelkommunekommunenavn
+  prefLabel (da): kommunenavn
+  definition (da): navnet tilhørende kommunen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  size: 100
+  dbName: kommunenavn
+  sequenceNumber: 52
+  """
+  kommunenavn: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_MatrikelKommuneConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_MatrikelKommuneEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_MatrikelKommune!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_MatrikelKommuneEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_MatrikelKommune! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: MatrikelRegion
+dbName: MatrikelRegion
+definition (da): <memo>#NOTES#geometrisk inddeling af region pba. registreringer i Matriklen
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Matrikel region
+URI: https://data.gov.dk/model/profile/mu/matrikelregion
+EAID: EAID_4A61194E_84F8_4b73_BE48_9CE51D86C7AB
+"""
+type MAT_MatrikelRegion {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/matrikelregionregionskode
+  size: 4
+  dbName: regionskode
+  sequenceNumber: 51
+  prefLabel (da): regionskode
+  definition (da): koden tilhørende regionen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  regionskode: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  dbName: regionsnavn
+  sequenceNumber: 52
+  size: 100
+  URI: https://data.gov.dk/model/profile/mu/matrikelregionregionsnavn
+  prefLabel (da): regionsnavn
+  definition (da): navnet tilhørende regionen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  regionsnavn: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_MatrikelRegionConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_MatrikelRegionEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_MatrikelRegion!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_MatrikelRegionEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_MatrikelRegion! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: MatrikelSogn
+dbName: MatrikelSogn
+definition (da): <memo>#NOTES#geometrisk inddeling af sogn pba. registreringer i matrikelregisteret
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Matrikel sogn
+URI: https://data.gov.dk/model/profile/mu/matrikelsogn
+EAID: EAID_FF5DDBDB_9330_41cb_B0E5_F0B7B0DC390E
+"""
+type MAT_MatrikelSogn {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/matrikelsogngeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  dbName: geometri
+  sequenceNumber: 51
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/matrikelsognsognekode
+  prefLabel (da): sognekode
+  definition (da): den 4-cifrede CPR-kode tilhørende sognet
+  dbName: sognekode
+  sequenceNumber: 53
+  size: 4
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  sognekode: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/matrikelsognsognenavn
+  prefLabel (da): sognenavn
+  definition (da): navnet tilhørende sognet
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  dbName: sognenavn
+  sequenceNumber: 52
+  size: 100
+  """
+  sognenavn: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_MatrikelSognConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_MatrikelSognEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_MatrikelSogn!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_MatrikelSognEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_MatrikelSogn! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Matrikelskel
+comment (da): <memo>#NOTES#et matrikelskel er typisk en linje, men hvis skellet følger en cirkelbue, vil cirkelbuen blive repræsenteret ved en polylinje
+dbName: Matrikelskel
+definition (da): <memo>#NOTES#en linje eller en polylinje (cirkelbue), der – sammen med mindst ét andet matrikelskel - afgrænser et jordstykke
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Matrikelskel
+URI: https://data.gov.dk/model/profile/mu/matrikelskel
+EAID: EAID_766A020A_E8DD_409e_BE5D_9B221F3D798F
+"""
+type MAT_Matrikelskel {
+  """
+  Grunddatamodel info:
+  type: Grænsekode
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/matrikelskeladministrativgraensekode
+  prefLabel (da): administrativ grænseKode
+  size: 33
+  dbName: administrativGraenseKode
+  transliteratedName: administrativGraenseKode
+  sequenceNumber: 51
+  definition (da): angivelse af hvilke administrative inddelinger, der er sammenfaldende med skellet
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  administrativGraenseKode: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Curve
+  multiplicity: 1
+  dbName: geometri
+  sequenceNumber: 52
+  URI: https://data.gov.dk/model/profile/mu/matrikelskelgeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialLineStringEpsg25832Type @cost(weight: "10")
+  hoejreJordstykkeLokalId: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  sequenceNumber: 53
+  dbName: oprindelseJournalnummer
+  URI: https://data.gov.dk/model/profile/mu/matrikelskeloprindelsejournalnummer
+  prefLabel (da): oprindelseJournalnummer
+  definition (da): identifikation af den sag, via journalnummer, som indeholder de måloplysninger der er brugt til at angive objektets placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  oprindelseJournalnummer: String @cost(weight: "1")
+  oprindelsessagsLokalId: String @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Produktionsmetode
+  multiplicity: 1
+  sequenceNumber: 54
+  size: 78
+  dbName: produktionsmetode
+  URI: https://data.gov.dk/model/profile/mu/matrikelskelproduktionsmetode
+  prefLabel (da): produktionsmetode
+  definition (da): angivelse af hvilken metode og baggrundsmateriale, som matrikelskellet er produceret ved hjælp af
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  produktionsmetode: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  skelforretningssagsLokalId: String @cost(weight: "1")
+  skelpunkt_1LokalId: String! @cost(weight: "1")
+  skelpunkt_2LokalId: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Skeltype
+  multiplicity: 1
+  size: 11
+  dbName: skeltype
+  sequenceNumber: 55
+  URI: https://data.gov.dk/model/profile/mu/matrikelskelskeltype
+  prefLabel (da): skeltype
+  definition (da): klassifikation af skellet ud fra skelhierarki
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  skeltype: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  dbName: transformationsId
+  sequenceNumber: 56
+  URI: https://data.gov.dk/model/profile/mu/matrikelskeltransformationsid
+  prefLabel (da): transformationsId
+  definition (da): transformationsID er en fortløbende nummerering af transformationerne inden for det enkelte ejerlav
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  transformationsId: Long @cost(weight: "1")
+  venstreJordstykkeLokalId: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_MatrikelskelConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_MatrikelskelEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Matrikelskel!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_MatrikelskelEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Matrikelskel! @cost(weight: "10")
+}
+
+type MAT_Matrikelskel_sekundaerForretni {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  Matrikelskelobjectid: Long @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_Matrikelskel_sekundaerForretniConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_Matrikelskel_sekundaerForretniEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Matrikelskel_sekundaerForretni!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_Matrikelskel_sekundaerForretniEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Matrikelskel_sekundaerForretni! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: MatrikulærSag
+dbName: MatrikulaerSag
+definition (da): <memo>#NOTES#helheden af de faktorer og omstændigheder der knytter sig til en matrikulær sag
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Matrikulærsag
+transliteratedName: MatrikulaerSag
+URI: https://data.gov.dk/model/profile/mu/matrikulaersag
+EAID: EAID_D999DCC5_B933_4e45_86E0_FE9CB2B28FBC
+"""
+type MAT_MatrikulaerSag {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  ejerlavLokalId: String @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: MatrikulærSagForretningshændelse
+  multiplicity: 1
+  sequenceNumber: 7
+  dbName: forretningshaendelse
+  size: 62
+  transliteratedName: forretningshaendelse
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagforretningshaendelse
+  prefLabel (da): forretningshændelse
+  definition (da): den begivenhed i virkeligheden som udløste ændringen i data
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  forretningshaendelse: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: MatrikelForretningsområde
+  multiplicity: 1
+  transliteratedName: forretningsomraade
+  sequenceNumber: 8
+  dbName: forretningsomraade
+  size: 8
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagforretningsomraade
+  prefLabel (da): forretningsområde
+  definition (da): den del af den offentlige forretning der håndterer hændelsen og derved udvirker ændringen i data
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  forretningsomraade: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Sagskategori
+  multiplicity: 1
+  dbName: forretningsproces
+  size: 42
+  sequenceNumber: 9
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagforretningsproces
+  prefLabel (da): forretningsproces
+  definition (da): den manuelle eller IT-understøttede proces hvori forretningsområdet håndterer hændelsen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 0..1
+  dbName: geometri
+  sequenceNumber: 22
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersaggeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  jordstykkeLokalId: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Date
+  multiplicity: 0..1
+  dbName: journaliseringsdato
+  sequenceNumber: 10
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagjournaliseringsdato
+  prefLabel (da): journaliseringsdato
+  definition (da): dato for den dag, hvor sagen er journaliseret af matrikelmyndigheden.
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  journaliseringsdato: LocalDate @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  dbName: kommune
+  sequenceNumber: 11
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagkommune
+  prefLabel (da): kommune
+  definition (da): den kommune matrikelnummeret hører til og som er blevet brugt til at stedfæste sagen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  kommune: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  sequenceNumber: 12
+  oracleName: matrikelmyndighedensJournalnum
+  dbName: matrikelmyndighedensJournalnum
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagmatrikelmyndighedensjournalnummer
+  prefLabel (da): matrikelmyndighedensJournalnummer
+  definition (da): det unikke sagsnummer som er tildelt af matrikelmyndigheden.
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  matrikelmyndighedensJournalnum: String @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  sequenceNumber: 13
+  dbName: registreringFra
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagregistreringfra
+  prefLabel (da): registrering fra
+  definition (da): tidspunktet hvor registreringen af versionen af forretningsobjektet er foretaget
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  registreringFra: DafDateTime! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  dbName: registreringsaktoer
+  transliteratedName: registreringsaktoer
+  sequenceNumber: 14
+  definition (da): den aktør der har foretaget registreringen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagregistreringsaktoer
+  prefLabel (da): registreringsaktør
+  """
+  registreringsaktoer: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 0..1
+  dbName: registreringTil
+  sequenceNumber: 15
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagregistreringtil
+  prefLabel (da): registrering til
+  definition (da): tidspunktet hvor versionen af et forretningsobjekt enten er blevet erstattet af en nyere version eller er logisk slettet.
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  dbName: rekvirentRef
+  sequenceNumber: 16
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagrekvirentfef
+  prefLabel (da): rekvirentRef
+  definition (da): den sagsansvarliges (ofte landinspektørens) eget journalnummer for sagen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  rekvirentRef: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  dbName: sagstitel
+  sequenceNumber: 17
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagsagstitel
+  prefLabel (da): sagstitel
+  definition (da): den repræsentative tekst, der beskriver sagen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  sagstitel: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Sagsstatus
+  multiplicity: 1
+  dbName: status
+  size: 40
+  sequenceNumber: 18
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagstatus
+  prefLabel (da): status
+  definition (da): angivelse af hvor sagen er i sin livscyklus
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  status: String! @cost(weight: "1")
+  StedbestemmelsesGeometri: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  sequenceNumber: 19
+  dbName: virkningFra
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagvirkningfra
+  prefLabel (da): virkning fra
+  definition (da): tidspunktet hvorfra forretningsobjektet har virkning
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  virkningFra: DafDateTime! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  dbName: virkningsaktoer
+  transliteratedName: virkningsaktoer
+  sequenceNumber: 20
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagvirkningsaktoer
+  prefLabel (da): virkningsaktør
+  definition (da): den aktør der har afstedkommet forvaltningsobjektets virkning
+  """
+  virkningsaktoer: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 0..1
+  dbName: virkningTil
+  sequenceNumber: 21
+  URI: https://data.gov.dk/model/profile/mu/matrikulaersagvirkningtil
+  prefLabel (da): virkning til
+  definition (da): tidspunktet hvor forretningsobjektets virkning ophører
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_MatrikulaerSagConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_MatrikulaerSagEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_MatrikulaerSag!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_MatrikulaerSagEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_MatrikulaerSag! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: SagsoperationType
+dbName: SagsoperationType
+definition (da): <memo>#NOTES#type med kode og betegnelse for en sagsoperation
+historikmodel: bitemporalitet
+prefLabel (da): Sagsoperation type
+URI: https://data.gov.dk/model/profile/mu/sagsoperationtype
+EAID: EAID_EBF89E48_CBB8_4049_8A52_E55AE94D178B
+"""
+type MAT_MatrikulaerSag_sagsoperation {
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/sagsoperationtypebetegnelse
+  prefLabel (da): betegnelse
+  definition (da): betegnelse for sagsoperationen
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  dbName: betegnelse
+  """
+  betegnelse: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/sagsoperationtypekode
+  prefLabel (da): kode
+  definition (da): kode for sagsoperationen
+  dbName: kode
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  kode: String! @cost(weight: "1")
+  MatrikulaerSagobjectid: Long @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_MatrikulaerSag_sagsoperationConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_MatrikulaerSag_sagsoperationEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_MatrikulaerSag_sagsoperation!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_MatrikulaerSag_sagsoperationEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_MatrikulaerSag_sagsoperation! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Nullinje
+comment (da): <memo>#NOTES#grænsen er fastlagt af den i henhold til § 4 i lov nr. 143 af 17. juni 1929 nedsatte kommission
+dbName: Nullinje
+definition (da): <memo>#NOTES#nullinjen i Nissum Fjord angiver grænsen for henholdsvis statens og strandejernes ejendomsret
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Nullinje
+URI: https://data.gov.dk/model/profile/mu/nullinje
+EAID: EAID_02530814_DE45_45ce_B12D_0AF41DC1663B
+"""
+type MAT_Nullinje {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Curve
+  multiplicity: 1
+  dbName: geometri
+  sequenceNumber: 51
+  URI: https://data.gov.dk/model/profile/mu/nullinjegeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialLineStringEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_NullinjeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_NullinjeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Nullinje!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_NullinjeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Nullinje! @cost(weight: "10")
+}
+
+type MAT_Nullinje_sekundaerForretningsh {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  Nullinjeobjectid: Long @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_Nullinje_sekundaerForretningshConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_Nullinje_sekundaerForretningshEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Nullinje_sekundaerForretningsh!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_Nullinje_sekundaerForretningshEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Nullinje_sekundaerForretningsh! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: OptagetVej
+dbName: OptagetVej
+definition (da): <memo>#NOTES#registrering af vej og sti, som tjener som adgang til anden ejendom, og som ikke er udskilt med eget vejlitra eller matrikelnummer
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Optaget vej
+URI: https://data.gov.dk/model/profile/mu/optagetVej
+EAID: EAID_6548492B_C1ED_4195_9E26_08FF64EB9CE4
+"""
+type MAT_OptagetVej {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Curve
+  multiplicity: 1
+  sequenceNumber: 51
+  dbName: geometri
+  URI: https://data.gov.dk/model/profile/mu/optagetvejgeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialLineStringEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Produktionsmetode
+  multiplicity: 1
+  size: 78
+  sequenceNumber: 52
+  dbName: produktionsmetode
+  URI: https://data.gov.dk/model/profile/mu/optagetvejproduktionsmetode
+  prefLabel (da): produktionsmetode
+  definition (da): angivelse af hvilken metode og baggrundsmateriale, som vejen er produceret ved hjælp af
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  produktionsmetode: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  sequenceNumber: 55
+  dbName: transformationsId
+  URI: https://data.gov.dk/model/profile/mu/optagetvejtransformationsid
+  prefLabel (da): transformationsId
+  definition (da): transformationsID er en fortløbende nummerering af transformationerne inden for det enkelte ejerlav
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  transformationsId: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Real
+  multiplicity: 0..1
+  sequenceNumber: 53
+  dbName: vejbredde
+  URI: https://data.gov.dk/model/profile/mu/optagetvejvejbredde
+  prefLabel (da): vejbredde
+  definition (da): vejens bredde
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  vejbredde: Float @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Vejtype
+  multiplicity: 0..1
+  size: 8
+  sequenceNumber: 54
+  dbName: vejtype
+  URI: https://data.gov.dk/model/profile/mu/optagetvejvejtype
+  prefLabel (da): vejtype
+  definition (da): angiver typen af vej ud fra dens oprindelse
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  vejtype: String @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_OptagetVejConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_OptagetVejEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_OptagetVej!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_OptagetVejEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_OptagetVej! @cost(weight: "10")
+}
+
+type MAT_OptagetVej_sekundaerForretning {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  OptagetVejobjectid: Long @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_OptagetVej_sekundaerForretningConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_OptagetVej_sekundaerForretningEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_OptagetVej_sekundaerForretning!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_OptagetVej_sekundaerForretningEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_OptagetVej_sekundaerForretning! @cost(weight: "10")
+}
+
+type MAT_SAMLETFASTEJENDOM_X_JORDSTYKKE {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  Jordstykkeobjectid: Long @cost(weight: "1")
+  SamletFastEjendomobjectid: Long @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_SAMLETFASTEJENDOM_X_JORDSTYKKEConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_SAMLETFASTEJENDOM_X_JORDSTYKKEEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_SAMLETFASTEJENDOM_X_JORDSTYKKE!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_SAMLETFASTEJENDOM_X_JORDSTYKKEEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_SAMLETFASTEJENDOM_X_JORDSTYKKE! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: SamletFastEjendom
+comment (da): <memo>#NOTES#begrebet er knyttet til arealer på jordoverfladen og er fysisk bestemt ved det eller de jordstykker, der indgår i den samlede faste ejendom (se definition af Jordstykke).Parcelhusgrunde vil normalt kun bestå af ét Jordstykke, hvorimod landbrugsejendomme ofte består af flere Jordstykker
+dbName: SamletFastEjendom
+definition (da): <memo>#NOTES#en vedvarende forening af et eller flere jordstykker som tilsammen udgør én ejendom
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Samlet fast ejendom
+URI: https://data.gov.dk/model/profile/mu/samletfastejendom
+EAID: EAID_9C1A6CF4_25D6_4e28_949F_D45BA79F9EF1
+"""
+type MAT_SamletFastEjendom {
+  """
+  Grunddatamodel info:
+  type: Boolean
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/mu/samletfastejendomarbejderbolig
+  prefLabel (da): arbejderbolig
+  definition (da): angiver om den samlede faste ejendom er en arbejderbolig
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  sequenceNumber: 51
+  dbName: arbejderbolig
+  size: 5
+  """
+  arbejderbolig: Boolean @cost(weight: "1")
+  BFEnummer: Long @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Boolean
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/samletfastejendomerfaelleslod
+  prefLabel (da): erFælleslod
+  definition (da): angiver, at typen af samlet fast ejendom er fælleslod
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  sequenceNumber: 52
+  dbName: erFaelleslod
+  transliteratedName: erFaelleslod
+  size: 5
+  """
+  erFaelleslod: Boolean! @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 1
+  sequenceNumber: 53
+  dbName: geometri
+  URI: https://data.gov.dk/model/profile/mu/samletfastejendomgeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  """
+  Grunddatamodel info:
+  type: Boolean
+  multiplicity: 1
+  oracleName: hovedejendomOpdeltIEjerlejligh
+  size: 5
+  sequenceNumber: 54
+  dbName: hovedejendomOpdeltIEjerlejligh
+  URI: https://data.gov.dk/model/profile/mu/samletfastejendomhovedejendomopdeltiejerlejligheder
+  prefLabel (da): hovedejendom opdelt i ejerlejligheder
+  definition (da): angiver, om den pågældende samlede faste ejendom er registreret som hovedejendom og opdelt i ejerlejligheder
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  hovedejendomOpdeltIEjerlejligh: Boolean! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Landbrugsnotering
+  multiplicity: 0..1
+  dbName: landbrugsnotering
+  size: 21
+  sequenceNumber: 55
+  URI: https://data.gov.dk/model/profile/mu/samletfastejendomlandbrugsnotering
+  prefLabel (da): landbrugsnotering
+  definition (da): angiver hvorvidt ejendommen er noteret som landbrugsejendom og derfor har landbrugspligt
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  landbrugsnotering: String @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  StedbestemmelsesReference: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Boolean
+  multiplicity: 1
+  sequenceNumber: 56
+  dbName: udskiltVej
+  size: 5
+  URI: https://data.gov.dk/model/profile/mu/samletfastejendomudskiltvej
+  prefLabel (da): udskilt vej
+  definition (da): angiver, om der er tale om en udskilt, offentlig vej med selvstændigt matrikelnummer
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  udskiltVej: Boolean! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_SamletFastEjendomConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_SamletFastEjendomEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_SamletFastEjendom!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_SamletFastEjendomEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_SamletFastEjendom! @cost(weight: "10")
+}
+
+type MAT_SamletFastEjendom_sekundaerFor {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  SamletFastEjendomobjectid: Long @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_SamletFastEjendom_sekundaerForConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_SamletFastEjendom_sekundaerForEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_SamletFastEjendom_sekundaerFor!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_SamletFastEjendom_sekundaerForEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_SamletFastEjendom_sekundaerFor! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Skelpunkt
+dbName: Skelpunkt
+definition (da): <memo>#NOTES#et punkt, der angiver et matrikelskels start eller slut
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Skelpunkt
+URI: https://data.gov.dk/model/profile/mu/skelpunkt
+EAID: EAID_CB7FE8B2_2081_4710_9348_B2241DCB4A96
+"""
+type MAT_Skelpunkt {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/skelpunktgeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  sequenceNumber: 51
+  dbName: geometri
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPointEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Indlægningstype
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/mu/skelpunktindlaegningstype
+  prefLabel (da): indlægningstype
+  definition (da): angiver den måde hvorpå det pågældende skelpunkt er indlagt i matrikelkortet
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  size: 49
+  dbName: indlaegningstype
+  transliteratedName: indlaegningstype
+  sequenceNumber: 52
+  """
+  indlaegningstype: String! @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  dbName: oprindelseJournalnummer
+  sequenceNumber: 53
+  URI: https://data.gov.dk/model/profile/mu/skelpunktoprindelsejournalnummer
+  prefLabel (da): oprindelse journalnummer
+  definition (da): identifikation af den sag, via journalnummer, som indeholder de måloplysninger der er brugt til at angive objektets placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  oprindelseJournalnummer: String @cost(weight: "1")
+  oprindelsessagsLokalId: String @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Produktionsmetode
+  multiplicity: 1
+  size: 78
+  dbName: produktionsmetode
+  sequenceNumber: 54
+  URI: https://data.gov.dk/model/profile/mu/skelpunktproduktionsmetode
+  prefLabel (da): produktionsmetode
+  definition (da): angivelse af hvilken metode og baggrundsmateriale, som skelpunktet er produceret ved hjælp af
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  produktionsmetode: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: PunktKlasse
+  multiplicity: 1
+  size: 42
+  dbName: punktKlasse
+  sequenceNumber: 55
+  URI: https://data.gov.dk/model/profile/mu/skelpunktpunktklasse
+  prefLabel (da): punktKlasse
+  definition (da): klassificering af punktet i forhold til målemetode mv
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  punktKlasse: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  supplerendeMaalingSagsLokalId: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  sequenceNumber: 56
+  dbName: transformationsId
+  URI: https://data.gov.dk/model/profile/mu/skelpunkttransformationsid
+  prefLabel (da): transformationsId
+  definition (da): transformationsID er en fortløbende nummerering af transformationerne inden for det enkelte ejerlav
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  transformationsId: Long @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_SkelpunktConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_SkelpunktEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Skelpunkt!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_SkelpunktEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Skelpunkt! @cost(weight: "10")
+}
+
+type MAT_Skelpunkt_sekundaerForretnings {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+  Skelpunktobjectid: Long @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_Skelpunkt_sekundaerForretningsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_Skelpunkt_sekundaerForretningsEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Skelpunkt_sekundaerForretnings!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_Skelpunkt_sekundaerForretningsEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Skelpunkt_sekundaerForretnings! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Temalinje
+comment (da): <memo>#NOTES#en temalinje kan skære flere jordstykker
+dbName: Temalinje
+definition (da): <memo>#NOTES#linje til registrering af afgrænsning for strandbeskyttelse, klitfredning, fredskov
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+prefLabel (da): Temalinje
+URI: https://data.gov.dk/model/profile/mu/temalinje
+EAID: EAID_4C640774_E725_4355_888E_968B26F7AC6A
+"""
+type MAT_Temalinje {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Forløb
+  multiplicity: 1
+  size: 27
+  dbName: forloeb
+  transliteratedName: forloeb
+  sequenceNumber: 51
+  URI: https://data.gov.dk/model/profile/mu/temalinjeforloeb
+  prefLabel (da): forløb
+  definition (da): hvordan linjerne skal håndteres i forbindelse med ændringer i det aktuelle skelbillede
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  forloeb: String! @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Curve
+  multiplicity: 1
+  sequenceNumber: 52
+  dbName: geometri
+  URI: https://data.gov.dk/model/profile/mu/temalinjegeometri
+  prefLabel (da): geometri
+  definition (da): objektets geografiske placering
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialLineStringEpsg25832Type @cost(weight: "10")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  matrikelskelLokalId: String @cost(weight: "1")
+  objectid: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  dbName: originalTemafladeID
+  sequenceNumber: 53
+  URI: https://data.gov.dk/model/profile/mu/temalinjeoriginaltemafladeid
+  prefLabel (da): original temafladeID
+  definition (da): reference til den originale temaflade i matrikelsystemet
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  originalTemafladeID: String @cost(weight: "1")
+  paataenktHandling: String @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  senesteSagLokalId: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Tematype
+  multiplicity: 1
+  size: 17
+  dbName: tematype
+  sequenceNumber: 54
+  URI: https://data.gov.dk/model/profile/mu/temalinjetematype
+  prefLabel (da): tematype
+  definition (da): typen af temalinje der er registreret på det pågældende jordstykke
+  legalSource: https://www.retsinformation.dk/eli/lta/2018/769
+  """
+  tematype: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_TemalinjeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_TemalinjeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Temalinje!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_TemalinjeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Temalinje! @cost(weight: "10")
+}
+
+type MAT_Temalinje_sekundaerForretnings {
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  sekundaerForretningshaendelse: String! @cost(weight: "1")
+  Temalinjeobjectid: Long @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type MAT_Temalinje_sekundaerForretningsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [MAT_Temalinje_sekundaerForretningsEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [MAT_Temalinje_sekundaerForretnings!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type MAT_Temalinje_sekundaerForretningsEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: MAT_Temalinje_sekundaerForretnings! @cost(weight: "10")
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "Indicates whether more edges exist following the set defined by the clients arguments."
+  hasNextPage: Boolean!
+  "Indicates whether more edges exist prior the set defined by the clients arguments."
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+"Query type for MAT - Matriklen2"
+type Query {
+  MAT_BygningPaaFremmedGrundFlade_se("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_BygningPaaFremmedGrundFlade_seFilterInput): MAT_BygningPaaFremmedGrundFlade_seConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_BygningPaaFremmedGrundFlade("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_BygningPaaFremmedGrundFladeFilterInput): MAT_BygningPaaFremmedGrundFladeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_BygningPaaFremmedGrundPunkt_se("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_BygningPaaFremmedGrundPunkt_seFilterInput): MAT_BygningPaaFremmedGrundPunkt_seConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_BygningPaaFremmedGrundPunkt("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_BygningPaaFremmedGrundPunktFilterInput): MAT_BygningPaaFremmedGrundPunktConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Centroide_sekundaerForretnings("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_Centroide_sekundaerForretningsFilterInput): MAT_Centroide_sekundaerForretningsConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Centroide("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_CentroideFilterInput): MAT_CentroideConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Ejerlav("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_EjerlavFilterInput): MAT_EjerlavConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Ejerlejlighed_sekundaerForretn("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_Ejerlejlighed_sekundaerForretnFilterInput): MAT_Ejerlejlighed_sekundaerForretnConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Ejerlejlighedslod_sekundaerFor("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_Ejerlejlighedslod_sekundaerForFilterInput): MAT_Ejerlejlighedslod_sekundaerForConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Ejerlejlighedslod("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_EjerlejlighedslodFilterInput): MAT_EjerlejlighedslodConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Ejerlejlighed("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_EjerlejlighedFilterInput): MAT_EjerlejlighedConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Jordstykke_sekundaerForretning("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_Jordstykke_sekundaerForretningFilterInput): MAT_Jordstykke_sekundaerForretningConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Jordstykke_stormfald("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_Jordstykke_stormfaldFilterInput): MAT_Jordstykke_stormfaldConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_JordstykkeTemaflade_sekundaerF("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_JordstykkeTemaflade_sekundaerFFilterInput): MAT_JordstykkeTemaflade_sekundaerFConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_JordstykkeTemaflade("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_JordstykkeTemafladeFilterInput): MAT_JordstykkeTemafladeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Jordstykke("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_JordstykkeFilterInput): MAT_JordstykkeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Lodflade_sekundaerForretningsh("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_Lodflade_sekundaerForretningshFilterInput): MAT_Lodflade_sekundaerForretningshConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Lodflade("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_LodfladeFilterInput): MAT_LodfladeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_MatrikelKommune("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_MatrikelKommuneFilterInput): MAT_MatrikelKommuneConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_MatrikelRegion("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_MatrikelRegionFilterInput): MAT_MatrikelRegionConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Matrikelskel_sekundaerForretni("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_Matrikelskel_sekundaerForretniFilterInput): MAT_Matrikelskel_sekundaerForretniConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Matrikelskel("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_MatrikelskelFilterInput): MAT_MatrikelskelConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "5000")
+  MAT_MatrikelSogn("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_MatrikelSognFilterInput): MAT_MatrikelSognConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_MatrikulaerSag_sagsoperation("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_MatrikulaerSag_sagsoperationFilterInput): MAT_MatrikulaerSag_sagsoperationConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_MatrikulaerSag("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_MatrikulaerSagFilterInput): MAT_MatrikulaerSagConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Nullinje_sekundaerForretningsh("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_Nullinje_sekundaerForretningshFilterInput): MAT_Nullinje_sekundaerForretningshConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Nullinje("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_NullinjeFilterInput): MAT_NullinjeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_OptagetVej_sekundaerForretning("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_OptagetVej_sekundaerForretningFilterInput): MAT_OptagetVej_sekundaerForretningConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_OptagetVej("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_OptagetVejFilterInput): MAT_OptagetVejConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_SamletFastEjendom_sekundaerFor("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_SamletFastEjendom_sekundaerForFilterInput): MAT_SamletFastEjendom_sekundaerForConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_SAMLETFASTEJENDOM_X_JORDSTYKKE("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_SAMLETFASTEJENDOM_X_JORDSTYKKEFilterInput): MAT_SAMLETFASTEJENDOM_X_JORDSTYKKEConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_SamletFastEjendom("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_SamletFastEjendomFilterInput): MAT_SamletFastEjendomConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Skelpunkt_sekundaerForretnings("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_Skelpunkt_sekundaerForretningsFilterInput): MAT_Skelpunkt_sekundaerForretningsConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Skelpunkt("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_SkelpunktFilterInput): MAT_SkelpunktConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "5000")
+  MAT_Temalinje_sekundaerForretnings("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: MAT_Temalinje_sekundaerForretningsFilterInput): MAT_Temalinje_sekundaerForretningsConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  MAT_Temalinje("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: MAT_TemalinjeFilterInput): MAT_TemalinjeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+}
+
+"Spatial LineString type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialLineStringEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+"Spatial MultiPolygon type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialMultiPolygonEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+"Spatial Point type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialPointEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+"Spatial Polygon type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialPolygonEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+input DafBooleanOperationFilterInput {
+  eq: Boolean @cost(weight: "1000")
+  neq: Boolean @cost(weight: "1000")
+}
+
+input DafDateTimeOperationFilterInput {
+  eq: DafDateTime @cost(weight: "1000")
+  gt: DafDateTime @cost(weight: "1000")
+  ngt: DafDateTime @cost(weight: "1000")
+  gte: DafDateTime @cost(weight: "1000")
+  ngte: DafDateTime @cost(weight: "1000")
+  lt: DafDateTime @cost(weight: "1000")
+  nlt: DafDateTime @cost(weight: "1000")
+  lte: DafDateTime @cost(weight: "1000")
+  nlte: DafDateTime @cost(weight: "1000")
+}
+
+input DafLocalDateOperationFilterInput {
+  eq: LocalDate @cost(weight: "1000")
+  gt: LocalDate @cost(weight: "1000")
+  ngt: LocalDate @cost(weight: "1000")
+  gte: LocalDate @cost(weight: "1000")
+  ngte: LocalDate @cost(weight: "1000")
+  lt: LocalDate @cost(weight: "1000")
+  nlt: LocalDate @cost(weight: "1000")
+  lte: LocalDate @cost(weight: "1000")
+  nlte: LocalDate @cost(weight: "1000")
+}
+
+input DafLongOperationFilterInput {
+  in: [Long!] @cost(weight: "1000")
+  eq: Long @cost(weight: "1000")
+  gt: Long @cost(weight: "1000")
+  ngt: Long @cost(weight: "1000")
+  gte: Long @cost(weight: "1000")
+  ngte: Long @cost(weight: "1000")
+  lt: Long @cost(weight: "1000")
+  nlt: Long @cost(weight: "1000")
+  lte: Long @cost(weight: "1000")
+  nlte: Long @cost(weight: "1000")
+}
+
+input DafStringOperationFilterInput {
+  eq: String @cost(weight: "1000")
+  in: [String!] @cost(weight: "1000")
+}
+
+input MAT_BygningPaaFremmedGrundFladeFilterInput {
+  and: [MAT_BygningPaaFremmedGrundFladeFilterInput!]
+  BFEnummer: DafLongOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  forretningshaendelse: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  opdeltIEjerlejligheder: DafBooleanOperationFilterInput
+  paaHavet: DafBooleanOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  samletFastEjendomLokalId: DafStringOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_BygningPaaFremmedGrundFlade_seFilterInput {
+  and: [MAT_BygningPaaFremmedGrundFlade_seFilterInput!]
+  BygningPaaFremmedGrundFladeobj: DafLongOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_BygningPaaFremmedGrundPunktFilterInput {
+  and: [MAT_BygningPaaFremmedGrundPunktFilterInput!]
+  BFEnummer: DafLongOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  forretningshaendelse: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  opdeltIEjerlejligheder: DafBooleanOperationFilterInput
+  paaHavet: DafBooleanOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  samletFastEjendomLokalId: DafStringOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_BygningPaaFremmedGrundPunkt_seFilterInput {
+  and: [MAT_BygningPaaFremmedGrundPunkt_seFilterInput!]
+  BygningPaaFremmedGrundPunktobj: DafLongOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_CentroideFilterInput {
+  and: [MAT_CentroideFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  jordstykkeLokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_Centroide_sekundaerForretningsFilterInput {
+  and: [MAT_Centroide_sekundaerForretningsFilterInput!]
+  Centroideobjectid: DafLongOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_EjerlavFilterInput {
+  and: [MAT_EjerlavFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  ejerlavskode: DafLongOperationFilterInput
+  ejerlavsnavn: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_EjerlejlighedFilterInput {
+  and: [MAT_EjerlejlighedFilterInput!]
+  b_BygningPaaFremmedGrundFladeL: DafStringOperationFilterInput
+  b_BygningPaaFremmedGrundPunktL: DafStringOperationFilterInput
+  BFEnummer: DafLongOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  ejerlejlighedsnummer: DafStringOperationFilterInput
+  forretningshaendelse: DafStringOperationFilterInput
+  iBygningPaaFremmedGrund: DafBooleanOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  samletAreal: DafLongOperationFilterInput
+  samletFastEjendomLokalId: DafStringOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_Ejerlejlighed_sekundaerForretnFilterInput {
+  and: [MAT_Ejerlejlighed_sekundaerForretnFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  Ejerlejlighedobjectid: DafLongOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_EjerlejlighedslodFilterInput {
+  and: [MAT_EjerlejlighedslodFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  ejerlejlighedLokalId: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  lodAreal: DafLongOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_Ejerlejlighedslod_sekundaerForFilterInput {
+  and: [MAT_Ejerlejlighedslod_sekundaerForFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  Ejerlejlighedslodobjectid: DafLongOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_JordstykkeFilterInput {
+  and: [MAT_JordstykkeFilterInput!]
+  arealberegningsmetode: DafStringOperationFilterInput
+  arealbetegnelse: DafStringOperationFilterInput
+  arealtype: DafStringOperationFilterInput
+  brugsretsareal: DafBooleanOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  delnummer: DafStringOperationFilterInput
+  ejerlavLokalId: DafStringOperationFilterInput
+  faelleslod: DafBooleanOperationFilterInput
+  forretningshaendelse: DafStringOperationFilterInput
+  fredskov_areal: DafLongOperationFilterInput
+  fredskov_omfang: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  jordrente_omfang: DafStringOperationFilterInput
+  klitfredning_areal: DafLongOperationFilterInput
+  klitfredning_omfang: DafStringOperationFilterInput
+  kommuneLokalId: DafStringOperationFilterInput
+  majoratsskov_nummer: DafLongOperationFilterInput
+  majoratsskov_omfang: DafStringOperationFilterInput
+  matrikelnummer: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  regionLokalId: DafStringOperationFilterInput
+  registreretAreal: DafLongOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  samletFastEjendomLokalId: DafStringOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  skelforretningssagsLokalId: DafStringOperationFilterInput
+  sognLokalId: DafStringOperationFilterInput
+  stammerFraJordstykkeLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  strandbeskyttelse_areal: DafLongOperationFilterInput
+  strandbeskyttelse_omfang: DafStringOperationFilterInput
+  supplerendeMaalingSagLokalId: DafStringOperationFilterInput
+  vejareal: DafLongOperationFilterInput
+  vejarealberegningsstatus: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_JordstykkeTemafladeFilterInput {
+  and: [MAT_JordstykkeTemafladeFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  jordstykkeLokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  temaFladeID: DafLongOperationFilterInput
+}
+
+input MAT_JordstykkeTemaflade_sekundaerFFilterInput {
+  and: [MAT_JordstykkeTemaflade_sekundaerFFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  JordstykkeTemafladeobjectid: DafLongOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_Jordstykke_sekundaerForretningFilterInput {
+  and: [MAT_Jordstykke_sekundaerForretningFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  Jordstykkeobjectid: DafLongOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_Jordstykke_stormfaldFilterInput {
+  and: [MAT_Jordstykke_stormfaldFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  Jordstykkeobjectid: DafLongOperationFilterInput
+  objectid: DafLongOperationFilterInput
+}
+
+input MAT_LodfladeFilterInput {
+  and: [MAT_LodfladeFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  jordstykkeLokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+}
+
+input MAT_Lodflade_sekundaerForretningshFilterInput {
+  and: [MAT_Lodflade_sekundaerForretningshFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  Lodfladeobjectid: DafLongOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_MatrikelKommuneFilterInput {
+  and: [MAT_MatrikelKommuneFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  kommunekode: DafStringOperationFilterInput
+  kommunenavn: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_MatrikelRegionFilterInput {
+  and: [MAT_MatrikelRegionFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+}
+
+input MAT_MatrikelSognFilterInput {
+  and: [MAT_MatrikelSognFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  sognekode: DafStringOperationFilterInput
+  sognenavn: DafStringOperationFilterInput
+}
+
+input MAT_MatrikelskelFilterInput {
+  and: [MAT_MatrikelskelFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  hoejreJordstykkeLokalId: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  oprindelseJournalnummer: DafStringOperationFilterInput
+  oprindelsessagsLokalId: DafStringOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  skelforretningssagsLokalId: DafStringOperationFilterInput
+  skelpunkt_1LokalId: DafStringOperationFilterInput
+  skelpunkt_2LokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  venstreJordstykkeLokalId: DafStringOperationFilterInput
+}
+
+input MAT_Matrikelskel_sekundaerForretniFilterInput {
+  and: [MAT_Matrikelskel_sekundaerForretniFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  Matrikelskelobjectid: DafLongOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_MatrikulaerSagFilterInput {
+  and: [MAT_MatrikulaerSagFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  forretningsproces: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  jordstykkeLokalId: DafStringOperationFilterInput
+  journaliseringsdato: DafLocalDateOperationFilterInput
+  kommune: DafStringOperationFilterInput
+  matrikelmyndighedensJournalnum: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  rekvirentRef: DafStringOperationFilterInput
+  sagstitel: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningsaktoer: DafStringOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_MatrikulaerSag_sagsoperationFilterInput {
+  and: [MAT_MatrikulaerSag_sagsoperationFilterInput!]
+  betegnelse: DafStringOperationFilterInput
+  kode: DafStringOperationFilterInput
+  MatrikulaerSagobjectid: DafLongOperationFilterInput
+  objectid: DafLongOperationFilterInput
+}
+
+input MAT_NullinjeFilterInput {
+  and: [MAT_NullinjeFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+}
+
+input MAT_Nullinje_sekundaerForretningshFilterInput {
+  and: [MAT_Nullinje_sekundaerForretningshFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  Nullinjeobjectid: DafLongOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_OptagetVejFilterInput {
+  and: [MAT_OptagetVejFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_OptagetVej_sekundaerForretningFilterInput {
+  and: [MAT_OptagetVej_sekundaerForretningFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  OptagetVejobjectid: DafLongOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_SAMLETFASTEJENDOM_X_JORDSTYKKEFilterInput {
+  and: [MAT_SAMLETFASTEJENDOM_X_JORDSTYKKEFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  Jordstykkeobjectid: DafLongOperationFilterInput
+  SamletFastEjendomobjectid: DafLongOperationFilterInput
+}
+
+input MAT_SamletFastEjendomFilterInput {
+  and: [MAT_SamletFastEjendomFilterInput!]
+  arbejderbolig: DafBooleanOperationFilterInput
+  BFEnummer: DafLongOperationFilterInput
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  erFaelleslod: DafBooleanOperationFilterInput
+  forretningshaendelse: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  hovedejendomOpdeltIEjerlejligh: DafBooleanOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  landbrugsnotering: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  udskiltVej: DafBooleanOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_SamletFastEjendom_sekundaerForFilterInput {
+  and: [MAT_SamletFastEjendom_sekundaerForFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  SamletFastEjendomobjectid: DafLongOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+}
+
+input MAT_SkelpunktFilterInput {
+  and: [MAT_SkelpunktFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  oprindelseJournalnummer: DafStringOperationFilterInput
+  oprindelsessagsLokalId: DafStringOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  registreringFra: DafDateTimeOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  supplerendeMaalingSagsLokalId: DafStringOperationFilterInput
+  virkningFra: DafDateTimeOperationFilterInput
+  virkningTil: DafDateTimeOperationFilterInput
+}
+
+input MAT_Skelpunkt_sekundaerForretningsFilterInput {
+  and: [MAT_Skelpunkt_sekundaerForretningsFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+  Skelpunktobjectid: DafLongOperationFilterInput
+}
+
+input MAT_TemalinjeFilterInput {
+  and: [MAT_TemalinjeFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  matrikelskelLokalId: DafStringOperationFilterInput
+  objectid: DafLongOperationFilterInput
+  originalTemafladeID: DafStringOperationFilterInput
+  paataenktHandling: DafStringOperationFilterInput
+  senesteSagLokalId: DafStringOperationFilterInput
+  status: DafStringOperationFilterInput
+  tematype: DafStringOperationFilterInput
+}
+
+input MAT_Temalinje_sekundaerForretningsFilterInput {
+  and: [MAT_Temalinje_sekundaerForretningsFilterInput!]
+  datafordelerOpdateringstid: DafDateTimeOperationFilterInput
+  sekundaerForretningshaendelse: DafStringOperationFilterInput
+  Temalinjeobjectid: DafLongOperationFilterInput
+}
+
+"Filter type for the spatial method ST_Contains. Is applied as ST_Contains(A, B) where A is the register data field and B is the input value."
+input SpatialContainsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_CoveredBy. Is applied as ST_CoveredBy(A, B) where A is the register data field and B is the input value."
+input SpatialCoveredByOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Covers. Is applied as ST_Covers(A, B) where A is the register data field and B is the input value."
+input SpatialCoversOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Crosses. Is applied as ST_Crosses(A, B) where A is the register data field and B is the input value."
+input SpatialCrossesOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+input SpatialFilterInput {
+  and: [SpatialFilterInput!]
+  or: [SpatialFilterInput!]
+  contains: SpatialContainsOperationFilterInput @cost(weight: "5000")
+  covers: SpatialCoversOperationFilterInput @cost(weight: "5000")
+  crosses: SpatialCrossesOperationFilterInput @cost(weight: "5000")
+  intersects: SpatialIntersectsOperationFilterInput @cost(weight: "5000")
+  within: SpatialWithinOperationFilterInput @cost(weight: "5000")
+  overlaps: SpatialOverlapsOperationFilterInput @cost(weight: "5000")
+  touches: SpatialTouchesOperationFilterInput @cost(weight: "5000")
+  coveredBy: SpatialCoveredByOperationFilterInput @cost(weight: "5000")
+}
+
+"Filter type for the spatial method ST_Intersects. Is applied as ST_Intersects(A, B) where A is the register data field and B is the input value."
+input SpatialIntersectsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Overlaps. Is applied as ST_Overlaps(A, B) where A is the register data field and B is the input value."
+input SpatialOverlapsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Touches. Is applied as ST_Touches(A, B) where A is the register data field and B is the input value."
+input SpatialTouchesOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Within. Is applied as ST_Within(A, B) where A is the register data field and B is the input value."
+input SpatialWithinOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+enum SpatialDimensionEnumType {
+  XY
+  XYZ
+}
+
+enum SpatialGeometryNameEnumType {
+  Point
+  MultiPoint
+  LineString
+  MultiLineString
+  Polygon
+  MultiPolygon
+}
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost("The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc." weight: String!) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION
+
+"The purpose of the `@listSize` directive is to either inform the static analysis about the size of returned lists (if that information is statically available), or to point the analysis to where to find that information."
+directive @listSize("The `assumedSize` argument can be used to statically define the maximum length of a list returned by a field." assumedSize: Int "The `slicingArguments` argument can be used to define which of the field's arguments with numeric type are slicing arguments, so that their value determines the size of the list returned by that field. It may specify a list of multiple slicing arguments." slicingArguments: [String!] "The `slicingArgumentDefaultValue` argument can be used to define a default value for a slicing argument, which is used if the argument is not present in a query." slicingArgumentDefaultValue: Int "The `sizedFields` argument can be used to define that the value of the `assumedSize` argument or of a slicing argument does not affect the size of a list returned by a field itself, but that of a list returned by one of its sub-fields." sizedFields: [String!] "The `requireOneSlicingArgument` argument can be used to inform the static analysis that it should expect that exactly one of the defined slicing arguments is present in a query. If that is not the case (i.e., if none or multiple slicing arguments are present), the static analysis may throw an error." requireOneSlicingArgument: Boolean! = true) on FIELD_DEFINITION
+
+"The `@specifiedBy` directive is used within the type system definition language to provide a URL for specifying the behavior of custom scalar definitions."
+directive @specifiedBy("The specifiedBy URL points to a human-readable specification. This field will only read a result for scalar types." url: String!) on SCALAR
+
+"DateTime scalar as defined by https:\/\/scalars.graphql.org\/andimarek\/date-time.html but with 6 millisecond digits."
+scalar DafDateTime @specifiedBy(url: "https:\/\/datafordeler.dk\/")
+
+"The `LocalDate` scalar type represents a ISO date string, represented as UTF-8 character sequences YYYY-MM-DD. The scalar follows the specification defined in RFC3339"
+scalar LocalDate
+
+"The `Long` scalar type represents non-fractional signed whole 64-bit numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long

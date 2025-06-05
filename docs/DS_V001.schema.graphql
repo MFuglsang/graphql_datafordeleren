@@ -1,0 +1,3093 @@
+schema {
+  query: Query
+}
+
+interface SpatialInterfaceType {
+  "The OGC geometry type of the geometry."
+  type: SpatialGeometryNameEnumType!
+  "The coordinate reference system of the geometry."
+  crs: Int!
+  "The dimensions used by the geometry."
+  dimension: SpatialDimensionEnumType!
+  "The WKT representation of the geometry"
+  wkt: String
+}
+
+"""
+Grunddatamodel info:
+name: Adgangspunkt
+comment (da): <memo>#NOTES#Benyttes på objekter med en større geografisk udstrækning, og hvor objektet ikke er frit tilgængeligt fra alle retninger. Adgangspunktet placeres inden for eller tæt på objektets polygon hvor der er adgang fra vej eller sti.
+definition (da): <memo>#NOTES#udpeger en adgang ind på eller ind i det relaterede objekt
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+oneToManyReferenceColumnName: navngivetSted_
+prefLabel (da): Adgangspunkt
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Adgangspunkt
+EAID: EAID_7EFC9592_2C67_4a48_B456_77DFD58575A6
+"""
+type DS_Adgangspunkt {
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/adgangsbeskrivelse
+  prefLabel (da): adgangsbeskrivelse
+  definition (da): adgangsvejens funktion i daglig drift
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  adgangsbeskrivelse: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPointEpsg25832Type @cost(weight: "10")
+  navngivetSted_objectid: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_AdgangspunktConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_AdgangspunktEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Adgangspunkt!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_AdgangspunktEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Adgangspunkt! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: AndenTopografiFlade
+definition (da): <memo>#NOTES#topografisk fladeobjekter der ikke falder ind i en af Danske Stednavnes øvrige objekttyper
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Anden topografi flade
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/AndenTopografiFlade
+EAID: EAID_2E4A4112_7146_49d5_9847_095136A0A278
+"""
+type DS_AndenTopografiFlade {
+  andenTopografiType: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af en AndenTopografiFlade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk figur
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_AndenTopografiFladeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_AndenTopografiFladeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_AndenTopografiFlade!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_AndenTopografiFladeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_AndenTopografiFlade! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: AndenTopografiPunkt
+definition (da): <memo>#NOTES#topografisk punktobjekter der ikke falder ind i en af Danske Stednavnes øvrige objekttyper
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Anden topografi punkt
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/AndenTopografiPunkt
+EAID: EAID_7622B7BD_BF17_47c2_9039_F436D23EFC9D
+"""
+type DS_AndenTopografiPunkt {
+  andenTopografiType: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPointEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_AndenTopografiPunktConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_AndenTopografiPunktEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_AndenTopografiPunkt!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_AndenTopografiPunktEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_AndenTopografiPunkt! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Bebyggelse
+definition (da): <memo>#NOTES#samling af bygninger
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Bebyggelse
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Bebyggelse
+EAID: EAID_BBA10ED5_92AC_42a5_84A5_9A6E3544921A
+"""
+type DS_Bebyggelse {
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af en Bebyggelse som flade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/sn/bebyggelseskode
+  prefLabel (da): bebyggelseskode
+  definition (da): unik 5-cifret kode der identificerer en by eller et sommerhusområde
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  bebyggelseskode: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: BebyggelseVærdi
+  multiplicity: 1
+  size: 20
+  URI: https://data.gov.dk/model/profile/sn/bebyggelsestype
+  prefLabel (da): bebyggelsestype
+  definition (da): underinddeling af Bebyggelse på baggrund af bebyggelsens bygningsmæssige karakteristik
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  bebyggelsestype: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DanmarksStatistikVærdi
+  multiplicity: 0..1
+  size: 6
+  URI: https://data.gov.dk/model/profile/sn/danmarksStatistik
+  prefLabel (da): danmarks statistik
+  definition (da): beskrivelse af hvorvidt Danmarks Statistik er kilde til attributten "indbyggertal"
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  danmarksStatistik: String @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/sn/indbyggertal
+  prefLabel (da): indbyggertal
+  definition (da): antal indbyggere indenfor objektets udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  indbyggertal: Long @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_BebyggelseConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_BebyggelseEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Bebyggelse!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_BebyggelseEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Bebyggelse! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Begravelsesplads
+comment (da): <memo>#NOTES# ofte i forbindelse med en religiøs bygning
+definition (da): <memo>#NOTES#område hvor de døde ligger begravet
+example (da): <memo>#NOTES#objektets geometri bygger på GeoDanmark objekter
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Begravelsesplads
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Begravelsesplads
+EAID: EAID_122175D4_CDC4_458c_B177_9564885FBB56
+"""
+type DS_Begravelsesplads {
+  adresseKoblingLokalId: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af en Begravelsesplads som flade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: BegravelsespladsVærdi
+  multiplicity: 1
+  size: 13
+  URI: https://data.gov.dk/model/profile/sn/begravelsespladstype
+  prefLabel (da): begravelsespladstype
+  definition (da): underinddeling af Begravelsplads på baggrund af religion
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  begravelsespladstype: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_BegravelsespladsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_BegravelsespladsEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Begravelsesplads!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_BegravelsespladsEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Begravelsesplads! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Bygning
+comment (da): <memo>#NOTES#objektets geometri bygger på GeoDanmark objekter
+definition (da): <memo>#NOTES#fast, fritstående konstruktion med vægge og tag beregnet til at rumme fx boliger, kontorer eller varer
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Bygning
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Bygning
+EAID: EAID_427F2895_4168_4ce3_A8CB_015DAF1AD996
+"""
+type DS_Bygning {
+  adresseKoblingLokalId: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: BygningVærdi
+  multiplicity: 1
+  size: 22
+  URI: https://data.gov.dk/model/profile/sn/bygningstype
+  prefLabel (da): bygningstype
+  definition (da): underinddeling af Bygning på baggrund af bygningens funktion
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  bygningstype: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/sn/ensNummer
+  prefLabel (da): ens nummer
+  definition (da): unik kode der identificerer et kraftværk hos Energistyrelsen
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  ensNummer: Long @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_BygningConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_BygningEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Bygning!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_BygningEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Bygning! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Campingplads
+definition (da): <memo>#NOTES#afgrænset område hvor man mod betaling kan bo i eget telt, campingvogn, autocamper el.lign. ofte med fælles toiletter, køkken m.m
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Campingplads
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Campingplads
+EAID: EAID_5C287CF5_242C_4718_BC07_1CA838C68EA4
+"""
+type DS_Campingplads {
+  adresseKoblingLokalId: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af en Campingplads som flade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CampingpladsVærdi
+  multiplicity: 1
+  size: 13
+  URI: https://data.gov.dk/model/profile/sn/campingpladstype
+  prefLabel (da): campingpladstype
+  definition (da): underinddeling af Campingplads
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  campingpladstype: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  transliteratedName: campingraadsnummer
+  URI: https://data.gov.dk/model/profile/sn/campingrådsnummer
+  prefLabel (da): campingrådsnummer
+  definition (da): unik kode der identificerer en campingplads hos Campingrådet, hvis campingpladsen er medlem af samme
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  campingraadsnummer: Long @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_CampingpladsConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_CampingpladsEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Campingplads!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_CampingpladsEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Campingplads! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: FærgeruteLinje
+comment (da): <memo>#NOTES#primært på havet
+definition (da): <memo>#NOTES#linjeforløb som beskriver en færges kurs, mellem to havne
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Færgerute linje
+profiles: bearbejdedeFeaturetyper
+transliteratedName: FaergeruteLinje
+URI: https://data.gov.dk/model/profile/sn/FærgeruteLinje
+EAID: EAID_42A62072_B657_4843_B2E8_22BFF87FC632
+"""
+type DS_FaergeruteLinje {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  faergerutetype: String! @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiCurve
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiLineStringEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Length
+  multiplicity: 1
+  transliteratedName: laengde
+  URI: https://data.gov.dk/model/profile/sn/længde
+  prefLabel (da): længde
+  definition (da): geografisk horisontal udstrækning af en FærgeruteLinje
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  laengde: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: TM_PeriodDuration
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/sejltid
+  prefLabel (da): sejltid
+  definition (da): forventet overfartstid, mellem en sejlrutes endepunkter
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  sejltid: TimeSpan @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_FaergeruteLinjeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_FaergeruteLinjeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_FaergeruteLinje!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_FaergeruteLinjeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_FaergeruteLinje! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: FærgerutePunkt
+comment (da): <memo>#NOTES#kun på søer. Benyttes kun hvor der ikke er en FærgeruteLinje
+definition (da): <memo>#NOTES#påstigningssted for en færge i rutefart
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Færgerute punkt
+profiles: bearbejdedeFeaturetyper
+transliteratedName: FaergerutePunkt
+URI: https://data.gov.dk/model/profile/sn/FærgerutePunkt
+EAID: EAID_601B64C1_2FD2_4f20_8A51_C06FF2F29B47
+"""
+type DS_FaergerutePunkt {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  faergerutetype: String! @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPointEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_FaergerutePunktConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_FaergerutePunktEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_FaergerutePunkt!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_FaergerutePunktEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_FaergerutePunkt! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Farvand
+comment (da): <memo>#NOTES#primært på havet
+definition (da): <memo>#NOTES#vandområde i hav, fjord el.lign
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Farvand
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Farvand
+EAID: EAID_D30DBBC9_4382_4cc6_8D06_AF9ED24D172A
+"""
+type DS_Farvand {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: FarvandVærdi
+  multiplicity: 1
+  size: 9
+  URI: https://data.gov.dk/model/profile/sn/farvandstype
+  prefLabel (da): farvandstype
+  definition (da): underinddeling af Farvand på baggrund af geografi og havbundsforhold
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  farvandstype: String! @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_FarvandConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_FarvandEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Farvand!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_FarvandEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Farvand! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Fortidsminde
+comment (da): <memo>#NOTES#objektets geometri bygger på GeoDanmark objekter
+definition (da): <memo>#NOTES#menneskeskabt bygværk eller efterladenskaber af menneskelig aktivitet fra forhistorisk tid
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Fortidsminde
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Fortidsminde
+EAID: EAID_A111703B_9C65_4800_995A_EF66D64B3560
+"""
+type DS_Fortidsminde {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: FortidsmindeVærdi
+  multiplicity: 1
+  size: 30
+  URI: https://data.gov.dk/model/profile/sn/fortidsmindetype
+  prefLabel (da): fortidsmindetype
+  definition (da): underinddeling af Fortidsminde på baggrund af historisk periode og mindets karakteristik
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  fortidsmindetype: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiPoint
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPointEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_FortidsmindeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_FortidsmindeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Fortidsminde!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_FortidsmindeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Fortidsminde! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Friluftsbad
+definition (da): <memo>#NOTES#offentligt udendørs svømmeanlæg
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Friluftsbad
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Friluftsbad
+EAID: EAID_75ADEEF8_9482_469a_AC13_575730AB05BA
+"""
+type DS_Friluftsbad {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: FriluftsbadVærdi
+  multiplicity: 1
+  size: 4
+  URI: https://data.gov.dk/model/profile/sn/friluftsbadtype
+  prefLabel (da): friluftsbadtype
+  definition (da): underinddeling af Friluftsbad på baggrund af badets placering
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  friluftsbadtype: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPointEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_FriluftsbadConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_FriluftsbadEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Friluftsbad!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_FriluftsbadEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Friluftsbad! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Havnebassin
+definition (da): <memo>#NOTES#vandområde i en havn, delvis omsluttet af kajer
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Havnebassin
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Havnebassin
+EAID: EAID_A8A71B0C_9660_4f8e_9952_11E50C0BE807
+"""
+type DS_Havnebassin {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: HavnebassinVærdi
+  multiplicity: 1
+  size: 14
+  URI: https://data.gov.dk/model/profile/sn/havnebassintype
+  prefLabel (da): havnebassintype
+  definition (da): underinddeling af Havnebassin på baggrund af de opankrende fartøjer
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  havnebassintype: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_HavnebassinConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_HavnebassinEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Havnebassin!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_HavnebassinEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Havnebassin! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Idrætsanlæg
+comment (da): <memo>#NOTES#objektets geometri bygger på GeoDanmark objekter
+definition (da): <memo>#NOTES#område med baner, lokaler og udstyr til idrætsudøvelse
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Idrætsanlæg
+profiles: bearbejdedeFeaturetyper
+transliteratedName: Idraetsanlaeg
+URI: https://data.gov.dk/model/profile/sn/Idrætsanlæg
+EAID: EAID_3131DE27_EAD3_4aad_86A0_6B6290F078BE
+"""
+type DS_Idraetsanlaeg {
+  adresseKoblingLokalId: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af et Idrætsanlæg som flade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: IdrætsanlægVærdi
+  multiplicity: 1
+  size: 22
+  transliteratedName: idraetsanlaegstype
+  URI: https://data.gov.dk/model/profile/sn/idrætsanlægstype
+  prefLabel (da): idrætsanlægstype
+  definition (da): underinddeling af Idrætsanlæg på baggrund af idrætsgrene
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  idraetsanlaegstype: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/sn/skyderetning
+  prefLabel (da): skyderetning
+  definition (da): geografisk orientering af en skydebane
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  skyderetning: Long @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_IdraetsanlaegConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_IdraetsanlaegEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Idraetsanlaeg!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_IdraetsanlaegEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Idraetsanlaeg! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Jernbane
+comment (da): <memo>#NOTES#objektets geometri bygger på GeoDanmark objekter
+definition (da): <memo>#NOTES#en strækning af en jernbane, der udgør en særlig funktion
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Jernbane
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Jernbane
+EAID: EAID_442B4E0A_D65D_4c4d_ADDE_8C52269F06BD
+"""
+type DS_Jernbane {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiCurve
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiLineStringEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: JernbaneVærdi
+  multiplicity: 1
+  size: 15
+  URI: https://data.gov.dk/model/profile/sn/jernbanetype
+  prefLabel (da): jernbanetype
+  definition (da): underinddeling af Jernbane på baggrund af jernbanestrækningens funktion
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  jernbanetype: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Length
+  multiplicity: 1
+  transliteratedName: laengde
+  URI: https://data.gov.dk/model/profile/sn/længde
+  prefLabel (da): længde
+  definition (da): geografisk horisontal udstrækning af en Jernbane som linje
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  laengde: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_JernbaneConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_JernbaneEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Jernbane!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_JernbaneEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Jernbane! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Landskabsform
+definition (da): <memo>#NOTES#geografisk sammenhængende areal, hvis udbredelse oftest afgrænses af terrænets udformning
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Landskabsform
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Landskabsform
+EAID: EAID_57B19AD6_227F_453e_816C_4ED062746691
+"""
+type DS_Landskabsform {
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af en Landskabsform som flade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: LandskabVærdi
+  multiplicity: 1
+  size: 16
+  URI: https://data.gov.dk/model/profile/sn/landskabsformtype
+  prefLabel (da): landskabsformtype
+  definition (da): underinddeling af Landskabsform på baggrund af geografiske forhold
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  landskabsformtype: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_LandskabsformConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_LandskabsformEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Landskabsform!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_LandskabsformEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Landskabsform! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Lufthavn
+comment (da): <memo>#NOTES#objektets geometri bygger på GeoDanmark objekter
+definition (da): <memo>#NOTES#område hvor fly kan starte og lande, og hvor der er bygninger og faciliteter til afvikling af flytrafik
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Lufthavn
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Lufthavn
+EAID: EAID_638B9C32_3247_49e6_BA8D_8058FC9C0CD5
+"""
+type DS_Lufthavn {
+  adresseKoblingLokalId: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af en Lufthavn som flade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: EjerformVærdi
+  multiplicity: 1
+  size: 14
+  URI: https://data.gov.dk/model/profile/sn/ejerformtype
+  prefLabel (da): ejerformtype
+  definition (da): organisationstype der har ejendomsretten til lufthavnen, og som benytter den i daglig drift
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  ejerformtype: String! @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  size: 3
+  URI: https://data.gov.dk/model/profile/sn/IATAKode
+  prefLabel (da): IATA kode
+  definition (da): unik kode på tre bogstaver der identificerer en lufthavn hos International Air Transport Association (IATA)
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  IATAKode: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  size: 4
+  URI: https://data.gov.dk/model/profile/sn/ICAOKode
+  prefLabel (da): ICAO kode
+  definition (da): unik kode på fire bogstaver der identificerer en lufthavn hos International Civil Aviation Organisation (ICAO) under de Forenede Nationer (FN)
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  ICAOKode: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: FlyvepladsVærdi
+  multiplicity: 1
+  size: 17
+  URI: https://data.gov.dk/model/profile/sn/lufthavnstype
+  prefLabel (da): lufthavnstype
+  definition (da): underinddeling af Lufthavn på baggrund af de fly der kan benytte området
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  lufthavnstype: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_LufthavnConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_LufthavnEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Lufthavn!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_LufthavnEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Lufthavn! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Naturareal
+definition (da): <memo>#NOTES#geografisk miljø, primært kendetegnet ud fra ensartede bevoksnings- og jordbundsforhold
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Naturareal
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Naturareal
+EAID: EAID_78535669_5607_4722_B05B_C3614F6E0DFF
+"""
+type DS_Naturareal {
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af et Naturareal som flade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: NaturarealVærdi
+  multiplicity: 1
+  size: 17
+  URI: https://data.gov.dk/model/profile/sn/naturarealtype
+  prefLabel (da): naturarealtype
+  definition (da): underinddeling af Naturareal på baggrund af mere botaniske og geologiske forhold
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  naturarealtype: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_NaturarealConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_NaturarealEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Naturareal!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_NaturarealEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Naturareal! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Navigationsanlæg
+definition (da): <memo>#NOTES#bygningsværk eller konstruktion til brug for navigation for skibsfart
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Navigationsanlæg
+profiles: bearbejdedeFeaturetyper
+transliteratedName: Navigationsanlaeg
+URI: https://data.gov.dk/model/profile/sn/Navigationsanlæg
+EAID: EAID_80275940_31DE_47d6_8D75_D4531A691500
+"""
+type DS_Navigationsanlaeg {
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 0..1
+  URI: https://data.gov.dk/model/profile/sn/carisId
+  prefLabel (da): carisId
+  definition (da): unik kode på fire bogstaver der identificerer et navigationsanlæg i Geodatastyrelsens søkortproduktionssystem CARIS
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  carisId: String @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPointEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Length
+  multiplicity: 0..1
+  transliteratedName: hoejde
+  URI: https://data.gov.dk/model/profile/sn/højde
+  prefLabel (da): højde
+  definition (da): vertikal udtrækning fra bund til top
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  hoejde: String @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: NavigationsanlægVærdi
+  multiplicity: 1
+  size: 9
+  transliteratedName: navigationsanlaegstype
+  URI: https://data.gov.dk/model/profile/sn/navigationsanlægstype
+  prefLabel (da): navigationsanlægstype
+  definition (da): underinddeling af Navigationsanlæg på baggrund af anlæggets konstruktion
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  navigationsanlaegstype: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_NavigationsanlaegConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_NavigationsanlaegEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Navigationsanlaeg!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_NavigationsanlaegEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Navigationsanlaeg! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Restriktionsareal
+definition (da): <memo>#NOTES#naturareal med særlige begrænsninger på adgangs- og/eller brugsforhold
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Restriktionsareal
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Restriktionsareal
+EAID: EAID_4AF2DDB5_03ED_4ad0_A74C_6CEB1B60745A
+"""
+type DS_Restriktionsareal {
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af et Restriktionsareal som flade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: RestriktionsarealVærdi
+  multiplicity: 1
+  size: 17
+  URI: https://data.gov.dk/model/profile/sn/restriktionsarealtype
+  prefLabel (da): restriktionsarealtype
+  definition (da): underinddeling af Restriktionsareal på baggrund af typen af begrænsninger der påhviler brugerne
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  restriktionsarealtype: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_RestriktionsarealConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_RestriktionsarealEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Restriktionsareal!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_RestriktionsarealEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Restriktionsareal! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Rute
+comment (da): <memo>#NOTES#objektets geometri bygger på GeoDanmark objekter
+definition (da): <memo>#NOTES#vejforløb med rutenavn eller -nummer
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Rute
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Rute
+EAID: EAID_37347057_5864_43cb_A1AC_795D658C8A0F
+"""
+type DS_Rute {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiCurve
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiLineStringEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Length
+  multiplicity: 1
+  transliteratedName: laengde
+  URI: https://data.gov.dk/model/profile/sn/længde
+  prefLabel (da): længde
+  definition (da): geografisk horisontal udstrækning af en Rute som linje
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  laengde: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: RuteVærdi
+  multiplicity: 1
+  size: 25
+  URI: https://data.gov.dk/model/profile/sn/rutetype
+  prefLabel (da): rutetype
+  definition (da): underinddeling af Rute på baggrund af Vejdirektoratets inddelinger
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  rutetype: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_RuteConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_RuteEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Rute!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_RuteEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Rute! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Seværdighed
+definition (da): <memo>#NOTES#forlystelse, bygningsværk eller andet af interesse for besøgende
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Seværdighed
+profiles: bearbejdedeFeaturetyper
+transliteratedName: Sevaerdighed
+URI: https://data.gov.dk/model/profile/sn/Seværdighed
+EAID: EAID_BD7D35DC_75D8_42cf_A8DB_02AA54F0B96E
+"""
+type DS_Sevaerdighed {
+  adresseKoblingLokalId: String @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af en Seværdighed som flade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: SeværdighedVærdi
+  multiplicity: 1
+  size: 18
+  transliteratedName: sevaerdighedstype
+  URI: https://data.gov.dk/model/profile/sn/seværdighedstype
+  prefLabel (da): seværdighedstype
+  definition (da): underinddeling af Seværdighed på baggrund af de udstillede genstande eller forlystelser
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  sevaerdighedstype: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_SevaerdighedConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_SevaerdighedEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Sevaerdighed!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_SevaerdighedEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Sevaerdighed! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Sø
+comment (da): <memo>#NOTES#objektets geometri bygger på GeoDanmark objekter
+definition (da): <memo>#NOTES#stor, stillestående vandmasse der er omgivet af land
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Sø
+profiles: bearbejdedeFeaturetyper
+transliteratedName: Soe
+URI: https://data.gov.dk/model/profile/sn/Sø
+EAID: EAID_5ABF30DA_D13A_46ab_9EDB_D43F13A5D631
+"""
+type DS_Soe {
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af en Sø som flade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  feltliste: String @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiSurface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: SøVærdi
+  multiplicity: 1
+  size: 4
+  transliteratedName: soetype
+  URI: https://data.gov.dk/model/profile/sn/søtype
+  prefLabel (da): søtype
+  definition (da): underinddeling af Sø
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  soetype: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_SoeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_SoeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Soe!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_SoeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Soe! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Standsningssted
+comment (da): <memo>#NOTES#objektets geometri bygger på GeoDanmark objekter
+definition (da): <memo>#NOTES#sted hvor et transportmiddel standser for at optage og/eller afsætte passagerer
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Standsningssted
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Standsningssted
+EAID: EAID_D874D129_B1FF_42a2_81B6_74127258B441
+"""
+type DS_Standsningssted {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiPoint
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiPointEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: StandsningsstedVærdi
+  multiplicity: 1
+  size: 3
+  URI: https://data.gov.dk/model/profile/sn/standsningsstedtype
+  prefLabel (da): standsningsstedtype
+  definition (da): underinddeling af Standsningssted på baggrund af typen af benyttende køretøjstype
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  standsningsstedtype: String! @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_StandsningsstedConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_StandsningsstedEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Standsningssted!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_StandsningsstedEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Standsningssted! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Stednavn
+definition (da): <memo>#NOTES#egennavn eller betegnelse på en geografisk lokalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+oneToManyReferenceColumnName: navngivetSted_
+prefLabel (da): Stednavn
+URI: https://data.gov.dk/model/profile/sn/Stednavn
+EAID: EAID_6F6B4B94_CF4D_4c63_9320_9E910603C789
+"""
+type DS_Stednavn {
+  """
+  Grunddatamodel info:
+  type: AktualitetVærdi
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/aktualitet
+  prefLabel (da): aktualitet
+  definition (da): nutidig eller fortidig virkning for stednavnet
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  aktualitet: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: BrugsprioritetVærdi
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/brugsprioritet
+  prefLabel (da): brugsprioritet
+  definition (da): stednavnenes indbyrdes brugsmæssige prioritering på et specifikt NavngivetSted
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  brugsprioritet: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Integer
+  multiplicity: 1
+  transliteratedName: navnefoelgenummer
+  URI: https://data.gov.dk/model/profile/sn/navnefølgenummer
+  prefLabel (da): navnefølgenummer
+  definition (da): nummer der unikt identificerer et stednavn i konteksten af et given navngivet sted
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  navnefoelgenummer: Long @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: NavnestatusVærdi
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/navnestatus
+  prefLabel (da): navnestatus
+  definition (da): stednavnenes indbyrdes prioritering ud fra pålidelighed, på et specifikt NavngivetSted
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  navnestatus: String! @cost(weight: "1")
+  navngivetSted_objectid: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: DateTime
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/oprettelsesdato
+  prefLabel (da): oprettelsesdato
+  definition (da): dato for oprettelse af første version af Stednavnet i databasen
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  oprettelsesdato: DafDateTime! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: CharacterString
+  multiplicity: 1
+  transliteratedName: skrivemaade
+  URI: https://data.gov.dk/model/profile/sn/skrivemåde
+  prefLabel (da): skrivemåde
+  definition (da): stednavnets skriftlige form
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  skrivemaade: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: LanguageCode
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/sprog
+  prefLabel (da): sprog
+  definition (da): sproget som er anvendt i skrivemåden
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  sprog: String! @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_StednavnConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_StednavnEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Stednavn!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_StednavnEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Stednavn! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Terrænkontur
+comment (da): <memo>#NOTES#objektets geometri bygger på GeoDanmark objekter
+definition (da): <memo>#NOTES#menneskeskabt jordvold, stengærde eller andet bygværk der hæver sig over det omkringliggende terræn
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Terrænkontur
+profiles: bearbejdedeFeaturetyper
+transliteratedName: Terraenkontur
+URI: https://data.gov.dk/model/profile/sn/Terrænkontur
+EAID: EAID_63E8513B_4139_41c6_83C4_E3E387E4F443
+"""
+type DS_Terraenkontur {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiCurve
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiLineStringEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Length
+  multiplicity: 1
+  transliteratedName: laengde
+  URI: https://data.gov.dk/model/profile/sn/længde
+  prefLabel (da): længde
+  definition (da): geografisk horisontal udstrækning af en Terrænkontur som linje
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  laengde: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: TerrænkonturVærdi
+  multiplicity: 1
+  size: 9
+  transliteratedName: terraenkonturtype
+  URI: https://data.gov.dk/model/profile/sn/terrænkonturtype
+  prefLabel (da): terrænkonturtype
+  definition (da): underinddeling af Terrænkontur på baggrund af konstruktionens formål
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  terraenkonturtype: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_TerraenkonturConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_TerraenkonturEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Terraenkontur!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_TerraenkonturEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Terraenkontur! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: UbearbejdetNavnFlade
+comment (da): <memo>#NOTES#objektet er endnu ikke verificeret af Geodatastyrelsen
+definition (da): <memo>#NOTES#fladeobjekt indberettet via den fælles indberetningsportal for Stednavne
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Ubearbejdet navn flade
+profiles: ubearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/UbearbejdetNavnFlade
+EAID: EAID_9A391D57_FEC6_48e0_A392_6371C55D5BDC
+"""
+type DS_UbearbejdetNavnFlade {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  ubearbejdetNavnType: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_UbearbejdetNavnFladeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_UbearbejdetNavnFladeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_UbearbejdetNavnFlade!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_UbearbejdetNavnFladeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_UbearbejdetNavnFlade! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: UbearbejdetNavnLinje
+comment (da): <memo>#NOTES#objektet er endnu ikke verificeret af Geodatastyrelsen
+definition (da): <memo>#NOTES#linjeobjekt indberettet via den fælles indberetningsportal for Stednavne
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Ubearbejdet navn linje
+profiles: ubearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/UbearbejdetNavnLinje
+EAID: EAID_9AF08554_549C_4bcb_A615_06BB75B96613
+"""
+type DS_UbearbejdetNavnLinje {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Curve
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialLineStringEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  ubearbejdetNavnType: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_UbearbejdetNavnLinjeConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_UbearbejdetNavnLinjeEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_UbearbejdetNavnLinje!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_UbearbejdetNavnLinjeEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_UbearbejdetNavnLinje! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: UbearbejdetNavnPunkt
+comment (da): <memo>#NOTES#objektet er endnu ikke verificeret af Geodatastyrelsen
+definition (da): <memo>#NOTES#punktobjekt indberettet via den fælles indberetningsportal for Stednavne
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Ubearbejdet navn punkt
+profiles: ubearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/UbearbejdetNavnPunkt
+EAID: EAID_E65DEB97_FB6E_41d3_8F2C_54C6EE11F80E
+"""
+type DS_UbearbejdetNavnPunkt {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Point
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPointEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  ubearbejdetNavnType: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_UbearbejdetNavnPunktConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_UbearbejdetNavnPunktEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_UbearbejdetNavnPunkt!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_UbearbejdetNavnPunktEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_UbearbejdetNavnPunkt! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: UrentFarvand
+definition (da): <memo>#NOTES#vandareal hvor skibsfart er vanskelig
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Urent farvand
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/UrentFarvand
+EAID: EAID_4F841D18_5832_488e_8607_0C5C8C22DE83
+"""
+type DS_UrentFarvand {
+  """
+  Grunddatamodel info:
+  type: Area
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/areal
+  prefLabel (da): areal
+  definition (da): geografisk horisontal udstrækning af et UrentFarvand som flade
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  areal: String! @cost(weight: "1")
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Surface
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialPolygonEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: UrentFarvandVærdi
+  multiplicity: 1
+  size: 17
+  URI: https://data.gov.dk/model/profile/sn/urentFarvandType
+  prefLabel (da): urent farvand type
+  definition (da): underinddeling af UrentFarvand på baggrund af havbundsforhold
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  urentFarvandType: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_UrentFarvandConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_UrentFarvandEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_UrentFarvand!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_UrentFarvandEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_UrentFarvand! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Vandløb
+comment (da): <memo>#NOTES#kan være rørlagt. Objektets geometri bygger på GeoDanmark objekter
+definition (da): <memo>#NOTES#lang, let skrånende fordybning i landskabet med strømmende vand
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Vandløb
+profiles: bearbejdedeFeaturetyper
+transliteratedName: Vandloeb
+URI: https://data.gov.dk/model/profile/sn/Vandløb
+EAID: EAID_3AC35426_EB13_4517_A61D_31DF46F28AF0
+"""
+type DS_Vandloeb {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_MultiCurve
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialMultiLineStringEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Length
+  multiplicity: 1
+  transliteratedName: laengde
+  URI: https://data.gov.dk/model/profile/sn/længde
+  prefLabel (da): længde
+  definition (da): geografisk horisontal udstrækning af et Vandløb som linje
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  laengde: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: VandløbVærdi
+  multiplicity: 1
+  size: 9
+  transliteratedName: vandloebstype
+  URI: https://data.gov.dk/model/profile/sn/vandløbstype
+  prefLabel (da): vandløbstype
+  definition (da): underinddeling af Vandløb
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  vandloebstype: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_VandloebConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_VandloebEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Vandloeb!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_VandloebEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Vandloeb! @cost(weight: "10")
+}
+
+"""
+Grunddatamodel info:
+name: Vej
+comment (da): <memo>#NOTES#objektets geometri bygger på GeoDanmark objekter
+definition (da): <memo>#NOTES#vejstrækning med navn der ikke er registreret i adresseregistret
+historikmodel: bitemporalitet#NOTES#Values: registreringshistorik,bitemporalitet
+legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+prefLabel (da): Vej
+profiles: bearbejdedeFeaturetyper
+URI: https://data.gov.dk/model/profile/sn/Vej
+EAID: EAID_E232FD05_4D7D_4531_8FD3_9EDF33F00673
+"""
+type DS_Vej {
+  dataansvarligMyndighed: String! @cost(weight: "1")
+  datafordelerOpdateringstid: DafDateTime @cost(weight: "1")
+  forretningshaendelse: String! @cost(weight: "1")
+  forretningsomraade: String! @cost(weight: "1")
+  forretningsproces: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: GM_Curve
+  multiplicity: 1
+  URI: https://data.gov.dk/model/profile/sn/geometri
+  prefLabel (da): geometri
+  definition (da): opbygning af punkter og/eller linjer og/eller flader der tilsammen udgør en geografisk udstrækning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  CRS: EPSG:25832
+  Z-used: False
+  """
+  geometri: SpatialLineStringEpsg25832Type @cost(weight: "10")
+  gmlId: String! @cost(weight: "1")
+  id_lokalId: String! @cost(weight: "1")
+  id_namespace: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: Length
+  multiplicity: 1
+  transliteratedName: laengde
+  URI: https://data.gov.dk/model/profile/sn/længde
+  prefLabel (da): længde
+  definition (da): geografisk horisontal udstrækning af en Vej som linje
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  laengde: String! @cost(weight: "1")
+  objectid: String! @cost(weight: "1")
+  registreringFra: DafDateTime! @cost(weight: "1")
+  registreringsaktoer: String! @cost(weight: "1")
+  registreringTil: DafDateTime @cost(weight: "1")
+  status: String! @cost(weight: "1")
+  """
+  Grunddatamodel info:
+  type: VejVærdi
+  multiplicity: 1
+  size: 15
+  URI: https://data.gov.dk/model/profile/sn/vejtype
+  prefLabel (da): vejtype
+  definition (da): underinddeling af Vej på baggrund af vejens funktion, placering og belægning
+  legalSource: http://www.retsinformation.dk/eli/lta/2017/380
+  """
+  vejtype: String! @cost(weight: "1")
+  virkningFra: DafDateTime! @cost(weight: "1")
+  virkningsaktoer: String! @cost(weight: "1")
+  virkningTil: DafDateTime @cost(weight: "1")
+}
+
+"A connection to a list of items."
+type DS_VejConnection {
+  "Information to aid in pagination."
+  pageInfo: PageInfo! @cost(weight: "0")
+  "A list of edges."
+  edges: [DS_VejEdge!] @cost(weight: "10")
+  "A flattened list of the nodes."
+  nodes: [DS_Vej!] @cost(weight: "10")
+}
+
+"An edge in a connection."
+type DS_VejEdge {
+  "A cursor for use in pagination."
+  cursor: String! @cost(weight: "0")
+  "The item at the end of the edge."
+  node: DS_Vej! @cost(weight: "10")
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "Indicates whether more edges exist following the set defined by the clients arguments."
+  hasNextPage: Boolean!
+  "Indicates whether more edges exist prior the set defined by the clients arguments."
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+}
+
+"Query type for DS - Danske Stednavne"
+type Query {
+  DS_Adgangspunkt("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: DS_AdgangspunktFilterInput): DS_AdgangspunktConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_AndenTopografiFlade("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_AndenTopografiFladeFilterInput): DS_AndenTopografiFladeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_AndenTopografiPunkt("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_AndenTopografiPunktFilterInput): DS_AndenTopografiPunktConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Bebyggelse("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_BebyggelseFilterInput): DS_BebyggelseConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Begravelsesplads("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_BegravelsespladsFilterInput): DS_BegravelsespladsConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Bygning("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_BygningFilterInput): DS_BygningConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Campingplads("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_CampingpladsFilterInput): DS_CampingpladsConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_FaergeruteLinje("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_FaergeruteLinjeFilterInput): DS_FaergeruteLinjeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_FaergerutePunkt("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_FaergerutePunktFilterInput): DS_FaergerutePunktConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Farvand("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_FarvandFilterInput): DS_FarvandConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Fortidsminde("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_FortidsmindeFilterInput): DS_FortidsmindeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Friluftsbad("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_FriluftsbadFilterInput): DS_FriluftsbadConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Havnebassin("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_HavnebassinFilterInput): DS_HavnebassinConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Idraetsanlaeg("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_IdraetsanlaegFilterInput): DS_IdraetsanlaegConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Jernbane("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_JernbaneFilterInput): DS_JernbaneConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Landskabsform("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_LandskabsformFilterInput): DS_LandskabsformConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Lufthavn("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_LufthavnFilterInput): DS_LufthavnConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Naturareal("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_NaturarealFilterInput): DS_NaturarealConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Navigationsanlaeg("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_NavigationsanlaegFilterInput): DS_NavigationsanlaegConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Restriktionsareal("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_RestriktionsarealFilterInput): DS_RestriktionsarealConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Rute("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_RuteFilterInput): DS_RuteConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Sevaerdighed("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_SevaerdighedFilterInput): DS_SevaerdighedConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Soe("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_SoeFilterInput): DS_SoeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Standsningssted("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_StandsningsstedFilterInput): DS_StandsningsstedConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Stednavn("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String where: DS_StednavnFilterInput): DS_StednavnConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Terraenkontur("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_TerraenkonturFilterInput): DS_TerraenkonturConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_UbearbejdetNavnFlade("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_UbearbejdetNavnFladeFilterInput): DS_UbearbejdetNavnFladeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_UbearbejdetNavnLinje("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_UbearbejdetNavnLinjeFilterInput): DS_UbearbejdetNavnLinjeConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_UbearbejdetNavnPunkt("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_UbearbejdetNavnPunktFilterInput): DS_UbearbejdetNavnPunktConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_UrentFarvand("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_UrentFarvandFilterInput): DS_UrentFarvandConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Vandloeb("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_VandloebFilterInput): DS_VandloebConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+  DS_Vej("Returns the first _n_ elements from the list." first: Int "Returns the elements in the list that come after the specified cursor." after: String registreringstid: DafDateTime virkningstid: DafDateTime where: DS_VejFilterInput): DS_VejConnection @listSize(assumedSize: 1000, slicingArguments: [ "first" ], sizedFields: [ "nodes", "edges" ], requireOneSlicingArgument: false) @cost(weight: "1000")
+}
+
+"Spatial LineString type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialLineStringEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+"Spatial MultiLineString type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialMultiLineStringEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+"Spatial MultiPoint type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialMultiPointEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+"Spatial MultiPolygon type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialMultiPolygonEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+"Spatial Point type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialPointEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+"Spatial Polygon type with XY-dimensions in the EPSG 25832 coordinate system."
+type SpatialPolygonEpsg25832Type implements SpatialInterfaceType {
+  type: SpatialGeometryNameEnumType! @cost(weight: "1")
+  crs: Int! @cost(weight: "1")
+  dimension: SpatialDimensionEnumType! @cost(weight: "1")
+  wkt: String @cost(weight: "1")
+}
+
+input DS_AdgangspunktFilterInput {
+  and: [DS_AdgangspunktFilterInput!]
+  adgangsbeskrivelse: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  objectid: DafStringOperationFilterInput
+}
+
+input DS_AndenTopografiFladeFilterInput {
+  and: [DS_AndenTopografiFladeFilterInput!]
+  andenTopografiType: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_AndenTopografiPunktFilterInput {
+  and: [DS_AndenTopografiPunktFilterInput!]
+  andenTopografiType: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_BebyggelseFilterInput {
+  and: [DS_BebyggelseFilterInput!]
+  bebyggelsestype: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_BegravelsespladsFilterInput {
+  and: [DS_BegravelsespladsFilterInput!]
+  begravelsespladstype: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_BygningFilterInput {
+  and: [DS_BygningFilterInput!]
+  bygningstype: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_CampingpladsFilterInput {
+  and: [DS_CampingpladsFilterInput!]
+  campingpladstype: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_FaergeruteLinjeFilterInput {
+  and: [DS_FaergeruteLinjeFilterInput!]
+  geometri: SpatialFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_FaergerutePunktFilterInput {
+  and: [DS_FaergerutePunktFilterInput!]
+  geometri: SpatialFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_FarvandFilterInput {
+  and: [DS_FarvandFilterInput!]
+  farvandstype: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_FortidsmindeFilterInput {
+  and: [DS_FortidsmindeFilterInput!]
+  fortidsmindetype: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_FriluftsbadFilterInput {
+  and: [DS_FriluftsbadFilterInput!]
+  friluftsbadtype: DafStringOperationFilterInput
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_HavnebassinFilterInput {
+  and: [DS_HavnebassinFilterInput!]
+  geometri: SpatialFilterInput
+  havnebassintype: DafStringOperationFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_IdraetsanlaegFilterInput {
+  and: [DS_IdraetsanlaegFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  idraetsanlaegstype: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_JernbaneFilterInput {
+  and: [DS_JernbaneFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  jernbanetype: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_LandskabsformFilterInput {
+  and: [DS_LandskabsformFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  landskabsformtype: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_LufthavnFilterInput {
+  and: [DS_LufthavnFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  lufthavnstype: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_NaturarealFilterInput {
+  and: [DS_NaturarealFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  naturarealtype: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_NavigationsanlaegFilterInput {
+  and: [DS_NavigationsanlaegFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  navigationsanlaegstype: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_RestriktionsarealFilterInput {
+  and: [DS_RestriktionsarealFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  restriktionsarealtype: DafStringOperationFilterInput
+}
+
+input DS_RuteFilterInput {
+  and: [DS_RuteFilterInput!]
+  geometri: SpatialFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_SevaerdighedFilterInput {
+  and: [DS_SevaerdighedFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  sevaerdighedstype: DafStringOperationFilterInput
+}
+
+input DS_SoeFilterInput {
+  and: [DS_SoeFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  soetype: DafStringOperationFilterInput
+}
+
+input DS_StandsningsstedFilterInput {
+  and: [DS_StandsningsstedFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  standsningsstedtype: DafStringOperationFilterInput
+}
+
+input DS_StednavnFilterInput {
+  and: [DS_StednavnFilterInput!]
+  aktualitet: DafStringOperationFilterInput
+  brugsprioritet: DafStringOperationFilterInput
+  navnestatus: DafStringOperationFilterInput
+  navngivetSted_objectid: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  skrivemaade: DafStringOperationFilterInput
+}
+
+input DS_TerraenkonturFilterInput {
+  and: [DS_TerraenkonturFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  terraenkonturtype: DafStringOperationFilterInput
+}
+
+input DS_UbearbejdetNavnFladeFilterInput {
+  and: [DS_UbearbejdetNavnFladeFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_UbearbejdetNavnLinjeFilterInput {
+  and: [DS_UbearbejdetNavnLinjeFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_UbearbejdetNavnPunktFilterInput {
+  and: [DS_UbearbejdetNavnPunktFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+}
+
+input DS_UrentFarvandFilterInput {
+  and: [DS_UrentFarvandFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  urentFarvandType: DafStringOperationFilterInput
+}
+
+input DS_VandloebFilterInput {
+  and: [DS_VandloebFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  vandloebstype: DafStringOperationFilterInput
+}
+
+input DS_VejFilterInput {
+  and: [DS_VejFilterInput!]
+  geometri: SpatialFilterInput
+  id_lokalId: DafStringOperationFilterInput
+  objectid: DafStringOperationFilterInput
+  registreringTil: DafDateTimeOperationFilterInput
+  vejtype: DafStringOperationFilterInput
+}
+
+input DafDateTimeOperationFilterInput {
+  eq: DafDateTime @cost(weight: "1000")
+  gt: DafDateTime @cost(weight: "1000")
+  ngt: DafDateTime @cost(weight: "1000")
+  gte: DafDateTime @cost(weight: "1000")
+  ngte: DafDateTime @cost(weight: "1000")
+  lt: DafDateTime @cost(weight: "1000")
+  nlt: DafDateTime @cost(weight: "1000")
+  lte: DafDateTime @cost(weight: "1000")
+  nlte: DafDateTime @cost(weight: "1000")
+}
+
+input DafStringOperationFilterInput {
+  eq: String @cost(weight: "1000")
+  in: [String!] @cost(weight: "1000")
+}
+
+"Filter type for the spatial method ST_Contains. Is applied as ST_Contains(A, B) where A is the register data field and B is the input value."
+input SpatialContainsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_CoveredBy. Is applied as ST_CoveredBy(A, B) where A is the register data field and B is the input value."
+input SpatialCoveredByOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Covers. Is applied as ST_Covers(A, B) where A is the register data field and B is the input value."
+input SpatialCoversOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Crosses. Is applied as ST_Crosses(A, B) where A is the register data field and B is the input value."
+input SpatialCrossesOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+input SpatialFilterInput {
+  and: [SpatialFilterInput!]
+  or: [SpatialFilterInput!]
+  contains: SpatialContainsOperationFilterInput @cost(weight: "5000")
+  covers: SpatialCoversOperationFilterInput @cost(weight: "5000")
+  crosses: SpatialCrossesOperationFilterInput @cost(weight: "5000")
+  intersects: SpatialIntersectsOperationFilterInput @cost(weight: "5000")
+  within: SpatialWithinOperationFilterInput @cost(weight: "5000")
+  overlaps: SpatialOverlapsOperationFilterInput @cost(weight: "5000")
+  touches: SpatialTouchesOperationFilterInput @cost(weight: "5000")
+  coveredBy: SpatialCoveredByOperationFilterInput @cost(weight: "5000")
+}
+
+"Filter type for the spatial method ST_Intersects. Is applied as ST_Intersects(A, B) where A is the register data field and B is the input value."
+input SpatialIntersectsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Overlaps. Is applied as ST_Overlaps(A, B) where A is the register data field and B is the input value."
+input SpatialOverlapsOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Touches. Is applied as ST_Touches(A, B) where A is the register data field and B is the input value."
+input SpatialTouchesOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+"Filter type for the spatial method ST_Within. Is applied as ST_Within(A, B) where A is the register data field and B is the input value."
+input SpatialWithinOperationFilterInput {
+  "The WKT representation of the geometry"
+  wkt: String! @cost(weight: "0")
+  "The coordinate reference system of the geometry."
+  crs: Int! @cost(weight: "0")
+}
+
+enum SpatialDimensionEnumType {
+  XY
+  XYZ
+}
+
+enum SpatialGeometryNameEnumType {
+  Point
+  MultiPoint
+  LineString
+  MultiLineString
+  Polygon
+  MultiPolygon
+}
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost("The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc." weight: String!) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION
+
+"The purpose of the `@listSize` directive is to either inform the static analysis about the size of returned lists (if that information is statically available), or to point the analysis to where to find that information."
+directive @listSize("The `assumedSize` argument can be used to statically define the maximum length of a list returned by a field." assumedSize: Int "The `slicingArguments` argument can be used to define which of the field's arguments with numeric type are slicing arguments, so that their value determines the size of the list returned by that field. It may specify a list of multiple slicing arguments." slicingArguments: [String!] "The `slicingArgumentDefaultValue` argument can be used to define a default value for a slicing argument, which is used if the argument is not present in a query." slicingArgumentDefaultValue: Int "The `sizedFields` argument can be used to define that the value of the `assumedSize` argument or of a slicing argument does not affect the size of a list returned by a field itself, but that of a list returned by one of its sub-fields." sizedFields: [String!] "The `requireOneSlicingArgument` argument can be used to inform the static analysis that it should expect that exactly one of the defined slicing arguments is present in a query. If that is not the case (i.e., if none or multiple slicing arguments are present), the static analysis may throw an error." requireOneSlicingArgument: Boolean! = true) on FIELD_DEFINITION
+
+"The `@specifiedBy` directive is used within the type system definition language to provide a URL for specifying the behavior of custom scalar definitions."
+directive @specifiedBy("The specifiedBy URL points to a human-readable specification. This field will only read a result for scalar types." url: String!) on SCALAR
+
+"DateTime scalar as defined by https:\/\/scalars.graphql.org\/andimarek\/date-time.html but with 6 millisecond digits."
+scalar DafDateTime @specifiedBy(url: "https:\/\/datafordeler.dk\/")
+
+"The `Long` scalar type represents non-fractional signed whole 64-bit numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long
+
+"The `TimeSpan` scalar represents an ISO-8601 compliant duration type."
+scalar TimeSpan
