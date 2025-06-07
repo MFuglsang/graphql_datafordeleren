@@ -60,6 +60,7 @@ paginate: true
 
 <h1 style="font-size:80px;color:white">GraphQL på Datafordelren</h1>
 
+<h1 style="font-size:30px;color:white">Martin  Jensen, Klimadatastyrelsen</h1>
 <h1 style="font-size:30px;color:white">Margit Kildevang, Klimadatastyrelsen</h1>
 <h1 style="font-size:30px;color:white">Morten Fuglsang, Septima</h1>
 
@@ -581,6 +582,62 @@ Vi starter med at kigge nærmere på DAR schemaet...
 <img src="./img/metadata.png" width="800">
 
 ---
+![bg](./img/first.png)
+
+<h1 style="font-size:40px;color:white">Hvordan sender man en POST forespørgsel ?</h1>
+
+Det er kompliceret at lave en GET - det er bedre at sende et POST request afsted.
+
+* Dette kan gøres med en række forskellige stykker software - Jeg bruger Postman til mine eksempler:
+
+www.postman.com/
+
+---
+![bg](./img/first.png)
+
+<h1 style="font-size:40px;color:white">Basis request</h1>
+
+Endpoint : graphql.datafordeler.dk/DAR/v1?apiKey=**API-KEY**
+
+```graphql
+query {
+  DAR_Adresse(
+    registreringstid: "2025-06-04T00:00:00Z"
+    virkningstid:  "2025-06-04T00:00:00Z"
+    first: 10
+  ) {
+    nodes {
+      adressebetegnelse
+      id_lokalId
+      husnummer
+      doerbetegnelse
+      etagebetegnelse
+      status
+      registreringFra
+      virkningFra
+    }
+  }
+}
+
+```
+
+---
+![bg](./img/first.png)
+
+<img src="./img/postman1.png" width="850">
+
+---
+![bg](./img/first.png)
+
+<img src="./img/postman2.png" width="850">
+
+---
+![bg](./img/first.png)
+
+<img src="./img/postman3.png" width="850">
+
+---
+
 
 
 ![bg](./img/green.png)
