@@ -41,6 +41,9 @@ https://graphql.datafordeler.dk/MAT/v1/schema?apiKey=**API-KEY**
 
 ### DAR
 
+På datafordeleren ligger en lang række eksempler fra DAR i GraphQL:
+https://confluence.sdfi.dk/pages/viewpage.action?pageId=187105632
+
 Endpoint : https://graphql.datafordeler.dk/DAR/v1?apiKey=**API-KEY**
 ```graphql
 query {
@@ -708,6 +711,3 @@ query {
 }
 ```
 
-## Forespørgsler med relationer
-
-## Forespørgsler på tværs af registre
