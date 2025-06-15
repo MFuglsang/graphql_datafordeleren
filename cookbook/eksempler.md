@@ -503,6 +503,8 @@ query {
 ## Forespørgsler med paging
 Paging gør det muligt at hente resultater i chunks - så man ikke skal vente på meget store forespørgsler returnerer alt på en gang.
 
+https://graphql.datafordeler.dk/DAR/v1?apiKey=**API-KEY**
+
 ```graphql
 query {
   DAR_Adresse(
