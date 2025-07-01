@@ -58,7 +58,7 @@ paginate: true
 ![bg](./img/geoforum_green.png)
 
 
-<h1 style="font-size:80px;color:white">GraphQL på Datafordelren</h1>
+<h1 style="font-size:80px;color:white">GraphQL på Datafordeleren</h1>
 
 <h1 style="font-size:30px;color:white">Martin  Jensen, Klimadatastyrelsen</h1>
 <h1 style="font-size:30px;color:white">Margit Kildevang, Klimadatastyrelsen</h1>
