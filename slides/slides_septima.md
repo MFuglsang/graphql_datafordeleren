@@ -200,53 +200,8 @@ Et schema består af:
 
 ---
 
-![bg](./img/first.png)
 
 
-
-<div class="container">
-<div class="col">
-
-**type Adresse** = en type med felterne id og adgangsadresse
-
-'**ID!** = et obligatorisk ID-felt (udråbstegn = required)
-
-**adresse(id: ID!)**: Adresse = query, der returnerer én adresse
-
-**adgangsadresser(...)** = query, der returnerer en liste [...]
-
-
-
-</div>
-
-
-<div class="col">
-</br>
-
-```graphql
-type Adresse {
-  id: ID!
-  adgangsadresse: Adgangsadresse
-}
-
-type Adgangsadresse {
-  vejstykke: Vejstykke
-  husnr: String
-  postnummer: Postnummer
-}
-
-type Query {
-  adresse(id: ID!): Adresse
-  adgangsadresser(postnr: String): [Adgangsadresse]
-}
-```
-
-</div>
-</div>
-
-
-
----
 
 ![bg](./img/first.png)
 
@@ -414,17 +369,7 @@ Vi starter med at kigge nærmere på DAR schemaet...
 <img src="./img/metadata.png" width="800">
 
 ---
-![bg](./img/first.png)
 
-<h1 style="font-size:40px;color:white">Hvordan sender man en POST forespørgsel ?</h1>
-
-Det er kompliceret at lave en GET - det er bedre at sende et POST request afsted.
-
-* Dette kan gøres med en række forskellige stykker software - Jeg bruger Postman til mine eksempler:
-
-www.postman.com/
-
----
 ![bg](./img/first.png)
 
 <h1 style="font-size:40px;color:white">Basis request</h1>
@@ -454,21 +399,7 @@ query {
 ```
 
 ---
-![bg](./img/first.png)
 
-<img src="./img/postman1.png" width="850">
-
----
-![bg](./img/first.png)
-
-<img src="./img/postman2.png" width="850">
-
----
-![bg](./img/first.png)
-
-<img src="./img/postman3.png" width="850">
-
----
 
 
 
