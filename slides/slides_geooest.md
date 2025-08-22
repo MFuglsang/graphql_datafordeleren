@@ -83,7 +83,7 @@ paginate: true
 
 header:  ![alt text](img/septima.svg "Title")
 
-footer: GraphQL på Datafordeleren  
+footer: GeoØSt 27.08.2025
         
 ---
 
