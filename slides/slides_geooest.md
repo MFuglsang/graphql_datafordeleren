@@ -16,6 +16,10 @@ style: |
         height: 50px;
     }
 
+      header img {
+        height: 50px;
+    }
+
   footer {
         display: grid;
         grid-template-columns: 1fr max-content;
@@ -112,10 +116,6 @@ section::after {
 
 ---
 
-
-<h1 style="font-size:50px;color:white">Introduktion til GraphQL</h1>
-
----
 
 
 <h1 style="font-size:50px;color:white">Hvorfor GraphQL</h1>
