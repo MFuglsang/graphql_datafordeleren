@@ -87,7 +87,7 @@ paginate: true
 
 header:  ![alt text](img/septima.svg "Title")
 
-footer: GeoØSt 27.08.2025
+footer: Geoøst 27.08.2025
         
 ---
 
@@ -516,6 +516,18 @@ query {
 
 ---
 
+<h1 style="font-size:60px;color:white">Har vi tid til et par eksempler ?</h1>
+
+
+---
+<h1 style="font-size:40px;color:white">Status lige nu</h1>
+
+*Finansministeriet har i forbindelse med Forslag til finanslov 2026 bevilget budget til paralleldrift på Datafordeleren frem til den 30. juni 2026. Det betyder, at de ikke-moderniserede tjenester skal være udfaset, og at paralleldrift vil ophøre 30. juni 2026.*
+
+https://datafordeler.dk/vejledning/modernisering/
+
+---
+
 
 <h1 style="font-size:50px;color:white">Alle ressourcer vi har brugt i dag, kan hentes på Github </h1>
 
@@ -530,5 +542,5 @@ Her er bla. en pdf med en lang række eksempler - langt flere end vi har vist he
 ---
 
 
-<h1 style="font-size:50px;color:white">Tak for i dag</h1>
+<h1 style="font-size:80px;color:white">Tak for i dag</h1>
 <h2 style="font-size:30px;color:white">Har i spørgsmål efterfølgende, så hiv gerne fat i mig : morten.fuglsang@septima.dk</h2>
