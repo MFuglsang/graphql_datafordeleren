@@ -614,6 +614,8 @@ Forventes at blive frigivet 3. december
 
   * Brug af alias'er på kolonner
   * Flere root-nodes
+  * Max 20 joins i en query
+  * Ingen LIKE operator, og ingen lower/uppercase
 
 * Cost beregningen kan komme i spil
 * Versioner på schemaer
