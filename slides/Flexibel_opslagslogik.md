@@ -98,6 +98,16 @@ section::after {
 
 ---
 ![bg](./img/first.png)
+
+<h1 style="font-size:50px;color:white">Lige for at slå det fast...</h1>
+
+Jeg er **ANVENDER** på Datafordeleren - mine eksempler og erfaringer er skabt på grund af brug af services.
+<br/>
+Jeg kan svare på mange **HVORDAN** sprøgsmål (men langt fra allle) - og bestemt ikke på **HVORFOR** spørgsmål.
+
+---
+
+![bg](./img/first.png)
 <h1 style="font-size:50px;color:white">Recap - GraphQL på Datafordeleren</h1>
 
 ---
