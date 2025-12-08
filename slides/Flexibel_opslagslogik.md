@@ -82,6 +82,21 @@ section::after {
 ---
 ![bg](./img/first.png)
 
+
+<h1 style="font-size:40px;color:white">Hvornår sker skiftet ?</h1>
+
+*Finansministeriet har i forbindelse med Forslag til finanslov 2026 bevilget budget til paralleldrift på Datafordeleren frem til den 30. juni 2026. Det betyder, at de ikke-moderniserede tjenester skal være udfaset, og at paralleldrift vil ophøre 30. juni 2026.*
+
+
+```
+https://datafordeler.dk/vejledning/modernisering/
+```
+
+---
+
+
+![bg](./img/first.png)
+
 <h1 style="font-size:50px;color:white">Hvad skal vi igennem ?</h1>
 
 * Kort repetition på GraphQL 
@@ -126,7 +141,23 @@ Et schema består af:
 - `type` – definerer objekttyper (f.eks. `Adresse`, `Vejstykke`)
 - `Query` – definerer tilgængelige (læse)operationer
 
-Det hele er stærkt typet og dokumenteret...
+
+---
+
+![bg](./img/first.png)
+- **Entitet**: Hver query skal specificere hvilken entitet den omhandler. Eksemplet kan være entiteten BBR_Bygning fra BBR og 
+- **Endepunkt**: En query sendes til et GraphQL-endepunkt som et GET- eller POSTrequest.
+- **Standardfiltre**: En query kan indeholde standardfiltre der filtrerer data. Query’en
+- for eksempel et  lighedsfilter (eq: "0550") på kommunekode-kolonnen
+---
+
+![bg](./img/first.png)
+
+- **Geometriske filtre**: En query kan indeholde geometriske filtre, der filtrerer
+data på baggrund af geometri.
+- **Bitemporale filtre**: En query skal også indeholde bitemporale filtre. For eksempel et  bitemporalt point-in-time-filter (virkningstid: "2024-11-12T14:41:33Z") på virkningstidspunktet.
+- **Paging** : En query kan også definere hvordan data pagineres. Returnerer de første 10 rækker (first: 10) givet filtreringen samt paginginformation for resultatsættet (angivet i ”pageInfo”). 
+
 
 ---
 
@@ -193,12 +224,73 @@ query {
 <h1 style="font-size:50px;color:white">Adgang til den fleksible opslagslogik </h1>
 
 
+---
+
+
+![bg](./img/first.png)
+
+
+
+<div class="container">
+<div class="col">
+
+
+</br>
+</br>
+
+* Som tidliger - det er ikke længere nok med en webbruger og en tjenestebruger.
+
+* Hvis man skal have adgang til frie data, er en token nok, men den skal oprettes
+
+</div>
+
+<div class="col">
+</br>
+</br>
+<img src="./img/bruger1.png" width="500">
+
+</div>
+</div>
 
 ---
+![bg](./img/first.png)
+
+<img src="./img/bruger2.png" width="800">
+
+---
+
+![bg](./img/first.png)
+
+<img src="./img/bruger3.png" width="1000">
+
+---
+
+![bg](./img/first.png)
+
+<img src="./img/bruger4.png" width="800">
+
+---
+
+![bg](./img/first.png)
+
+<img src="./img/bruger6.png" width="500">
+
+---
+
+![bg](./img/first.png)
+
+<img src="./img/bruger5.png" width="1000">
+
+---
+
+
+
 ![bg](./img/first.png)
 <h1 style="font-size:50px;color:white">Det fleksible schema</h1>
 
 * Realtioner i grunddataprogrammet
+
+* Endpoints 
 
 * Som text
 
@@ -215,6 +307,45 @@ https://www.version2.dk/artikel/fra-cpr-numre-til-vandloeb-dyk-ned-i-den-samlede
 ---
 
 ![bg](./img/first.png)
+
+<h1 style="font-size:50px;color:white">Dokumentation</h1>
+
+```
+https://confluence.sdfi.dk/pages/viewpage.action?pageId=187105434#GraphQLp%C3%A5Datafordeleren-GraphQL-endepunkter
+
+https://confluence.sdfi.dk/display/DML/Fleksibel+opslagslogik
+```
+
+---
+
+<h1 style="font-size:50px;color:white">Endpoints</h1>
+
+![bg](./img/first.png)
+
+
+<div class="container">
+<div class="col">
+
+
+
+GraphQL-tjenesterne udstilles gennem URL'er, der følger nedenstående form:
+
+```
+https://graphql.datafordeler.dk/<register>/<version>
+```
+</div>
+
+<div class="col">
+
+<img src="./img/registre.png" width="400">
+
+</div>
+</div>
+
+
+---
+
+![bg](./img/first.png)
 <h1 style="font-size:50px;color:white">Som text</h1>
 
 Udgører knap 74.000 linjer - indeholder representation af grunddata som edges, nodes and connections
@@ -227,6 +358,15 @@ Udgører knap 74.000 linjer - indeholder representation af grunddata som edges, 
 <img src="./img/dar_relations.png" width="1050">
 
 ---
+
+![bg](./img/first.png)
+<br/>
+<img src="./img/lost.jpg" width="900">
+
+---
+
+
+
 
 ![bg](./img/first.png)
 
@@ -381,6 +521,8 @@ Lad os se hvad der sker...
 
 Den bedste mulighed jeg kender til, er i Postman, hvor man også kan give den schemaet...
 - Lad os se hvordan det foregår 
+
+* Guiden 'Postman Guide til GraphQL' fra KDS ligger i mit Github Repo, den beskriver dette i detaljen 
 
 ---
 
