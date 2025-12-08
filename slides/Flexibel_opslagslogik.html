@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flexibel_opslagslogik.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p><img src="./img/geoforum_green.png" alt="bg"></p>
+<h1 style="font-size:80px;color:white">Fleksibel opslagslogik og GraphQL</h1>
+<h1 style="font-size:30px;color:white">Morten Fuglsang, Septima</h1>
+<style>
+section::after {
+  content: attr(data-marpit-pagination) '/' attr(data-marpit-pagination-total);
+}
+</style>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Hvorfor dette seminar ?</h1>
+<br>
+<img src="./img/figur1.png" width="1050">
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:40px;color:white">Hvornår sker skiftet ?</h1>
+<p><em>Finansministeriet har i forbindelse med Forslag til finanslov 2026 bevilget budget til paralleldrift på Datafordeleren frem til den 30. juni 2026. Det betyder, at de ikke-moderniserede tjenester skal være udfaset, og at paralleldrift vil ophøre 30. juni 2026.</em></p>
+<pre class="hljs"><code><div>https://datafordeler.dk/vejledning/modernisering/
+</div></code></pre>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Hvad skal vi igennem ?</h1>
+<ul>
+<li>
+<p>Kort repetition på GraphQL</p>
+</li>
+<li>
+<p>Adgang til den fleksible opslagslogik</p>
+</li>
+<li>
+<p>Det fleksible schema</p>
+</li>
+<li>
+<p>Konstruktion af forespørgsler</p>
+</li>
+<li>
+<p>Eksempler på anvendelse</p>
+</li>
+<li>
+<p>Kendte begrænsninger</p>
+</li>
+</ul>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Lige for at slå det fast...</h1>
+<p>Jeg er <strong>ANVENDER</strong> på Datafordeleren - mine eksempler og erfaringer er skabt på grund af brug af services.
+<br/>
+Jeg kan svare på mange <strong>HVORDAN</strong> sprøgsmål (men langt fra allle) - og bestemt ikke på <strong>HVORFOR</strong> spørgsmål.</p>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Recap - GraphQL på Datafordeleren</h1>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">GraphQL schemas</h1>
+<p>Et <strong>GraphQL-schema</strong> definerer de typer og felter, du kan spørge om i API’et.</p>
+<p>Schemaet fungerer som:</p>
+<ul>
+<li>En <strong>kontrakt</strong> mellem klient og server</li>
+<li>En <strong>struktur</strong> over alle data og deres relationer</li>
+<li>En <strong>validering</strong> af dine queries</li>
+</ul>
+<p>Et schema består af:</p>
+<ul>
+<li><code>type</code> – definerer objekttyper (f.eks. <code>Adresse</code>, <code>Vejstykke</code>)</li>
+<li><code>Query</code> – definerer tilgængelige (læse)operationer</li>
+</ul>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<ul>
+<li><strong>Entitet</strong>: Hver query skal specificere hvilken entitet den omhandler. Eksemplet kan være entiteten BBR_Bygning fra BBR og</li>
+<li><strong>Endepunkt</strong>: En query sendes til et GraphQL-endepunkt som et GET- eller POSTrequest.</li>
+<li><strong>Standardfiltre</strong>: En query kan indeholde standardfiltre der filtrerer data. Query’en</li>
+<li>for eksempel et  lighedsfilter (eq: &quot;0550&quot;) på kommunekode-kolonnen</li>
+</ul>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<ul>
+<li><strong>Geometriske filtre</strong>: En query kan indeholde geometriske filtre, der filtrerer
+data på baggrund af geometri.</li>
+<li><strong>Bitemporale filtre</strong>: En query skal også indeholde bitemporale filtre. For eksempel et  bitemporalt point-in-time-filter (virkningstid: &quot;2024-11-12T14:41:33Z&quot;) på virkningstidspunktet.</li>
+<li><strong>Paging</strong> : En query kan også definere hvordan data pagineres. Returnerer de første 10 rækker (first: 10) givet filtreringen samt paginginformation for resultatsættet (angivet i ”pageInfo”).</li>
+</ul>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<pre class="hljs"><code><div>query {
+    BBR_Bygning( # Entitet
+        where: { # Standardfiltre
+            kommunekode: { eq: &quot;0550&quot; }
+        }
+        virkningstid: &quot;2024-11-12T14:41:33Z&quot; # Bitemporalt filter
+        first: 12 # Paging
+        ) {
+        pageInfo { # Paginginformation
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+        }
+        nodes {
+            id_lokalId
+            kommunekode
+            virkningsaktoer
+        }
+    }
+}
+</div></code></pre>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<pre class="hljs"><code><div>    <span class="hljs-string">"data"</span>: {
+        <span class="hljs-attr">"BBR_Bygning"</span>: {
+            <span class="hljs-attr">"pageInfo"</span>: {
+                <span class="hljs-attr">"startCursor"</span>: <span class="hljs-string">"TURBd01ESTBOMk...d0t6QXdPakF3"</span>,
+                <span class="hljs-attr">"endCursor"</span>: <span class="hljs-string">"TURBd01ESTBOMkV0TkdKbFl...NHdNVFl6TVRjd0t6QXdPakF3"</span>,
+                <span class="hljs-attr">"hasNextPage"</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">"hasPreviousPage"</span>: <span class="hljs-literal">false</span>
+            },
+            <span class="hljs-attr">"nodes"</span>: [
+                {
+                    <span class="hljs-attr">"id_lokalId"</span>: <span class="hljs-string">"0000247a-4beb-4e08-8217-d3246a66ffc3"</span>,
+                    <span class="hljs-attr">"kommunekode"</span>: <span class="hljs-string">"0550"</span>,
+                    <span class="hljs-attr">"virkningsaktoer"</span>: <span class="hljs-string">"Konvertering2017"</span>
+                },
+                {
+                    <span class="hljs-attr">"id_lokalId"</span>: <span class="hljs-string">"0000247a-4beb-4e08-8217-d3246a66ffc3"</span>,
+                    <span class="hljs-attr">"kommunekode"</span>: <span class="hljs-string">"0550"</span>,
+                    <span class="hljs-attr">"virkningsaktoer"</span>: <span class="hljs-string">"EksterntSystem"</span>
+                }
+            ]
+        }
+    }
+}
+
+</div></code></pre>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Adgang til den fleksible opslagslogik </h1>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<div class="container">
+<div class="col">
+</br>
+</br>
+<ul>
+<li>
+<p>Som tidliger - det er ikke længere nok med en webbruger og en tjenestebruger.</p>
+</li>
+<li>
+<p>Hvis man skal have adgang til frie data, er en token nok, men den skal oprettes</p>
+</li>
+</ul>
+</div>
+<div class="col">
+</br>
+</br>
+<img src="./img/bruger1.png" width="500">
+</div>
+</div>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<img src="./img/bruger2.png" width="800">
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<img src="./img/bruger3.png" width="1000">
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<img src="./img/bruger4.png" width="800">
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<img src="./img/bruger6.png" width="500">
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<img src="./img/bruger5.png" width="1000">
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Det fleksible schema</h1>
+<ul>
+<li>
+<p>Realtioner i grunddataprogrammet</p>
+</li>
+<li>
+<p>Endpoints</p>
+</li>
+<li>
+<p>Som text</p>
+</li>
+<li>
+<p>Som diagrammer</p>
+</li>
+</ul>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Grunddatamodellen</h1>
+<img src="./img/grunddatamodellen.png" width="1050">
+<p>https://www.version2.dk/artikel/fra-cpr-numre-til-vandloeb-dyk-ned-i-den-samlede-model-danske-grunddata</p>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Dokumentation</h1>
+<pre class="hljs"><code><div>https://confluence.sdfi.dk/pages/viewpage.action?pageId=187105434#GraphQLp%C3%A5Datafordeleren-GraphQL-endepunkter
+
+https://confluence.sdfi.dk/display/DML/Fleksibel+opslagslogik
+</div></code></pre>
+<hr>
+<h1 style="font-size:50px;color:white">Endpoints</h1>
+<p><img src="./img/first.png" alt="bg"></p>
+<div class="container">
+<div class="col">
+<p>GraphQL-tjenesterne udstilles gennem URL'er, der følger nedenstående form:</p>
+<pre class="hljs"><code><div>https://graphql.datafordeler.dk/&lt;register&gt;/&lt;version&gt;
+</div></code></pre>
+</div>
+<div class="col">
+<img src="./img/registre.png" width="400">
+</div>
+</div>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Som text</h1>
+<p>Udgører knap 74.000 linjer - indeholder representation af grunddata som edges, nodes and connections</p>
+<img src="./img/flex_lines.png" width="1050">
+<hr>
+<p><img src="./img/first.png" alt="bg">
+<img src="./img/dar_relations.png" width="1050"></p>
+<hr>
+<p><img src="./img/first.png" alt="bg">
+<br/>
+<img src="./img/lost.jpg" width="900"></p>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Ruteberegning ? </h1>
+<div class="container">
+<div class="col">
+<p>Som når vi navigerer, skal vi tænke vores GraphQL graph som et vejnet.</p>
+<ul>
+<li>
+<p>Hvor starter du ?</p>
+</li>
+<li>
+<p>Har du stop på vejen ?</p>
+</li>
+<li>
+<p>Hvor skal du ende ?</p>
+</li>
+</ul>
+</div>
+<div class="col">
+<img src="./img/rute.png" width="800">
+</div>
+</div>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Konstruktion</h1>
+<p>Spørgsmålene kan relateres :</p>
+<ul>
+<li>
+<p>Hvilke data er mit udgangspunkt ?</p>
+<ul>
+<li>Har jeg en adresse, en matrikel eller en virksomhed jeg vil søge ud fra ?</li>
+<li>Skal jeg bruge et udtræk af adresser med oplysninger, eller det virksomheder jeg vil søge ?</li>
+</ul>
+</li>
+<li>
+<p>Hvilke data skal jeg slutte med ?</p>
+<ul>
+<li>BBR enheder for adresser ? Jordstykker for adresser ?</li>
+</ul>
+</li>
+<li>
+<p>Er der data 'på vejen' jeg skal bruge ?</p>
+<ul>
+<li>BBR opgange på relationene mellem adresse og enhed ?</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Grafisk visning</h1>
+<p>For at kunne skabe den forståelse, er en grafisk visning meget nemmere end teksten...</p>
+<p>KDS har et webinar den 11/12 med dette specifikke formål - det vil jeg anbefale at man ser.</p>
+<p><em>Modelsekretariatet i KDS afholder et webinar, der giver Indblik i en metode til at identificere og forstå relationer i Grunddatamodellen.
+Tilmeld dig til webinaret via daf2@kds.dk.</em></p>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">KDS' Mermaid diagram</h1>
+<div class="container">
+<div class="col">
+<br/>
+<ul>
+<li>
+<p>Vises i en browser</p>
+</li>
+<li>
+<p>Kan navigeres som et webkort</p>
+</li>
+<li>
+<p>Indeholder al information fra schemaet i et samlet overblik</p>
+</li>
+</ul>
+<br/>
+<br/>
+<br/>
+<p>Lad os se det engang...</p>
+</div>
+<div class="col">
+<img src="./img/mermaid.png" width="500">
+</div>
+</div>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Egne fortolkninger</h1>
+<p>Vi har i Septima forsøgt med at adskille det i registre og tilknyttet farvekodning.</p>
+<p>Jvf. det tidligere slide, så skal vi alligevel finde et 'startpunkt' - og det kan man med fordel så bruge de mindre diagrammer til.</p>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<img src="./img/septima_dar.png" width="800">
+<p>Lad os se lidt på dem...</p>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Konstruktion af forespørgsler</h1>
+<ul>
+<li>Når man har en ide om hvilket indhold man gerne vil have ud, og hvor man skal starte, så er opgaven at bygge forespørgslen op. Dette kan gøres på mange mere eller mindre smarte måder.</li>
+</ul>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">ChatGPT</h1>
+<p>For mange vil første tanke nok være AI.</p>
+<ul>
+<li>ChatGPT kan læse schemaet (Det kræver dog en større plan)
+<ul>
+<li>Det kræver også noget tålmodighed, det går langsomt...</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<pre class="hljs"><code><div>Jeg vil med vedlagte graphQL schema gerne bygge en forespørgsel, der tager DAR adressen:
+&quot;Lærkevej 7, 2600 Glostrup&quot;,
+og finder adressens koordinater via adgangspunktet.
+Kan du bygge denne forespørgsel for mig?
+Sørg for at du læser scheaet grundigt, så der ikke gættes.
+</div></code></pre>
+<img src="./img/chatgpt.png" width="500">
+<p>Lad os se hvad der sker...</p>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Postman</h1>
+<p>Den bedste mulighed jeg kender til, er i Postman, hvor man også kan give den schemaet...</p>
+<ul>
+<li>Lad os se hvordan det foregår</li>
+</ul>
+<ul>
+<li>Guiden 'Postman Guide til GraphQL' fra KDS ligger i mit Github Repo, den beskriver dette i detaljen</li>
+</ul>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Eksempler på anvendelse </h1>
+<p>Lad os se nogle af 'mine' eksempler</p>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Kendte begrænsninger </h1>
+<ul>
+<li>
+<p>Max 20 joins pr. forespørgsel</p>
+</li>
+<li>
+<p>Ingen brug af alias'er</p>
+</li>
+<li>
+<p>Kun en root-node pr. forespørgsel</p>
+</li>
+</ul>
+<hr>
+<p><img src="./img/first.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Alle ressourcer vi har brugt i dag, kan hentes på Github </h1>
+</br>
+<p>Github.com/MFuglsang/graphql_datafordeleren</p>
+</br>
+<p>Her er bla. en pdf med en lang række eksempler - langt flere end vi har vist her...</p>
+<hr>
+<p><img src="./img/green.png" alt="bg"></p>
+<h1 style="font-size:50px;color:white">Spørgsmål, opsamling og afslutning</h1>
+<hr>
+<p><img src="./img/geoforum_green.png" alt="bg"></p>
+<h1 style="font-size:80px;color:white">Tak for i dag...</h1>
+</body>
+</html>
